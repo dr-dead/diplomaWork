@@ -20,15 +20,25 @@ namespace mongoClient
 
         private void btConnect_Click(object sender, EventArgs e)
         {
-            try
-            {                
-                new ServerConnection(MongoServer.Create("mongodb://" + tbServerAddress.Text));
-                FillComboboxWithDatabaseNames(ServerConnection.Server);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }            
+			if(!ServerConnection.Connected)
+			{
+				try
+				{
+					new ServerConnection(MongoServer.Create("mongodb://" + tbServerAddress.Text));
+					FillComboboxWithDatabaseNames(ServerConnection.Server);
+					btConnect.Text = "Launch";
+					ServerConnection.Connected = true;
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
+			else
+			{
+				ServerConnection.DatabaseName = cbDatabases.Text;
+				CloseLoginFormOpenMain();
+			}
         }
 
         private void FillComboboxWithDatabaseNames(MongoServer server)
@@ -45,17 +55,10 @@ namespace mongoClient
         {
             if (e.KeyData == Keys.Enter)
             {
-                e.SuppressKeyPress = true;                
+                e.SuppressKeyPress = true;				
                 btConnect_Click(this, e);
-                btConnect.Focus();
+				btConnect.Focus();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Application.Run(new MainForm());
-            //Form.ActiveForm.Activate();
-            CloseLoginFormOpenMain();
         }
 
         private void CloseLoginFormOpenMain()

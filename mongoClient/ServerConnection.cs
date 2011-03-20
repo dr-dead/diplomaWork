@@ -12,7 +12,7 @@ namespace mongoClient
     /// </summary>
     public class ServerConnection
     {
-        private static MongoServer server;
+        private static MongoServer server = null;
 
         private static bool connected = false;
 
@@ -42,5 +42,17 @@ namespace mongoClient
                 connected = value;
             }
         }
+
+		public static string DatabaseName
+		{
+			get
+			{
+				return databaseName;
+			}
+			set
+			{
+				databaseName = value;
+			}
+		}
     }
 }
