@@ -18,9 +18,9 @@ namespace mongoClient
 
         private static string databaseName = "";
 
-        public ServerConnection(MongoServer ServerToInstance)
+        public ServerConnection(string serverSettings)
         {
-            server = ServerToInstance;
+			server = MongoServer.Create("mongodb://" + serverSettings);
         }
 
         public static MongoServer Server

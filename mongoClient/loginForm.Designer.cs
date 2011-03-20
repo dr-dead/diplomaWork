@@ -33,6 +33,8 @@
 			this.cbDatabases = new System.Windows.Forms.ComboBox();
 			this.bwProgress = new System.ComponentModel.BackgroundWorker();
 			this.labelServer = new System.Windows.Forms.Label();
+			this.labelDatabase = new System.Windows.Forms.Label();
+			this.btCancel = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btConnect
@@ -55,6 +57,8 @@
 			// 
 			// cbDatabases
 			// 
+			this.cbDatabases.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbDatabases.Enabled = false;
 			this.cbDatabases.FormattingEnabled = true;
 			this.cbDatabases.Location = new System.Drawing.Point(134, 156);
 			this.cbDatabases.Name = "cbDatabases";
@@ -74,11 +78,32 @@
 			this.labelServer.TabIndex = 3;
 			this.labelServer.Text = "Server:";
 			// 
+			// labelDatabase
+			// 
+			this.labelDatabase.AutoSize = true;
+			this.labelDatabase.Location = new System.Drawing.Point(72, 159);
+			this.labelDatabase.Name = "labelDatabase";
+			this.labelDatabase.Size = new System.Drawing.Size(56, 13);
+			this.labelDatabase.TabIndex = 4;
+			this.labelDatabase.Text = "Database:";
+			// 
+			// btCancel
+			// 
+			this.btCancel.Location = new System.Drawing.Point(172, 208);
+			this.btCancel.Name = "btCancel";
+			this.btCancel.Size = new System.Drawing.Size(98, 27);
+			this.btCancel.TabIndex = 5;
+			this.btCancel.Text = "Exit";
+			this.btCancel.UseVisualStyleBackColor = true;
+			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+			// 
 			// loginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 266);
+			this.Controls.Add(this.btCancel);
+			this.Controls.Add(this.labelDatabase);
 			this.Controls.Add(this.labelServer);
 			this.Controls.Add(this.cbDatabases);
 			this.Controls.Add(this.tbServerAddress);
@@ -97,6 +122,8 @@
         private System.Windows.Forms.ComboBox cbDatabases;
         private System.ComponentModel.BackgroundWorker bwProgress;
 		private System.Windows.Forms.Label labelServer;
+		private System.Windows.Forms.Label labelDatabase;
+		private System.Windows.Forms.Button btCancel;
     }
 }
 

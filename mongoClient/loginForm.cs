@@ -24,10 +24,9 @@ namespace mongoClient
 			{
 				try
 				{
-					new ServerConnection(MongoServer.Create("mongodb://" + tbServerAddress.Text));
+					new ServerConnection(tbServerAddress.Text);
+					SetConnectedState();
 					FillComboboxWithDatabaseNames(ServerConnection.Server);
-					btConnect.Text = "Launch";
-					ServerConnection.Connected = true;
 				}
 				catch(Exception ex)
 				{
@@ -50,6 +49,35 @@ namespace mongoClient
                 cbDatabases.SelectedIndex = 0;
             }
         }
+
+		private void SetConnectedState()
+		{
+			btConnect.Text = "Launch";
+			btCancel.Text = "Disconnect";
+			cbDatabases.Enabled = true;
+			ServerConnection.Connected = true;
+		}
+		
+		private void btCancel_Click(object sender, EventArgs e)
+		{
+			if(!ServerConnection.Connected)
+			{
+				this.Close();
+			}
+			else
+			{
+				SetDisconnectedState();
+			}
+		}
+
+		private void SetDisconnectedState()
+		{
+			btConnect.Text = "Connect";
+			btCancel.Text = "Exit";
+			cbDatabases.Enabled = false;
+			cbDatabases.Items.Clear();
+			ServerConnection.Connected = false;
+		}
 
         private void tbServerAddress_OnKeyDown(object sender, KeyEventArgs e)
         {
