@@ -11,15 +11,15 @@ using MongoDB.Driver;
 
 namespace mongoClient
 {
-    public partial class loginForm : Form
-    {
-        public loginForm()
-        {
-            InitializeComponent();
-        }
+	public partial class loginForm : Form
+	{
+		public loginForm()
+		{
+			InitializeComponent();
+		}
 
-        private void btConnect_Click(object sender, EventArgs e)
-        {
+		private void btConnect_Click(object sender, EventArgs e)
+		{
 			if(!ServerConnection.Connected)
 			{
 				try
@@ -38,17 +38,17 @@ namespace mongoClient
 				ServerConnection.DatabaseName = cbDatabases.Text;
 				CloseLoginFormOpenMain();
 			}
-        }
+		}
 
-        private void FillComboboxWithDatabaseNames(MongoServer server)
-        {
-            cbDatabases.Items.Clear();
-            cbDatabases.Items.AddRange(server.GetDatabaseNames().ToArray());
-            if (cbDatabases.Items.Count > 0)
-            {
-                cbDatabases.SelectedIndex = 0;
-            }
-        }
+		private void FillComboboxWithDatabaseNames(MongoServer server)
+		{
+			cbDatabases.Items.Clear();
+			cbDatabases.Items.AddRange(server.GetDatabaseNames().ToArray());
+			if(cbDatabases.Items.Count > 0)
+			{
+				cbDatabases.SelectedIndex = 0;
+			}
+		}
 
 		private void SetConnectedState()
 		{
@@ -57,7 +57,7 @@ namespace mongoClient
 			cbDatabases.Enabled = true;
 			ServerConnection.Connected = true;
 		}
-		
+
 		private void btCancel_Click(object sender, EventArgs e)
 		{
 			if(!ServerConnection.Connected)
@@ -79,22 +79,22 @@ namespace mongoClient
 			ServerConnection.Connected = false;
 		}
 
-        private void tbServerAddress_OnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;				
-                btConnect_Click(this, e);
+		private void tbServerAddress_OnKeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyData == Keys.Enter)
+			{
+				e.SuppressKeyPress = true;
+				btConnect_Click(this, e);
 				btConnect.Focus();
-            }
-        }
+			}
+		}
 
-        private void CloseLoginFormOpenMain()
-        {
-            MainForm mainForm = new MainForm();
-            this.Visible = false;
-            mainForm.ShowDialog();
-            this.Close();
-        }
-    }
+		private void CloseLoginFormOpenMain()
+		{
+			MainForm mainForm = new MainForm();
+			this.Visible = false;
+			mainForm.ShowDialog();
+			this.Close();
+		}
+	}
 }

@@ -7,41 +7,41 @@ using MongoDB.Driver;
 
 namespace mongoClient
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class ServerConnection
-    {
-        private static MongoServer server = null;
+	/// <summary>
+	/// 
+	/// </summary>
+	public class ServerConnection
+	{
+		private static MongoServer server = null;
 
-        private static bool connected = false;
+		private static bool connected = false;
 
-        private static string databaseName = "";
+		private static string databaseName = "";
 
-        public ServerConnection(string serverSettings)
-        {
+		public ServerConnection(string serverSettings)
+		{
 			server = MongoServer.Create("mongodb://" + serverSettings);
-        }
+		}
 
-        public static MongoServer Server
-        {
-            get
-            {
-                return server;
-            }
-        }
+		public static MongoServer Server
+		{
+			get
+			{
+				return server;
+			}
+		}
 
-        public static bool Connected
-        {
-            get
-            {
-                return connected;
-            }
-            set
-            {
-                connected = value;
-            }
-        }
+		public static bool Connected
+		{
+			get
+			{
+				return connected;
+			}
+			set
+			{
+				connected = value;
+			}
+		}
 
 		public static string DatabaseName
 		{
@@ -54,5 +54,5 @@ namespace mongoClient
 				databaseName = value;
 			}
 		}
-    }
+	}
 }
