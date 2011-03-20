@@ -31,6 +31,7 @@ namespace mongoClient
 				catch(Exception ex)
 				{
 					MessageBox.Show(ex.Message);
+					tbServerAddress.Focus();
 				}
 			}
 			else
@@ -55,6 +56,7 @@ namespace mongoClient
 			btConnect.Text = "Launch";
 			btCancel.Text = "Disconnect";
 			cbDatabases.Enabled = true;
+			tbServerAddress.Enabled = false;
 			ServerConnection.Connected = true;
 		}
 
@@ -76,16 +78,18 @@ namespace mongoClient
 			btCancel.Text = "Exit";
 			cbDatabases.Enabled = false;
 			cbDatabases.Items.Clear();
+			tbServerAddress.Enabled = true;			
 			ServerConnection.Connected = false;
+			tbServerAddress.Focus();
 		}
 
 		private void tbServerAddress_OnKeyDown(object sender, KeyEventArgs e)
 		{
 			if(e.KeyData == Keys.Enter)
 			{
-				e.SuppressKeyPress = true;
-				btConnect_Click(this, e);
 				btConnect.Focus();
+				e.SuppressKeyPress = true;
+				btConnect_Click(this, e);				
 			}
 		}
 

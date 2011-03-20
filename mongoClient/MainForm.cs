@@ -14,12 +14,12 @@ namespace mongoClient
 		public MainForm()
 		{
 			InitializeComponent();
+			TestFill();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void TestFill()
 		{
-			comboBox1.Items.AddRange(ServerConnection.Server.GetDatabase("test").GetCollectionNames().ToArray());
-
+			comboBox1.Items.AddRange(ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName).GetCollectionNames().ToArray());
 		}
 	}
 }
