@@ -41,6 +41,10 @@ namespace mongoClient
 			}
 		}
 
+		/// <summary>
+		/// Filling combobox with database names that server stores.
+		/// </summary>
+		/// <param name="server">MongoDB.Driver.MongoServer instance to connect to.</param>
 		private void FillComboboxWithDatabaseNames(MongoServer server)
 		{
 			cbDatabases.Items.Clear();
@@ -51,6 +55,9 @@ namespace mongoClient
 			}
 		}
 
+		/// <summary>
+		/// Sets GUI to the connected mode.
+		/// </summary>
 		private void SetConnectedState()
 		{
 			btConnect.Text = "Launch";
@@ -72,6 +79,9 @@ namespace mongoClient
 			}
 		}
 
+		/// <summary>
+		/// Sets GUI to the non-connected mode.
+		/// </summary>
 		private void SetDisconnectedState()
 		{
 			btConnect.Text = "Connect";

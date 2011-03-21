@@ -28,23 +28,50 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.PatientList = new System.Windows.Forms.ListView();
+			this.headerId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.headerName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.headerNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
-			// comboBox1
+			// PatientList
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(50, 40);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(141, 21);
-			this.comboBox1.TabIndex = 2;
+			this.PatientList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.headerId,
+            this.headerName,
+            this.headerNumber});
+			this.PatientList.FullRowSelect = true;
+			this.PatientList.GridLines = true;
+			this.PatientList.Location = new System.Drawing.Point(28, 131);
+			this.PatientList.Name = "PatientList";
+			this.PatientList.Size = new System.Drawing.Size(558, 388);
+			this.PatientList.TabIndex = 3;
+			this.PatientList.UseCompatibleStateImageBehavior = false;
+			this.PatientList.View = System.Windows.Forms.View.Details;
+			this.PatientList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.OnColumnClick);
+			this.PatientList.ItemActivate += new System.EventHandler(this.PatientList_ItemActivate);
+			// 
+			// headerId
+			// 
+			this.headerId.Text = "Id";
+			this.headerId.Width = 112;
+			// 
+			// headerName
+			// 
+			this.headerName.Text = "Name";
+			this.headerName.Width = 107;
+			// 
+			// headerNumber
+			// 
+			this.headerNumber.Text = "Number";
+			this.headerNumber.Width = 103;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 266);
-			this.Controls.Add(this.comboBox1);
+			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.PatientList);
 			this.Name = "MainForm";
 			this.Text = "MainForm";
 			this.ResumeLayout(false);
@@ -53,6 +80,9 @@
 
 		#endregion
 
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ListView PatientList;
+		private System.Windows.Forms.ColumnHeader headerId;
+		private System.Windows.Forms.ColumnHeader headerName;
+		private System.Windows.Forms.ColumnHeader headerNumber;
 	}
 }
