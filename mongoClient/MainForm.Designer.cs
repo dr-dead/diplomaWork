@@ -32,6 +32,9 @@
 			this.headerId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.headerName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.headerNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.bgWorker = new System.ComponentModel.BackgroundWorker();
+			this.tbID = new System.Windows.Forms.TextBox();
+			this.tbSurname = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -43,18 +46,20 @@
 			this.PatientList.FullRowSelect = true;
 			this.PatientList.GridLines = true;
 			this.PatientList.Location = new System.Drawing.Point(28, 131);
+			this.PatientList.MultiSelect = false;
 			this.PatientList.Name = "PatientList";
 			this.PatientList.Size = new System.Drawing.Size(558, 388);
 			this.PatientList.TabIndex = 3;
 			this.PatientList.UseCompatibleStateImageBehavior = false;
 			this.PatientList.View = System.Windows.Forms.View.Details;
 			this.PatientList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.OnColumnClick);
+			this.PatientList.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.PatientList_ColumnWidthChanging);
 			this.PatientList.ItemActivate += new System.EventHandler(this.PatientList_ItemActivate);
 			// 
 			// headerId
 			// 
 			this.headerId.Text = "Id";
-			this.headerId.Width = 112;
+			this.headerId.Width = 0;
 			// 
 			// headerName
 			// 
@@ -66,15 +71,40 @@
 			this.headerNumber.Text = "Number";
 			this.headerNumber.Width = 103;
 			// 
+			// bgWorker
+			// 
+			this.bgWorker.WorkerSupportsCancellation = true;
+			this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+			this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
+			// 
+			// tbID
+			// 
+			this.tbID.Enabled = false;
+			this.tbID.Location = new System.Drawing.Point(660, 131);
+			this.tbID.Name = "tbID";
+			this.tbID.Size = new System.Drawing.Size(249, 20);
+			this.tbID.TabIndex = 4;
+			// 
+			// tbSurname
+			// 
+			this.tbSurname.Location = new System.Drawing.Point(660, 170);
+			this.tbSurname.Name = "tbSurname";
+			this.tbSurname.Size = new System.Drawing.Size(207, 20);
+			this.tbSurname.TabIndex = 5;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.tbSurname);
+			this.Controls.Add(this.tbID);
 			this.Controls.Add(this.PatientList);
 			this.Name = "MainForm";
-			this.Text = "MainForm";
+			this.Text = "Medical Information System";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -84,5 +114,8 @@
 		private System.Windows.Forms.ColumnHeader headerId;
 		private System.Windows.Forms.ColumnHeader headerName;
 		private System.Windows.Forms.ColumnHeader headerNumber;
+		private System.ComponentModel.BackgroundWorker bgWorker;
+		private System.Windows.Forms.TextBox tbID;
+		private System.Windows.Forms.TextBox tbSurname;
 	}
 }

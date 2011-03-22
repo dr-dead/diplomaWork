@@ -11,7 +11,7 @@ namespace mongoClient
 	{
 		[MongoDB.Bson.DefaultSerializer.BsonId]
 		public ObjectId Id { get; set; }
-		public string name { get; set; }
+		public string Surname { get; set; }
 		public int number { get; set; }
 	}
 }

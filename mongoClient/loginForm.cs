@@ -105,9 +105,9 @@ namespace mongoClient
 
 		private void CloseLoginFormOpenMain()
 		{
-			MainForm mainForm = new MainForm();
-			this.Visible = false;
-			mainForm.ShowDialog();
+			//MainForm mainForm = new MainForm();
+			//this.Visible = false;
+			//mainForm.ShowDialog();
 			this.Close();
 		}
 	}
