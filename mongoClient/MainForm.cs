@@ -21,22 +21,17 @@ namespace mongoClient
 			
 			SetStyle(ControlStyles.UserPaint, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-			SetStyle(ControlStyles.DoubleBuffer, true);
-			//SearchPatients(Query.Null);
-
-			//Treaded version
-			//PatientList.Enabled = false;
-			//PatientList.Visible = false;
-			//Thread crap = new Thread(ThreadedQuery);
-			//crap.Start(Query.Null);	
-
-			PatientList.Visible = false;
-			bgWorker.RunWorkerAsync(Query.Null);			
+			SetStyle(ControlStyles.DoubleBuffer, true);						
+		}
+		
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			bgWorker.RunWorkerAsync(Query.Null);
 		}
 
-		private void ThreadedQuery(object objQuery)
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			SearchPatients((IMongoQuery)objQuery);
+			bgWorker.CancelAsync();
 		}
 
 		/// <summary>
@@ -45,27 +40,22 @@ namespace mongoClient
 		/// <param name="query">Query that implements IMongoQuery interface.</param>
 		private void SearchPatients(IMongoQuery query)
 		{
-			PatientList.Items.Clear();
+			Invoke(new Action(() => { PatientList.Items.Clear(); }));
 			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
 			var coll = db.GetCollection<Patient>("Patient");
 			foreach(var item in coll.Find(query))
 			{
 				string[] test = new string[]{ item.Id.ToString(), item.Surname, item.number.ToString() };
-
-				//Non-threaded
-				//PatientList.Items.Add(new ListViewItem(test));
-
-				//Threaded version
 				Invoke(new Action(() => { PatientList.Items.Add(new ListViewItem(test)); }));
 			}
-			//Threaded version
-			//PatientList.Enabled = true;
-			//Invoke(new Action(() => { PatientList.Visible = true; }));
+			Invoke(new Action(() => { PatientList.ListViewItemSorter = new ListViewSorter(); }));
 		}
 
 		private void OnColumnClick(object sender, ColumnClickEventArgs e)
 		{
-			// TODO: column sorter will be here.
+			// TODO: Improve sorting. Asc and desc sorting to be done.
+
+			PatientList.ListViewItemSorter = new ListViewSorter(e.Column);
 		}
 
 		private void PatientList_ItemActivate(object sender, EventArgs e)
@@ -88,22 +78,22 @@ namespace mongoClient
 
 			tbID.Text = patient.Id.ToString();
 			tbSurname.Text = patient.Surname;
+			tbName.Text = patient.Name;
+			tbPatronymic.Text = patient.Patronymic;
 		}
 
 		private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
+			Invoke(new Action(() => { this.Cursor = Cursors.WaitCursor; }));
+			Invoke(new Action(() => { PatientList.Visible = false; }));
 			SearchPatients((IMongoQuery)e.Argument);
 		}
 
 		private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			PatientList.Visible = true;
-		}
-
-		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			bgWorker.CancelAsync();
-		}
+			Invoke(new Action(() => { PatientList.Visible = true; }));
+			Invoke(new Action(() => { this.Cursor = Cursors.Default; }));
+		}		
 
 		private void PatientList_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
 		{
@@ -113,6 +103,25 @@ namespace mongoClient
 				e.NewWidth = 0;
 				e.Cancel = true;
 			}
+		}
+
+		private void btSave_Click(object sender, EventArgs e)
+		{
+			// TODO: Rewrite this function so it actually works.
+
+			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
+			var coll = db.GetCollection<Patient>("Patient");
+			Patient queriedPatient = coll.FindOneById(new ObjectId(tbID.Text));
+			queriedPatient.Name = tbName.Text;
+			queriedPatient.Surname = tbName.Text;
+			queriedPatient.Patronymic = tbPatronymic.Text;
+			coll.Save<Patient>(queriedPatient);
+		}
+
+		private void btQuickSearch_Click(object sender, EventArgs e)
+		{
+			PatientList.ListViewItemSorter = null;
+			bgWorker.RunWorkerAsync(Query.Null);
 		}
 	}
 }

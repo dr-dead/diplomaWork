@@ -35,6 +35,11 @@
 			this.bgWorker = new System.ComponentModel.BackgroundWorker();
 			this.tbID = new System.Windows.Forms.TextBox();
 			this.tbSurname = new System.Windows.Forms.TextBox();
+			this.tbName = new System.Windows.Forms.TextBox();
+			this.tbPatronymic = new System.Windows.Forms.TextBox();
+			this.btSave = new System.Windows.Forms.Button();
+			this.btQuickSearch = new System.Windows.Forms.Button();
+			this.tbSearchText = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -92,17 +97,65 @@
 			this.tbSurname.Size = new System.Drawing.Size(207, 20);
 			this.tbSurname.TabIndex = 5;
 			// 
+			// tbName
+			// 
+			this.tbName.Location = new System.Drawing.Point(660, 207);
+			this.tbName.Name = "tbName";
+			this.tbName.Size = new System.Drawing.Size(207, 20);
+			this.tbName.TabIndex = 6;
+			// 
+			// tbPatronymic
+			// 
+			this.tbPatronymic.Location = new System.Drawing.Point(660, 242);
+			this.tbPatronymic.Name = "tbPatronymic";
+			this.tbPatronymic.Size = new System.Drawing.Size(207, 20);
+			this.tbPatronymic.TabIndex = 7;
+			// 
+			// btSave
+			// 
+			this.btSave.Location = new System.Drawing.Point(660, 495);
+			this.btSave.Name = "btSave";
+			this.btSave.Size = new System.Drawing.Size(75, 23);
+			this.btSave.TabIndex = 8;
+			this.btSave.Text = "Save";
+			this.btSave.UseVisualStyleBackColor = true;
+			this.btSave.Click += new System.EventHandler(this.btSave_Click);
+			// 
+			// btQuickSearch
+			// 
+			this.btQuickSearch.Location = new System.Drawing.Point(476, 533);
+			this.btQuickSearch.Name = "btQuickSearch";
+			this.btQuickSearch.Size = new System.Drawing.Size(109, 21);
+			this.btQuickSearch.TabIndex = 9;
+			this.btQuickSearch.Text = "Quick Search";
+			this.btQuickSearch.UseVisualStyleBackColor = true;
+			this.btQuickSearch.Click += new System.EventHandler(this.btQuickSearch_Click);
+			// 
+			// tbSearchText
+			// 
+			this.tbSearchText.Enabled = false;
+			this.tbSearchText.Location = new System.Drawing.Point(28, 533);
+			this.tbSearchText.Name = "tbSearchText";
+			this.tbSearchText.Size = new System.Drawing.Size(429, 20);
+			this.tbSearchText.TabIndex = 10;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.tbSearchText);
+			this.Controls.Add(this.btQuickSearch);
+			this.Controls.Add(this.btSave);
+			this.Controls.Add(this.tbPatronymic);
+			this.Controls.Add(this.tbName);
 			this.Controls.Add(this.tbSurname);
 			this.Controls.Add(this.tbID);
 			this.Controls.Add(this.PatientList);
 			this.Name = "MainForm";
 			this.Text = "Medical Information System";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -117,5 +170,10 @@
 		private System.ComponentModel.BackgroundWorker bgWorker;
 		private System.Windows.Forms.TextBox tbID;
 		private System.Windows.Forms.TextBox tbSurname;
+		private System.Windows.Forms.TextBox tbName;
+		private System.Windows.Forms.TextBox tbPatronymic;
+		private System.Windows.Forms.Button btSave;
+		private System.Windows.Forms.Button btQuickSearch;
+		private System.Windows.Forms.TextBox tbSearchText;
 	}
 }

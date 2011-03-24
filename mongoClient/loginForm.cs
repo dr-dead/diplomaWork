@@ -24,9 +24,9 @@ namespace mongoClient
 			{
 				try
 				{
-					new ServerConnection(tbServerAddress.Text);
-					SetConnectedState();
+					new ServerConnection(tbServerAddress.Text);					
 					FillComboboxWithDatabaseNames(ServerConnection.Server);
+					SetConnectedState();
 				}
 				catch(Exception ex)
 				{

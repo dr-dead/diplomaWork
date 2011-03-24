@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MongoDB.Bson;
-using MongoDB.Driver;
+using MongoDB.Bson.DefaultSerializer;
 
 namespace mongoClient
 {
-	class Medic
+	class Medic : Person
 	{
-		[MongoDB.Bson.DefaultSerializer.BsonId]
-		public ObjectId Id { get; set; }
+		
 	}
 }
