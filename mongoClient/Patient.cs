@@ -10,5 +10,13 @@ namespace mongoClient
 	class Patient : Person
 	{		
 		public int number { get; set; }
+		
+		[BsonDateTimeOptions(DateOnly = true)]
+		[BsonIgnoreIfNull]
+		public DateTime DateOfDeath { get; set; }
+		[BsonIgnoreIfNull]
+		public ObjectId CurrentMedic { get; set; }
+		[BsonIgnoreIfNull]
+		public ObjectId[] HealthLog { get; set; }
 	}
 }

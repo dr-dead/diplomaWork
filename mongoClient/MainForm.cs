@@ -43,10 +43,10 @@ namespace mongoClient
 			Invoke(new Action(() => { PatientList.Items.Clear(); }));
 			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
 			var coll = db.GetCollection<Patient>("Patient");
-			foreach(var item in coll.Find(query))
+			foreach(var patientItem in coll.Find(query))
 			{
-				string[] test = new string[]{ item.Id.ToString(), item.Surname, item.number.ToString() };
-				Invoke(new Action(() => { PatientList.Items.Add(new ListViewItem(test)); }));
+				string[] patientAttributesArray = new string[]{ patientItem.Id.ToString(), patientItem.Surname, patientItem.Name, patientItem.Patronymic, patientItem.number.ToString() };
+				Invoke(new Action(() => { PatientList.Items.Add(new ListViewItem(patientAttributesArray)); }));
 			}
 			Invoke(new Action(() => { PatientList.ListViewItemSorter = new ListViewSorter(); }));
 		}
@@ -113,7 +113,7 @@ namespace mongoClient
 			var coll = db.GetCollection<Patient>("Patient");
 			Patient queriedPatient = coll.FindOneById(new ObjectId(tbID.Text));
 			queriedPatient.Name = tbName.Text;
-			queriedPatient.Surname = tbName.Text;
+			queriedPatient.Surname = tbSurname.Text;
 			queriedPatient.Patronymic = tbPatronymic.Text;
 			coll.Save<Patient>(queriedPatient);
 		}
@@ -121,7 +121,18 @@ namespace mongoClient
 		private void btQuickSearch_Click(object sender, EventArgs e)
 		{
 			PatientList.ListViewItemSorter = null;
-			bgWorker.RunWorkerAsync(Query.Null);
+			bgWorker.RunWorkerAsync(BuildQuery());
+		}
+
+		private IMongoQuery BuildQuery()
+		{
+			// TODO: Build fast query depending on the input text.
+			if(String.IsNullOrWhiteSpace(tbSearchText.Text))
+			{
+				return Query.Null;
+			}
+			var regexToSearch = new BsonRegularExpression("^" + tbSearchText.Text);
+			return Query.Or(Query.Matches("Surname", regexToSearch), Query.Matches("Name", regexToSearch), Query.Matches("Patronymic", regexToSearch));
 		}
 	}
 }
