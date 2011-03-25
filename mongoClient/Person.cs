@@ -19,5 +19,10 @@ namespace mongoClient
 		public string Patronymic { get { return patronymic; } set { if(value == String.Empty) value = null; patronymic = value; } }
 		[BsonDateTimeOptions(DateOnly = true)]
 		public DateTime DateOfBirth { get; set; }
+
+		public string GetInitials()
+		{
+			return Surname + " " + Name[0] + ". " + Patronymic[0] + ".";
+		}
 	}
 }

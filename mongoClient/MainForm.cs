@@ -64,7 +64,7 @@ namespace mongoClient
 			
 			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
 			var coll = db.GetCollection<Patient>("Patient");
-			Patient queriedPatient = coll.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
+			var queriedPatient = coll.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
 			FillRightPanelWithPatientInfo(queriedPatient);
 		}
 
@@ -84,6 +84,8 @@ namespace mongoClient
 
 		private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
+			Invoke(new Action(() => { tbSearchText.Enabled = false; }));
+			Invoke(new Action(() => { btQuickSearch.Enabled = false; }));
 			Invoke(new Action(() => { this.Cursor = Cursors.WaitCursor; }));
 			Invoke(new Action(() => { PatientList.Visible = false; }));
 			SearchPatients((IMongoQuery)e.Argument);
@@ -92,6 +94,8 @@ namespace mongoClient
 		private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			Invoke(new Action(() => { PatientList.Visible = true; }));
+			Invoke(new Action(() => { tbSearchText.Enabled = true; }));
+			Invoke(new Action(() => { btQuickSearch.Enabled = true; }));
 			Invoke(new Action(() => { this.Cursor = Cursors.Default; }));
 		}		
 
@@ -111,7 +115,7 @@ namespace mongoClient
 
 			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
 			var coll = db.GetCollection<Patient>("Patient");
-			Patient queriedPatient = coll.FindOneById(new ObjectId(tbID.Text));
+			var queriedPatient = coll.FindOneById(new ObjectId(tbID.Text));
 			queriedPatient.Name = tbName.Text;
 			queriedPatient.Surname = tbSurname.Text;
 			queriedPatient.Patronymic = tbPatronymic.Text;
@@ -133,6 +137,15 @@ namespace mongoClient
 			}
 			var regexToSearch = new BsonRegularExpression("^" + tbSearchText.Text);
 			return Query.Or(Query.Matches("Surname", regexToSearch), Query.Matches("Name", regexToSearch), Query.Matches("Patronymic", regexToSearch));
+		}
+
+		private void tbSearchText_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				e.SuppressKeyPress = true;
+				btQuickSearch_Click(this, e);
+			}
 		}
 	}
 }

@@ -152,6 +152,7 @@
 			this.tbSearchText.Name = "tbSearchText";
 			this.tbSearchText.Size = new System.Drawing.Size(429, 20);
 			this.tbSearchText.TabIndex = 10;
+			this.tbSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchText_KeyDown);
 			// 
 			// dateTimePicker1
 			// 
@@ -159,6 +160,7 @@
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(115, 20);
 			this.dateTimePicker1.TabIndex = 11;
+			this.dateTimePicker1.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
 			// 
 			// MainForm
 			// 
