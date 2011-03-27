@@ -84,20 +84,30 @@ namespace mongoClient
 
 		private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
-			Invoke(new Action(() => { tbSearchText.Enabled = false; }));
-			Invoke(new Action(() => { btQuickSearch.Enabled = false; }));
-			Invoke(new Action(() => { this.Cursor = Cursors.WaitCursor; }));
-			Invoke(new Action(() => { PatientList.Visible = false; }));
+			DisableGUI();
 			SearchPatients((IMongoQuery)e.Argument);
+		}
+
+		private void DisableGUI()
+		{
+			tbSearchText.InvokeIfRequired(c => {c.Enabled = false;});
+			btQuickSearch.InvokeIfRequired(c => { c.Enabled = false; });
+			PatientList.InvokeIfRequired(c => { c.Visible = false;});
+			this.InvokeIfRequired(c => { c.Cursor = Cursors.WaitCursor; });
 		}
 
 		private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			Invoke(new Action(() => { PatientList.Visible = true; }));
-			Invoke(new Action(() => { tbSearchText.Enabled = true; }));
-			Invoke(new Action(() => { btQuickSearch.Enabled = true; }));
-			Invoke(new Action(() => { this.Cursor = Cursors.Default; }));
-		}		
+			EnableGUI();
+		}
+
+		private void EnableGUI()
+		{
+			tbSearchText.InvokeIfRequired(c => { c.Enabled = true; });
+			btQuickSearch.InvokeIfRequired(c => { c.Enabled = true; });
+			PatientList.InvokeIfRequired(c => { c.Visible = true; });
+			this.InvokeIfRequired(c => { c.Cursor = Cursors.Default; });
+		}
 
 		private void PatientList_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
 		{
