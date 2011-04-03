@@ -44,6 +44,7 @@
 			this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.dtpDeathDate = new System.Windows.Forms.DateTimePicker();
 			this.btHealthLog = new System.Windows.Forms.Button();
+			this.btAddPatient = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -152,19 +153,21 @@
 			// dtpBirthDate
 			// 
 			this.dtpBirthDate.Checked = false;
-			this.dtpBirthDate.CustomFormat = " ";
-			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpBirthDate.CustomFormat = "N\\A";
+			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpBirthDate.Location = new System.Drawing.Point(660, 279);
 			this.dtpBirthDate.Name = "dtpBirthDate";
 			this.dtpBirthDate.ShowCheckBox = true;
 			this.dtpBirthDate.Size = new System.Drawing.Size(115, 20);
 			this.dtpBirthDate.TabIndex = 11;
+			this.dtpBirthDate.Tag = "";
 			this.dtpBirthDate.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
 			// 
 			// dtpDeathDate
 			// 
 			this.dtpDeathDate.Checked = false;
-			this.dtpDeathDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpDeathDate.CustomFormat = "N\\A";
+			this.dtpDeathDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpDeathDate.Location = new System.Drawing.Point(800, 279);
 			this.dtpDeathDate.Name = "dtpDeathDate";
 			this.dtpDeathDate.ShowCheckBox = true;
@@ -181,11 +184,21 @@
 			this.btHealthLog.Text = "Health Log";
 			this.btHealthLog.UseVisualStyleBackColor = true;
 			// 
+			// btAddPatient
+			// 
+			this.btAddPatient.Location = new System.Drawing.Point(666, 533);
+			this.btAddPatient.Name = "btAddPatient";
+			this.btAddPatient.Size = new System.Drawing.Size(68, 21);
+			this.btAddPatient.TabIndex = 14;
+			this.btAddPatient.Text = "Add";
+			this.btAddPatient.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.btAddPatient);
 			this.Controls.Add(this.btHealthLog);
 			this.Controls.Add(this.dtpDeathDate);
 			this.Controls.Add(this.dtpBirthDate);
@@ -224,5 +237,6 @@
 		private System.Windows.Forms.DateTimePicker dtpBirthDate;
 		private System.Windows.Forms.DateTimePicker dtpDeathDate;
 		private System.Windows.Forms.Button btHealthLog;
+		private System.Windows.Forms.Button btAddPatient;
 	}
 }

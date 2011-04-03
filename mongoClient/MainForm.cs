@@ -138,22 +138,8 @@ namespace mongoClient
 			patient.Surname = tbSurname.Text;
 			patient.Name = tbName.Text;
 			patient.Patronymic = tbPatronymic.Text;
-			patient.DateOfBirth = GetNullOrValueFromDateTimePicker(dtpBirthDate);
-			patient.DateOfDeath = GetNullOrValueFromDateTimePicker(dtpDeathDate);			
-		}
-
-		/// <summary>
-		/// Returns null or DateTime instance depending on the state of the checkbox of the DateTimePicker control.
-		/// </summary>
-		/// <param name="dateTimePicker">DateTimePicker control to check.</param>
-		/// <returns>Null or DateTime instance.</returns>
-		private DateTime? GetNullOrValueFromDateTimePicker(DateTimePicker dateTimePicker)
-		{
-			if(dateTimePicker.Checked)
-			{
-				return dateTimePicker.Value.Date;
-			}
-			return null;
+			patient.DateOfBirth = dtpBirthDate.GetNullOrValue();
+			patient.DateOfDeath = dtpDeathDate.GetNullOrValue();
 		}
 
 		private void UpdateSelectedItem()
@@ -169,7 +155,16 @@ namespace mongoClient
 		private void btQuickSearch_Click(object sender, EventArgs e)
 		{
 			PatientList.ListViewItemSorter = null;
+			ClearRightPanel();
 			bgWorker.RunWorkerAsync(BuildQuery());
+		}
+
+		private void ClearRightPanel()
+		{
+			tbID.Clear();
+			tbSurname.Clear();
+			tbName.Clear();
+			tbPatronymic.Clear();
 		}
 
 		private IMongoQuery BuildQuery()

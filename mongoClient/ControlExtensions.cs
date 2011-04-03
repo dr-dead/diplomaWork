@@ -8,6 +8,7 @@ namespace mongoClient
 {
 	static class ControlExtensions
 	{
+		#region DateTimePicker extensions
 		/// <summary>
 		/// A method to try to assign the value of the nullable DateTime instance. If the value is null, check off DateTimePicker control. Assign the value to DateTimePicker.Value property otherwise.
 		/// </summary>
@@ -29,5 +30,20 @@ namespace mongoClient
 				dateTimePicker.Value = (DateTime)dateTime;
 			}
 		}
+
+		/// <summary>
+		/// Returns null or DateTime instance depending on the state of the checkbox of the DateTimePicker control.
+		/// </summary>
+		/// <param name="dateTimePicker">DateTimePicker control to execute method for.</param>
+		/// <returns>Null or DateTime instance.</returns>
+		public static DateTime? GetNullOrValue(this DateTimePicker dateTimePicker)
+		{
+			if(dateTimePicker.Checked)
+			{
+				return dateTimePicker.Value.Date;
+			}
+			return null;
+		}
+		#endregion
 	}
 }
