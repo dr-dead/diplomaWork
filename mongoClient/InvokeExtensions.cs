@@ -13,7 +13,7 @@ namespace mongoClient
 		/// </summary>
 		/// <param name="control">Control's handle that is owned by the thread.</param>
 		/// <param name="action">Delegate to execute.</param>
-		public static void InvokeIfRequired(this Control control, Action<Control> action)
+		public static void InvokeIfRequired<T>(this T control, Action<T> action) where T: Control
 		{
 			if(control.InvokeRequired)
 			{
@@ -30,7 +30,7 @@ namespace mongoClient
 		/// </summary>
 		/// <param name="control">Control's handle that is owned by the thread.</param>
 		/// <param name="action">Delegate to execute.</param>
-		public static void BeginInvokeIfRequired(this Control control, Action<Control> action)
+		public static void BeginInvokeIfRequired<T>(this T control, Action<T> action) where T: Control
 		{
 			if(control.InvokeRequired)
 			{

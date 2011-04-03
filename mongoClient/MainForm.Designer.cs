@@ -33,7 +33,6 @@
 			this.headerSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.headerName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.headerPatronymic = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.headerNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.bgWorker = new System.ComponentModel.BackgroundWorker();
 			this.tbID = new System.Windows.Forms.TextBox();
 			this.tbSurname = new System.Windows.Forms.TextBox();
@@ -42,7 +41,9 @@
 			this.btSave = new System.Windows.Forms.Button();
 			this.btQuickSearch = new System.Windows.Forms.Button();
 			this.tbSearchText = new System.Windows.Forms.TextBox();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
+			this.dtpDeathDate = new System.Windows.Forms.DateTimePicker();
+			this.btHealthLog = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -51,8 +52,7 @@
             this.headerId,
             this.headerSurname,
             this.headerName,
-            this.headerPatronymic,
-            this.headerNumber});
+            this.headerPatronymic});
 			this.PatientList.FullRowSelect = true;
 			this.PatientList.GridLines = true;
 			this.PatientList.Location = new System.Drawing.Point(28, 131);
@@ -85,11 +85,6 @@
 			// 
 			this.headerPatronymic.Text = "Patronymic";
 			this.headerPatronymic.Width = 110;
-			// 
-			// headerNumber
-			// 
-			this.headerNumber.Text = "Number";
-			this.headerNumber.Width = 65;
 			// 
 			// bgWorker
 			// 
@@ -154,20 +149,46 @@
 			this.tbSearchText.TabIndex = 10;
 			this.tbSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchText_KeyDown);
 			// 
-			// dateTimePicker1
+			// dtpBirthDate
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(660, 279);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(115, 20);
-			this.dateTimePicker1.TabIndex = 11;
-			this.dateTimePicker1.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
+			this.dtpBirthDate.Checked = false;
+			this.dtpBirthDate.CustomFormat = " ";
+			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpBirthDate.Location = new System.Drawing.Point(660, 279);
+			this.dtpBirthDate.Name = "dtpBirthDate";
+			this.dtpBirthDate.ShowCheckBox = true;
+			this.dtpBirthDate.Size = new System.Drawing.Size(115, 20);
+			this.dtpBirthDate.TabIndex = 11;
+			this.dtpBirthDate.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
+			// 
+			// dtpDeathDate
+			// 
+			this.dtpDeathDate.Checked = false;
+			this.dtpDeathDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpDeathDate.Location = new System.Drawing.Point(800, 279);
+			this.dtpDeathDate.Name = "dtpDeathDate";
+			this.dtpDeathDate.ShowCheckBox = true;
+			this.dtpDeathDate.Size = new System.Drawing.Size(108, 20);
+			this.dtpDeathDate.TabIndex = 12;
+			this.dtpDeathDate.Value = new System.DateTime(2011, 4, 3, 0, 0, 0, 0);
+			// 
+			// btHealthLog
+			// 
+			this.btHealthLog.Location = new System.Drawing.Point(807, 495);
+			this.btHealthLog.Name = "btHealthLog";
+			this.btHealthLog.Size = new System.Drawing.Size(101, 22);
+			this.btHealthLog.TabIndex = 13;
+			this.btHealthLog.Text = "Health Log";
+			this.btHealthLog.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
-			this.Controls.Add(this.dateTimePicker1);
+			this.Controls.Add(this.btHealthLog);
+			this.Controls.Add(this.dtpDeathDate);
+			this.Controls.Add(this.dtpBirthDate);
 			this.Controls.Add(this.tbSearchText);
 			this.Controls.Add(this.btQuickSearch);
 			this.Controls.Add(this.btSave);
@@ -190,7 +211,6 @@
 		private System.Windows.Forms.ListView PatientList;
 		private System.Windows.Forms.ColumnHeader headerId;
 		private System.Windows.Forms.ColumnHeader headerName;
-		private System.Windows.Forms.ColumnHeader headerNumber;
 		private System.ComponentModel.BackgroundWorker bgWorker;
 		private System.Windows.Forms.TextBox tbID;
 		private System.Windows.Forms.TextBox tbSurname;
@@ -201,6 +221,8 @@
 		private System.Windows.Forms.TextBox tbSearchText;
 		private System.Windows.Forms.ColumnHeader headerSurname;
 		private System.Windows.Forms.ColumnHeader headerPatronymic;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dtpBirthDate;
+		private System.Windows.Forms.DateTimePicker dtpDeathDate;
+		private System.Windows.Forms.Button btHealthLog;
 	}
 }

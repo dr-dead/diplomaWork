@@ -18,7 +18,8 @@ namespace mongoClient
 		[BsonIgnoreIfNull]
 		public string Patronymic { get { return patronymic; } set { if(value == String.Empty) value = null; patronymic = value; } }
 		[BsonDateTimeOptions(DateOnly = true)]
-		public DateTime DateOfBirth { get; set; }
+		[BsonIgnoreIfNull]
+		public DateTime? DateOfBirth { get; set; }
 
 		public string GetInitials()
 		{

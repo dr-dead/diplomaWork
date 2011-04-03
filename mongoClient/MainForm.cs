@@ -40,15 +40,15 @@ namespace mongoClient
 		/// <param name="query">Query that implements IMongoQuery interface.</param>
 		private void SearchPatients(IMongoQuery query)
 		{
-			Invoke(new Action(() => { PatientList.Items.Clear(); }));
+			PatientList.InvokeIfRequired(c => { c.Items.Clear(); });
 			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
 			var coll = db.GetCollection<Patient>("Patient");
 			foreach(var patientItem in coll.Find(query))
 			{
-				string[] patientAttributesArray = new string[]{ patientItem.Id.ToString(), patientItem.Surname, patientItem.Name, patientItem.Patronymic, patientItem.number.ToString() };
-				Invoke(new Action(() => { PatientList.Items.Add(new ListViewItem(patientAttributesArray)); }));
+				string[] patientAttributesArray = new string[]{ patientItem.Id.ToString(), patientItem.Surname, patientItem.Name, patientItem.Patronymic };
+				PatientList.InvokeIfRequired(c => { c.Items.Add(new ListViewItem(patientAttributesArray)); });
 			}
-			Invoke(new Action(() => { PatientList.ListViewItemSorter = new ListViewSorter(); }));
+			PatientList.InvokeIfRequired(c => { c.ListViewItemSorter = new ListViewSorter(); });
 		}
 
 		private void OnColumnClick(object sender, ColumnClickEventArgs e)
@@ -79,7 +79,9 @@ namespace mongoClient
 			tbID.Text = patient.Id.ToString();
 			tbSurname.Text = patient.Surname;
 			tbName.Text = patient.Name;
-			tbPatronymic.Text = patient.Patronymic;
+			tbPatronymic.Text = patient.Patronymic;			
+			dtpBirthDate.TryToAssignValue(patient.DateOfBirth);
+			dtpDeathDate.TryToAssignValue(patient.DateOfDeath);
 		}
 
 		private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -126,10 +128,42 @@ namespace mongoClient
 			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
 			var coll = db.GetCollection<Patient>("Patient");
 			var queriedPatient = coll.FindOneById(new ObjectId(tbID.Text));
-			queriedPatient.Name = tbName.Text;
-			queriedPatient.Surname = tbSurname.Text;
-			queriedPatient.Patronymic = tbPatronymic.Text;
+			FillPatientObjectWithData(ref queriedPatient);
 			coll.Save<Patient>(queriedPatient);
+			UpdateSelectedItem();
+		}
+
+		private void FillPatientObjectWithData(ref Patient patient)
+		{
+			patient.Surname = tbSurname.Text;
+			patient.Name = tbName.Text;
+			patient.Patronymic = tbPatronymic.Text;
+			patient.DateOfBirth = GetNullOrValueFromDateTimePicker(dtpBirthDate);
+			patient.DateOfDeath = GetNullOrValueFromDateTimePicker(dtpDeathDate);			
+		}
+
+		/// <summary>
+		/// Returns null or DateTime instance depending on the state of the checkbox of the DateTimePicker control.
+		/// </summary>
+		/// <param name="dateTimePicker">DateTimePicker control to check.</param>
+		/// <returns>Null or DateTime instance.</returns>
+		private DateTime? GetNullOrValueFromDateTimePicker(DateTimePicker dateTimePicker)
+		{
+			if(dateTimePicker.Checked)
+			{
+				return dateTimePicker.Value.Date;
+			}
+			return null;
+		}
+
+		private void UpdateSelectedItem()
+		{
+			PatientList.SelectedItems[0].SubItems[1].Text = tbSurname.Text;
+			PatientList.SelectedItems[0].SubItems[2].Text = tbName.Text;
+			PatientList.SelectedItems[0].SubItems[3].Text = tbPatronymic.Text;
+			PatientList.Sort();
+			PatientList.SelectedItems[0].EnsureVisible();
+			PatientList.Focus();
 		}
 
 		private void btQuickSearch_Click(object sender, EventArgs e)
