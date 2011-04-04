@@ -186,5 +186,20 @@ namespace mongoClient
 				btQuickSearch_Click(this, e);
 			}
 		}
+
+		private void btAddPatient_Click(object sender, EventArgs e)
+		{
+			var addPatient = new addPatientForm();
+			addPatient.ShowDialog();
+		}
+
+		private void btDeletePatient_Click(object sender, EventArgs e)
+		{
+			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
+			var coll = db.GetCollection<Patient>("Patient");
+			coll.Remove(Query.EQ("_id", new ObjectId(tbID.Text)));
+			ClearRightPanel();
+			PatientList.SelectedItems[0].Remove();
+		}
 	}
 }

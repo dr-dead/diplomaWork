@@ -45,6 +45,7 @@
 			this.dtpDeathDate = new System.Windows.Forms.DateTimePicker();
 			this.btHealthLog = new System.Windows.Forms.Button();
 			this.btAddPatient = new System.Windows.Forms.Button();
+			this.btDeletePatient = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -192,12 +193,24 @@
 			this.btAddPatient.TabIndex = 14;
 			this.btAddPatient.Text = "Add";
 			this.btAddPatient.UseVisualStyleBackColor = true;
+			this.btAddPatient.Click += new System.EventHandler(this.btAddPatient_Click);
+			// 
+			// btDeletePatient
+			// 
+			this.btDeletePatient.Location = new System.Drawing.Point(810, 533);
+			this.btDeletePatient.Name = "btDeletePatient";
+			this.btDeletePatient.Size = new System.Drawing.Size(97, 20);
+			this.btDeletePatient.TabIndex = 15;
+			this.btDeletePatient.Text = "Delete";
+			this.btDeletePatient.UseVisualStyleBackColor = true;
+			this.btDeletePatient.Click += new System.EventHandler(this.btDeletePatient_Click);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.btDeletePatient);
 			this.Controls.Add(this.btAddPatient);
 			this.Controls.Add(this.btHealthLog);
 			this.Controls.Add(this.dtpDeathDate);
@@ -238,5 +251,6 @@
 		private System.Windows.Forms.DateTimePicker dtpDeathDate;
 		private System.Windows.Forms.Button btHealthLog;
 		private System.Windows.Forms.Button btAddPatient;
+		private System.Windows.Forms.Button btDeletePatient;
 	}
 }
