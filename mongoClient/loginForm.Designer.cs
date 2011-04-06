@@ -1,6 +1,6 @@
 ﻿namespace mongoClient
 {
-	partial class loginForm
+	partial class LoginForm
 	{
 		/// <summary>
 		/// Required designer variable.

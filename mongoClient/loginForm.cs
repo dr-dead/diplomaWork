@@ -11,9 +11,9 @@ using MongoDB.Driver;
 
 namespace mongoClient
 {
-	public partial class loginForm : Form
+	public partial class LoginForm : Form
 	{
-		public loginForm()
+		public LoginForm()
 		{
 			InitializeComponent();
 		}

@@ -41,9 +41,8 @@ namespace mongoClient
 		private void SearchPatients(IMongoQuery query)
 		{
 			PatientList.InvokeIfRequired(c => { c.Items.Clear(); });
-			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
-			var coll = db.GetCollection<Patient>("Patient");
-			foreach(var patientItem in coll.Find(query))
+			var collection = ServerConnection.GetCollection<Patient>();
+			foreach(var patientItem in collection.Find(query))
 			{
 				string[] patientAttributesArray = new string[]{ patientItem.Id.ToString(), patientItem.Surname, patientItem.Name, patientItem.Patronymic };
 				PatientList.InvokeIfRequired(c => { c.Items.Add(new ListViewItem(patientAttributesArray)); });
@@ -61,11 +60,17 @@ namespace mongoClient
 		private void PatientList_ItemActivate(object sender, EventArgs e)
 		{
 			// TODO: Fill the right panel with values.
-			
-			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
-			var coll = db.GetCollection<Patient>("Patient");
-			var queriedPatient = coll.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
-			FillRightPanelWithPatientInfo(queriedPatient);
+
+			if(PatientList.SelectedItems.Count > 0)
+			{
+				var collection = ServerConnection.GetCollection<Patient>();
+				var queriedPatient = collection.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
+				FillRightPanelWithPatientInfo(queriedPatient);
+			}
+			else
+			{
+				ClearRightPanel();
+			}
 		}
 
 		/// <summary>
@@ -81,7 +86,23 @@ namespace mongoClient
 			tbName.Text = patient.Name;
 			tbPatronymic.Text = patient.Patronymic;			
 			dtpBirthDate.TryToAssignValue(patient.DateOfBirth);
+			if(dtpBirthDate.Checked)
+			{
+				dtpBirthDate.Format = DateTimePickerFormat.Short;
+			}
+			else
+			{
+				dtpBirthDate.Format = DateTimePickerFormat.Custom;
+			}
 			dtpDeathDate.TryToAssignValue(patient.DateOfDeath);
+			if(dtpDeathDate.Checked)
+			{
+				dtpDeathDate.Format = DateTimePickerFormat.Short;
+			}
+			else
+			{
+				dtpDeathDate.Format = DateTimePickerFormat.Custom;
+			}
 		}
 
 		private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -125,15 +146,14 @@ namespace mongoClient
 		{
 			// TODO: Rewrite this function so it actually works.
 
-			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
-			var coll = db.GetCollection<Patient>("Patient");
-			var queriedPatient = coll.FindOneById(new ObjectId(tbID.Text));
-			FillPatientObjectWithData(ref queriedPatient);
-			coll.Save<Patient>(queriedPatient);
+			var collection = ServerConnection.GetCollection<Patient>();
+			var queriedPatient = collection.FindOneById(new ObjectId(tbID.Text));
+			FillPatientObjectWithData(queriedPatient);
+			collection.Save<Patient>(queriedPatient);
 			UpdateSelectedItem();
 		}
 
-		private void FillPatientObjectWithData(ref Patient patient)
+		private void FillPatientObjectWithData(Patient patient)
 		{
 			patient.Surname = tbSurname.Text;
 			patient.Name = tbName.Text;
@@ -189,17 +209,33 @@ namespace mongoClient
 
 		private void btAddPatient_Click(object sender, EventArgs e)
 		{
-			var addPatient = new addPatientForm();
+			var addPatient = new AddPatientForm();
 			addPatient.ShowDialog();
 		}
 
 		private void btDeletePatient_Click(object sender, EventArgs e)
 		{
-			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
-			var coll = db.GetCollection<Patient>("Patient");
-			coll.Remove(Query.EQ("_id", new ObjectId(tbID.Text)));
+			var collection = ServerConnection.GetCollection<Patient>();
+			collection.Remove(Query.EQ("_id", new ObjectId(tbID.Text)));
 			ClearRightPanel();
 			PatientList.SelectedItems[0].Remove();
+		}
+
+		private void dtpBirthDate_MouseUp(object sender, MouseEventArgs e)
+		{
+			// HACK: Very dirty hack used to change DateTimePicker value formats due to MS didn't give us any event for changing "Checked" property.
+
+			if(e.X <= 13)
+			{
+				if(dtpBirthDate.Checked)
+				{
+					dtpBirthDate.Format = DateTimePickerFormat.Short;
+				}
+				else
+				{
+					dtpBirthDate.Format = DateTimePickerFormat.Custom;
+				}
+			}
 		}
 	}
 }

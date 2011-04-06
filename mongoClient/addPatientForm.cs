@@ -10,9 +10,9 @@ using MongoDB.Driver;
 
 namespace mongoClient
 {
-	public partial class addPatientForm : Form
+	public partial class AddPatientForm : Form
 	{
-		public addPatientForm()
+		public AddPatientForm()
 		{
 			InitializeComponent();
 		}
@@ -24,19 +24,22 @@ namespace mongoClient
 
 		private void btSave_Click(object sender, EventArgs e)
 		{
-			// TODO: Dispatch "magic button"
 			var patient = new Patient();
+			FillPatientObjectWithData(patient);
+			var collection = ServerConnection.GetCollection<Patient>();
+			collection.Save<Patient>(patient);
+			// It appears reference makes the object to be filled with id
+			// TODO: Handle the form after saving the object
+			this.Close();
+		}
+
+		private void FillPatientObjectWithData(Patient patient)
+		{
 			patient.Surname = tbSurname.Text;
 			patient.Name = tbName.Text;
 			patient.Patronymic = tbPatronymic.Text;
 			patient.DateOfBirth = dtpBirthDate.GetNullOrValue();
 			patient.DateOfDeath = dtpDeathDate.GetNullOrValue();
-			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
-			var coll = db.GetCollection<Patient>("Patient");
-			coll.Save<Patient>(patient);
-			// It appears reference makes the object to be filled with id
-			// TODO: Handle the form after saving the object
-			this.Close();
 		}
 	}
 }

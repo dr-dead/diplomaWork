@@ -54,5 +54,17 @@ namespace mongoClient
 				databaseName = value;
 			}
 		}
+
+		/// <summary>
+		/// Gets MongoCollection filled with items from the database collection that are equal to provided class name.
+		/// </summary>
+		/// <typeparam name="T">Class to bind record to.</typeparam>
+		/// <returns>Generic MongoCollection.</returns>
+		public static MongoCollection<T> GetCollection<T>()
+		{
+			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
+			var collection = db.GetCollection<T>((typeof(T).Name));
+			return collection;
+		}
 	}
 }

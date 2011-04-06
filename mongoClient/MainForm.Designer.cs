@@ -50,6 +50,7 @@
 			// 
 			// PatientList
 			// 
+			this.PatientList.Activation = System.Windows.Forms.ItemActivation.OneClick;
 			this.PatientList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.headerId,
             this.headerSurname,
@@ -57,6 +58,7 @@
             this.headerPatronymic});
 			this.PatientList.FullRowSelect = true;
 			this.PatientList.GridLines = true;
+			this.PatientList.HideSelection = false;
 			this.PatientList.Location = new System.Drawing.Point(28, 131);
 			this.PatientList.MultiSelect = false;
 			this.PatientList.Name = "PatientList";
@@ -163,6 +165,7 @@
 			this.dtpBirthDate.TabIndex = 11;
 			this.dtpBirthDate.Tag = "";
 			this.dtpBirthDate.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
+			this.dtpBirthDate.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dtpBirthDate_MouseUp);
 			// 
 			// dtpDeathDate
 			// 

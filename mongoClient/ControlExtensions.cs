@@ -27,7 +27,8 @@ namespace mongoClient
 			}
 			else
 			{
-				dateTimePicker.Value = (DateTime)dateTime;
+				dateTimePicker.Checked = true;
+				dateTimePicker.Value = (DateTime)dateTime;				
 			}
 		}
 
