@@ -46,6 +46,8 @@
 			this.btHealthLog = new System.Windows.Forms.Button();
 			this.btAddPatient = new System.Windows.Forms.Button();
 			this.btDeletePatient = new System.Windows.Forms.Button();
+			this.tbAddress = new System.Windows.Forms.TextBox();
+			this.tbTelephone = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -69,6 +71,7 @@
 			this.PatientList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.OnColumnClick);
 			this.PatientList.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.PatientList_ColumnWidthChanging);
 			this.PatientList.ItemActivate += new System.EventHandler(this.PatientList_ItemActivate);
+			this.PatientList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.PatientList_ItemSelectionChanged);
 			// 
 			// headerId
 			// 
@@ -208,11 +211,27 @@
 			this.btDeletePatient.UseVisualStyleBackColor = true;
 			this.btDeletePatient.Click += new System.EventHandler(this.btDeletePatient_Click);
 			// 
+			// tbAddress
+			// 
+			this.tbAddress.Location = new System.Drawing.Point(659, 320);
+			this.tbAddress.Name = "tbAddress";
+			this.tbAddress.Size = new System.Drawing.Size(141, 20);
+			this.tbAddress.TabIndex = 16;
+			// 
+			// tbTelephone
+			// 
+			this.tbTelephone.Location = new System.Drawing.Point(659, 350);
+			this.tbTelephone.Name = "tbTelephone";
+			this.tbTelephone.Size = new System.Drawing.Size(141, 20);
+			this.tbTelephone.TabIndex = 17;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.tbTelephone);
+			this.Controls.Add(this.tbAddress);
 			this.Controls.Add(this.btDeletePatient);
 			this.Controls.Add(this.btAddPatient);
 			this.Controls.Add(this.btHealthLog);
@@ -255,5 +274,7 @@
 		private System.Windows.Forms.Button btHealthLog;
 		private System.Windows.Forms.Button btAddPatient;
 		private System.Windows.Forms.Button btDeletePatient;
+		private System.Windows.Forms.TextBox tbAddress;
+		private System.Windows.Forms.TextBox tbTelephone;
 	}
 }

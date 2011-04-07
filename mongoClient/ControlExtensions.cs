@@ -45,6 +45,22 @@ namespace mongoClient
 			}
 			return null;
 		}
+
+		/// <summary>
+		/// Sets short date format if checkbox is checked and custom one otherwise. 
+		/// </summary>
+		/// <param name="dateTimePicker">DateTimePicker control to execute method for.</param>
+		public static void ChangeFormatDependingOnCheckbox(this DateTimePicker dateTimePicker)
+		{
+			if(dateTimePicker.Checked)
+			{
+				dateTimePicker.Format = DateTimePickerFormat.Short;
+			}
+			else
+			{
+				dateTimePicker.Format = DateTimePickerFormat.Custom;
+			}
+		}
 		#endregion
 	}
 }

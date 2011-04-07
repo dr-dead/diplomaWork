@@ -12,6 +12,10 @@ namespace mongoClient
 		[BsonDateTimeOptions(DateOnly = true)]
 		[BsonIgnoreIfNull]
 		public DateTime? DateOfDeath { get; set; }
+		[BsonDefaultValue("", SerializeDefaultValue = false)]
+		public string Address { get; set; }
+		[BsonDefaultValue("", SerializeDefaultValue = false)]
+		public string Telephone { get; set; }
 		[BsonIgnoreIfNull]
 		public ObjectId CurrentMedic { get; set; }
 		[BsonIgnoreIfNull]

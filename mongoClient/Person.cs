@@ -12,11 +12,10 @@ namespace mongoClient
 	{
 		[BsonId]
 		public ObjectId Id { get; set; }
-		private string patronymic;
 		public string Surname { get; set; }
 		public string Name { get; set; }
-		[BsonIgnoreIfNull]
-		public string Patronymic { get { return patronymic; } set { if(value == String.Empty) value = null; patronymic = value; } }
+		[BsonDefaultValue("", SerializeDefaultValue = false)]
+		public string Patronymic { get; set; }
 		[BsonDateTimeOptions(DateOnly = true)]
 		[BsonIgnoreIfNull]
 		public DateTime? DateOfBirth { get; set; }

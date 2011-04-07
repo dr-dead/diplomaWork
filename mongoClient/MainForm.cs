@@ -39,14 +39,17 @@ namespace mongoClient
 		/// </summary>
 		/// <param name="query">Query that implements IMongoQuery interface.</param>
 		private void SearchPatients(IMongoQuery query)
-		{
+		{			
 			PatientList.InvokeIfRequired(c => { c.Items.Clear(); });
+			PatientList.InvokeIfRequired(c => { c.BeginUpdate(); });
 			var collection = ServerConnection.GetCollection<Patient>();
 			foreach(var patientItem in collection.Find(query))
 			{
+				
 				string[] patientAttributesArray = new string[]{ patientItem.Id.ToString(), patientItem.Surname, patientItem.Name, patientItem.Patronymic };
 				PatientList.InvokeIfRequired(c => { c.Items.Add(new ListViewItem(patientAttributesArray)); });
 			}
+			PatientList.InvokeIfRequired(c => { c.EndUpdate(); });
 			PatientList.InvokeIfRequired(c => { c.ListViewItemSorter = new ListViewSorter(); });
 		}
 
@@ -61,16 +64,9 @@ namespace mongoClient
 		{
 			// TODO: Fill the right panel with values.
 
-			if(PatientList.SelectedItems.Count > 0)
-			{
-				var collection = ServerConnection.GetCollection<Patient>();
-				var queriedPatient = collection.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
-				FillRightPanelWithPatientInfo(queriedPatient);
-			}
-			else
-			{
-				ClearRightPanel();
-			}
+			var collection = ServerConnection.GetCollection<Patient>();
+			var queriedPatient = collection.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
+			FillRightPanelWithPatientInfo(queriedPatient);
 		}
 
 		/// <summary>
@@ -86,23 +82,11 @@ namespace mongoClient
 			tbName.Text = patient.Name;
 			tbPatronymic.Text = patient.Patronymic;			
 			dtpBirthDate.TryToAssignValue(patient.DateOfBirth);
-			if(dtpBirthDate.Checked)
-			{
-				dtpBirthDate.Format = DateTimePickerFormat.Short;
-			}
-			else
-			{
-				dtpBirthDate.Format = DateTimePickerFormat.Custom;
-			}
+			dtpBirthDate.ChangeFormatDependingOnCheckbox();
 			dtpDeathDate.TryToAssignValue(patient.DateOfDeath);
-			if(dtpDeathDate.Checked)
-			{
-				dtpDeathDate.Format = DateTimePickerFormat.Short;
-			}
-			else
-			{
-				dtpDeathDate.Format = DateTimePickerFormat.Custom;
-			}
+			dtpDeathDate.ChangeFormatDependingOnCheckbox();
+			tbAddress.Text = patient.Address;
+			tbTelephone.Text = patient.Telephone;
 		}
 
 		private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -115,7 +99,7 @@ namespace mongoClient
 		{
 			tbSearchText.InvokeIfRequired(c => {c.Enabled = false;});
 			btQuickSearch.InvokeIfRequired(c => { c.Enabled = false; });
-			PatientList.InvokeIfRequired(c => { c.Visible = false;});
+			PatientList.InvokeIfRequired(c => { c.Enabled = false; });
 			this.InvokeIfRequired(c => { c.Cursor = Cursors.WaitCursor; });
 		}
 
@@ -128,7 +112,7 @@ namespace mongoClient
 		{
 			tbSearchText.InvokeIfRequired(c => { c.Enabled = true; });
 			btQuickSearch.InvokeIfRequired(c => { c.Enabled = true; });
-			PatientList.InvokeIfRequired(c => { c.Visible = true; });
+			PatientList.InvokeIfRequired(c => { c.Enabled = true; });
 			this.InvokeIfRequired(c => { c.Cursor = Cursors.Default; });
 		}
 
@@ -139,6 +123,14 @@ namespace mongoClient
 			{
 				e.NewWidth = 0;
 				e.Cancel = true;
+			}
+		}
+
+		private void PatientList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			if(PatientList.SelectedItems.Count == 0)
+			{
+				ClearRightPanel();
 			}
 		}
 
@@ -160,6 +152,8 @@ namespace mongoClient
 			patient.Patronymic = tbPatronymic.Text;
 			patient.DateOfBirth = dtpBirthDate.GetNullOrValue();
 			patient.DateOfDeath = dtpDeathDate.GetNullOrValue();
+			patient.Address = tbAddress.Text;
+			patient.Telephone = tbTelephone.Text;
 		}
 
 		private void UpdateSelectedItem()
@@ -181,10 +175,13 @@ namespace mongoClient
 
 		private void ClearRightPanel()
 		{
-			tbID.Clear();
-			tbSurname.Clear();
-			tbName.Clear();
-			tbPatronymic.Clear();
+			foreach(var controlItem in this.Controls)
+			{
+				if(controlItem is TextBox && !controlItem.Equals(tbSearchText))
+				{
+					((TextBox)controlItem).Clear();
+				}
+			}
 		}
 
 		private IMongoQuery BuildQuery()
@@ -227,14 +224,7 @@ namespace mongoClient
 
 			if(e.X <= 13)
 			{
-				if(dtpBirthDate.Checked)
-				{
-					dtpBirthDate.Format = DateTimePickerFormat.Short;
-				}
-				else
-				{
-					dtpBirthDate.Format = DateTimePickerFormat.Custom;
-				}
+				dtpBirthDate.ChangeFormatDependingOnCheckbox();
 			}
 		}
 	}

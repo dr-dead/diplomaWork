@@ -40,6 +40,8 @@ namespace mongoClient
 			patient.Patronymic = tbPatronymic.Text;
 			patient.DateOfBirth = dtpBirthDate.GetNullOrValue();
 			patient.DateOfDeath = dtpDeathDate.GetNullOrValue();
+			patient.Address = tbAddress.Text;
+			patient.Telephone = tbTelephone.Text;
 		}
 	}
 }

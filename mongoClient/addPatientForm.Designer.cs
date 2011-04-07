@@ -35,11 +35,13 @@
 			this.tbPatronymic = new System.Windows.Forms.TextBox();
 			this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.dtpDeathDate = new System.Windows.Forms.DateTimePicker();
+			this.tbAddress = new System.Windows.Forms.TextBox();
+			this.tbTelephone = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// btSave
 			// 
-			this.btSave.Location = new System.Drawing.Point(31, 231);
+			this.btSave.Location = new System.Drawing.Point(12, 282);
 			this.btSave.Name = "btSave";
 			this.btSave.Size = new System.Drawing.Size(82, 25);
 			this.btSave.TabIndex = 0;
@@ -49,9 +51,9 @@
 			// 
 			// btCancel
 			// 
-			this.btCancel.Location = new System.Drawing.Point(180, 232);
+			this.btCancel.Location = new System.Drawing.Point(198, 282);
 			this.btCancel.Name = "btCancel";
-			this.btCancel.Size = new System.Drawing.Size(82, 23);
+			this.btCancel.Size = new System.Drawing.Size(82, 25);
 			this.btCancel.TabIndex = 1;
 			this.btCancel.Text = "Cancel";
 			this.btCancel.UseVisualStyleBackColor = true;
@@ -80,6 +82,7 @@
 			// 
 			// dtpBirthDate
 			// 
+			this.dtpBirthDate.Checked = false;
 			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.dtpBirthDate.Location = new System.Drawing.Point(12, 170);
 			this.dtpBirthDate.Name = "dtpBirthDate";
@@ -89,6 +92,7 @@
 			// 
 			// dtpDeathDate
 			// 
+			this.dtpDeathDate.Checked = false;
 			this.dtpDeathDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.dtpDeathDate.Location = new System.Drawing.Point(166, 170);
 			this.dtpDeathDate.Name = "dtpDeathDate";
@@ -96,11 +100,27 @@
 			this.dtpDeathDate.Size = new System.Drawing.Size(114, 20);
 			this.dtpDeathDate.TabIndex = 6;
 			// 
-			// addPatientForm
+			// tbAddress
+			// 
+			this.tbAddress.Location = new System.Drawing.Point(63, 209);
+			this.tbAddress.Name = "tbAddress";
+			this.tbAddress.Size = new System.Drawing.Size(118, 20);
+			this.tbAddress.TabIndex = 7;
+			// 
+			// tbTelephone
+			// 
+			this.tbTelephone.Location = new System.Drawing.Point(63, 244);
+			this.tbTelephone.Name = "tbTelephone";
+			this.tbTelephone.Size = new System.Drawing.Size(117, 20);
+			this.tbTelephone.TabIndex = 8;
+			// 
+			// AddPatientForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 266);
+			this.ClientSize = new System.Drawing.Size(292, 319);
+			this.Controls.Add(this.tbTelephone);
+			this.Controls.Add(this.tbAddress);
 			this.Controls.Add(this.dtpDeathDate);
 			this.Controls.Add(this.dtpBirthDate);
 			this.Controls.Add(this.tbPatronymic);
@@ -108,7 +128,7 @@
 			this.Controls.Add(this.tbSurname);
 			this.Controls.Add(this.btCancel);
 			this.Controls.Add(this.btSave);
-			this.Name = "addPatientForm";
+			this.Name = "AddPatientForm";
 			this.Text = "New patient";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -124,5 +144,7 @@
 		private System.Windows.Forms.TextBox tbPatronymic;
 		private System.Windows.Forms.DateTimePicker dtpBirthDate;
 		private System.Windows.Forms.DateTimePicker dtpDeathDate;
+		private System.Windows.Forms.TextBox tbAddress;
+		private System.Windows.Forms.TextBox tbTelephone;
 	}
 }
