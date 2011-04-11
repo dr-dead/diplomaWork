@@ -62,5 +62,16 @@ namespace mongoClient
 			}
 		}
 		#endregion
+
+		#region TreeNode extensions
+		/// <summary>
+		/// Selects the node.
+		/// </summary>
+		/// <param name="node">TreeNode control to execute method for.</param>
+		public static void Select(this TreeNode node)
+		{
+			node.TreeView.SelectedNode = node;
+		}
+		#endregion
 	}
 }

@@ -130,6 +130,7 @@
 			// 
 			// btSave
 			// 
+			this.btSave.Enabled = false;
 			this.btSave.Location = new System.Drawing.Point(660, 495);
 			this.btSave.Name = "btSave";
 			this.btSave.Size = new System.Drawing.Size(75, 23);
@@ -168,7 +169,7 @@
 			this.dtpBirthDate.TabIndex = 11;
 			this.dtpBirthDate.Tag = "";
 			this.dtpBirthDate.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
-			this.dtpBirthDate.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dtpBirthDate_MouseUp);
+			this.dtpBirthDate.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dtpCheckboxHack_MouseUp);
 			// 
 			// dtpDeathDate
 			// 
@@ -181,15 +182,18 @@
 			this.dtpDeathDate.Size = new System.Drawing.Size(108, 20);
 			this.dtpDeathDate.TabIndex = 12;
 			this.dtpDeathDate.Value = new System.DateTime(2011, 4, 3, 0, 0, 0, 0);
+			this.dtpDeathDate.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dtpCheckboxHack_MouseUp);
 			// 
 			// btHealthLog
 			// 
+			this.btHealthLog.Enabled = false;
 			this.btHealthLog.Location = new System.Drawing.Point(807, 495);
 			this.btHealthLog.Name = "btHealthLog";
 			this.btHealthLog.Size = new System.Drawing.Size(101, 22);
 			this.btHealthLog.TabIndex = 13;
 			this.btHealthLog.Text = "Health Log";
 			this.btHealthLog.UseVisualStyleBackColor = true;
+			this.btHealthLog.Click += new System.EventHandler(this.btHealthLog_Click);
 			// 
 			// btAddPatient
 			// 
@@ -203,6 +207,7 @@
 			// 
 			// btDeletePatient
 			// 
+			this.btDeletePatient.Enabled = false;
 			this.btDeletePatient.Location = new System.Drawing.Point(810, 533);
 			this.btDeletePatient.Name = "btDeletePatient";
 			this.btDeletePatient.Size = new System.Drawing.Size(97, 20);

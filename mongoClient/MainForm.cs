@@ -67,6 +67,9 @@ namespace mongoClient
 			var collection = ServerConnection.GetCollection<Patient>();
 			var queriedPatient = collection.FindOneById(new ObjectId(PatientList.SelectedItems[0].Text));
 			FillRightPanelWithPatientInfo(queriedPatient);
+			btDeletePatient.Enabled = true;
+			btHealthLog.Enabled = true;
+			btSave.Enabled = true;
 		}
 
 		/// <summary>
@@ -131,6 +134,9 @@ namespace mongoClient
 			if(PatientList.SelectedItems.Count == 0)
 			{
 				ClearRightPanel();
+				btDeletePatient.Enabled = false;
+				btHealthLog.Enabled = false;
+				btSave.Enabled = false;
 			}
 		}
 
@@ -175,13 +181,17 @@ namespace mongoClient
 
 		private void ClearRightPanel()
 		{
-			foreach(var controlItem in this.Controls)
+			foreach(var controlItem in this.Controls.OfType<TextBox>())
 			{
-				if(controlItem is TextBox && !controlItem.Equals(tbSearchText))
+				if(!controlItem.Equals(tbSearchText))
 				{
-					((TextBox)controlItem).Clear();
+					controlItem.Clear();
 				}
 			}
+			dtpBirthDate.Checked = false;
+			dtpBirthDate.ChangeFormatDependingOnCheckbox();
+			dtpDeathDate.Checked = false;
+			dtpDeathDate.ChangeFormatDependingOnCheckbox();
 		}
 
 		private IMongoQuery BuildQuery()
@@ -218,14 +228,20 @@ namespace mongoClient
 			PatientList.SelectedItems[0].Remove();
 		}
 
-		private void dtpBirthDate_MouseUp(object sender, MouseEventArgs e)
+		private void dtpCheckboxHack_MouseUp(object sender, MouseEventArgs e)
 		{
 			// HACK: Very dirty hack used to change DateTimePicker value formats due to MS didn't give us any event for changing "Checked" property.
 
 			if(e.X <= 13)
 			{
-				dtpBirthDate.ChangeFormatDependingOnCheckbox();
+				(sender as DateTimePicker).ChangeFormatDependingOnCheckbox();
 			}
+		}
+
+		private void btHealthLog_Click(object sender, EventArgs e)
+		{
+			var healthLogForm = new HealthHistoryForm(new ObjectId(tbID.Text));
+			healthLogForm.ShowDialog();
 		}
 	}
 }

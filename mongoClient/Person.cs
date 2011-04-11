@@ -24,5 +24,10 @@ namespace mongoClient
 		{
 			return Surname + " " + Name[0] + ". " + Patronymic[0] + ".";
 		}
+
+		public string GetFullName()
+		{
+			return Surname + " " + Name + " " + Patronymic;
+		}
 	}
 }
