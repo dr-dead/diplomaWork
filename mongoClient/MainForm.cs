@@ -222,10 +222,34 @@ namespace mongoClient
 
 		private void btDeletePatient_Click(object sender, EventArgs e)
 		{
-			var collection = ServerConnection.GetCollection<Patient>();
-			collection.Remove(Query.EQ("_id", new ObjectId(tbID.Text)));
+			var patientCollection = ServerConnection.GetCollection<Patient>();
+			var patient = patientCollection.FindOneById(new ObjectId(tbID.Text));
+			RemovePatientLog(patient);
+			patientCollection.Remove(Query.EQ("_id", patient.Id));
 			ClearRightPanel();
 			PatientList.SelectedItems[0].Remove();
+		}
+
+		/// <summary>
+		/// Removes all the cases and entries related to the patient.
+		/// </summary>
+		/// <param name="patient">Patient instance.</param>
+		private void RemovePatientLog(Patient patient)
+		{
+			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
+			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
+			if(patient.HealthLog != null)
+			{
+				foreach(var caseItem in patient.HealthLog)
+				{
+					var currentCase = caseCollection.FindOneById(caseItem);
+					if(currentCase.HealthLogEntries != null)
+					{
+						entryCollection.Remove(Query.In("_id", new BsonArray(currentCase.HealthLogEntries)));
+					}
+				}
+				caseCollection.Remove(Query.In("_id", new BsonArray(patient.HealthLog)));
+			}
 		}
 
 		private void dtpCheckboxHack_MouseUp(object sender, MouseEventArgs e)

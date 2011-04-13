@@ -31,6 +31,8 @@
 			this.treeHealthLog = new System.Windows.Forms.TreeView();
 			this.btAddCase = new System.Windows.Forms.Button();
 			this.btAddEntry = new System.Windows.Forms.Button();
+			this.tbTest = new System.Windows.Forms.TextBox();
+			this.btDelete = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// treeHealthLog
@@ -61,17 +63,37 @@
 			this.btAddEntry.UseVisualStyleBackColor = true;
 			this.btAddEntry.Click += new System.EventHandler(this.btAddEntry_Click);
 			// 
+			// tbTest
+			// 
+			this.tbTest.Location = new System.Drawing.Point(282, 26);
+			this.tbTest.Name = "tbTest";
+			this.tbTest.Size = new System.Drawing.Size(117, 20);
+			this.tbTest.TabIndex = 3;
+			// 
+			// btDelete
+			// 
+			this.btDelete.Location = new System.Drawing.Point(549, 412);
+			this.btDelete.Name = "btDelete";
+			this.btDelete.Size = new System.Drawing.Size(70, 21);
+			this.btDelete.TabIndex = 4;
+			this.btDelete.Text = "Delete";
+			this.btDelete.UseVisualStyleBackColor = true;
+			this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+			// 
 			// HealthHistoryForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(637, 447);
+			this.Controls.Add(this.btDelete);
+			this.Controls.Add(this.tbTest);
 			this.Controls.Add(this.btAddEntry);
 			this.Controls.Add(this.btAddCase);
 			this.Controls.Add(this.treeHealthLog);
 			this.Name = "HealthHistoryForm";
 			this.Text = "Health History";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -80,5 +102,7 @@
 		private System.Windows.Forms.TreeView treeHealthLog;
 		private System.Windows.Forms.Button btAddCase;
 		private System.Windows.Forms.Button btAddEntry;
+		private System.Windows.Forms.TextBox tbTest;
+		private System.Windows.Forms.Button btDelete;
 	}
 }
