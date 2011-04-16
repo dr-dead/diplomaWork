@@ -31,13 +31,13 @@ namespace mongoClient
 			//TODO: Make population process fail-safe.
 
 			var rootNode = treeHealthLog.Nodes.Add(patient.GetFullName());
-			rootNode.Tag = patient;
+			rootNode.Tag = patient.Id;
 			if(patient.HealthLog != null)
 			{
 				TreeNode currentNode;
 				var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
 				var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
-				foreach(var caseItem in ((Patient)rootNode.Tag).HealthLog)
+				foreach(var caseItem in patient.HealthLog)
 				{
 					var currentCase = caseCollection.FindOneById(caseItem);
 					currentNode = rootNode.Nodes.Add(currentCase.number);
@@ -56,17 +56,35 @@ namespace mongoClient
 
 		private void btAddCase_Click(object sender, EventArgs e)
 		{
+			var healthCase = CreateCaseAndSaveInDB();
+			PushCaseToPatient(healthCase.Id, (ObjectId)treeHealthLog.TopNode.Tag);
+			var currentCase = treeHealthLog.TopNode.Nodes.Add(healthCase.number);
+			currentCase.Tag = healthCase.Id;
+			currentCase.Select();
+		}
+
+		/// <summary>
+		/// Creates an instance of HealthLogCase class and saves it in database.
+		/// </summary>
+		/// <returns>Empty HealthLogCase instance with filled Id property.</returns>
+		private HealthLogCase CreateCaseAndSaveInDB()
+		{
 			var healthCase = new HealthLogCase();
 			healthCase.number = DateTime.Now.ToString();
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
 			caseCollection.Save<HealthLogCase>(healthCase);
+			return healthCase;
+		}
 
+		/// <summary>
+		/// Appends HealthCaseEntry's ObjectId to the HealthLog property array of the Patient object.
+		/// </summary>
+		/// <param name="caseId">MongoDB.Bson.ObjectId instance of the HealthCaseEntry object to append.</param>
+		/// <param name="patientId">MongoDB.Bson.ObjectId of the Patient object to append to.</param>
+		private void PushCaseToPatient(ObjectId caseId, ObjectId patientId)
+		{
 			var patientCollection = ServerConnection.GetCollection<Patient>();
-			//var patient = patientCollection.FindOneById((ObjectId)treeHealthLog.TopNode.Tag);
-			patientCollection.Update(Query.EQ("_id", ((Patient)treeHealthLog.TopNode.Tag).Id), MongoDB.Driver.Builders.Update.Push("HealthLog", healthCase.Id));
-			var currentCase = treeHealthLog.TopNode.Nodes.Add(healthCase.number);
-			currentCase.Tag = healthCase.Id;
-			currentCase.Select();
+			patientCollection.Update(Query.EQ("_id", patientId), MongoDB.Driver.Builders.Update.Push("HealthLog", caseId));
 		}
 
 		private void btAddEntry_Click(object sender, EventArgs e)
@@ -102,7 +120,7 @@ namespace mongoClient
 		}
 
 		/// <summary>
-		/// Appends HealthLogEntry's ObjectId to the array of the HealthLogCase object. 
+		/// Appends HealthLogEntry's ObjectId to the "HealthLogEntries" property array of the HealthLogCase object. 
 		/// </summary>
 		/// <param name="entryId">MongoDB.Bson.ObjectId instance of the HealthLogEntry object to append.</param>
 		/// <param name="caseId">MongoDB.Bson.ObjectId of the HealthLogCase object to append to.</param>
@@ -142,8 +160,8 @@ namespace mongoClient
 			if(selectedCase.HealthLogEntries != null)
 			{
 				entryCollection.Remove(Query.In("_id", new BsonArray(selectedCase.HealthLogEntries)));
-			}			
-			patientCollection.Update(Query.EQ("_id", ((Patient)treeHealthLog.TopNode.Tag).Id), MongoDB.Driver.Builders.Update.Pull("HealthLog", selectedCase.Id));
+			}
+			patientCollection.Update(Query.EQ("_id", (ObjectId)treeHealthLog.TopNode.Tag), MongoDB.Driver.Builders.Update.Pull("HealthLog", selectedCase.Id));
 			caseCollection.Remove(Query.EQ("_id", selectedCase.Id));
 		}
 

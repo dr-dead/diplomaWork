@@ -73,6 +73,11 @@ namespace mongoClient
 			node.TreeView.SelectedNode = node;
 		}
 
+		/// <summary>
+		/// Returns true if TreeNode is the first child of a rood node of the TreeView instance. False if it's any other child.
+		/// </summary>
+		/// <param name="node">TreeNode control to execute method for.</param>
+		/// <returns>True if the parent of TreeNode is a root node of the TreeView</returns>
 		public static bool IsTopBranch(this TreeNode node)
 		{
 			return node.Parent == node.TreeView.TopNode;
