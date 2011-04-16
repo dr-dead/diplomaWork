@@ -72,6 +72,11 @@ namespace mongoClient
 		{
 			node.TreeView.SelectedNode = node;
 		}
+
+		public static bool IsTopBranch(this TreeNode node)
+		{
+			return node.Parent == node.TreeView.TopNode;
+		}
 		#endregion
 	}
 }

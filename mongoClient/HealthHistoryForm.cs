@@ -22,6 +22,10 @@ namespace mongoClient
 			PopulateTreeView(patient);
 		}
 
+		/// <summary>
+		/// Fills the nodes in TreeView control with health log cases and entries. Every node's tag is filled with ObjectId of according record.
+		/// </summary>
+		/// <param name="patient">Patient instance for who to populate TreeView</param>
 		private void PopulateTreeView(Patient patient)
 		{
 			//TODO: Make population process fail-safe.
@@ -68,27 +72,44 @@ namespace mongoClient
 		private void btAddEntry_Click(object sender, EventArgs e)
 		{			
 			var selectedTreeNode = treeHealthLog.SelectedNode;
+			var healthEntry = CreateEntryAndSaveInDB();
+			TreeNode currentEntry;
+			if(!selectedTreeNode.IsTopBranch())
+			{
+				currentEntry = treeHealthLog.SelectedNode.Parent.Nodes.Add(healthEntry.number);
+			}
+			else
+			{
+				currentEntry = treeHealthLog.SelectedNode.Nodes.Add(healthEntry.number);
+				treeHealthLog.SelectedNode.Expand();
+			}
+			PushEntryToCase(healthEntry.Id, (ObjectId)currentEntry.Parent.Tag);
+			currentEntry.Tag = healthEntry.Id;
+			currentEntry.Select();
+		}
+
+		/// <summary>
+		/// Creates an instance of HealthLogEntry class and saves it in database.
+		/// </summary>
+		/// <returns>Empty HealthLogEntry instance with filled Id property.</returns>
+		private HealthLogEntry CreateEntryAndSaveInDB()
+		{
 			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
 			var healthEntry = new HealthLogEntry();
 			healthEntry.number = DateTime.Now.ToString();
 			entryCollection.Save<HealthLogEntry>(healthEntry);
+			return healthEntry;
+		}
 
+		/// <summary>
+		/// Appends HealthLogEntry's ObjectId to the array of the HealthLogCase object. 
+		/// </summary>
+		/// <param name="entryId">MongoDB.Bson.ObjectId instance of the HealthLogEntry object to append.</param>
+		/// <param name="caseId">MongoDB.Bson.ObjectId of the HealthLogCase object to append to.</param>
+		private void PushEntryToCase(ObjectId entryId, ObjectId caseId)
+		{
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
-			TreeNode currentEntry;
-			if(selectedTreeNode.Parent != treeHealthLog.TopNode)
-			{
-				caseCollection.Update(Query.EQ("_id", (ObjectId)selectedTreeNode.Parent.Tag), MongoDB.Driver.Builders.Update.Push("HealthLogEntries", healthEntry.Id));
-				currentEntry = treeHealthLog.SelectedNode.Parent.Nodes.Add(healthEntry.number);
-				currentEntry.Select();
-			}
-			else
-			{
-				caseCollection.Update(Query.EQ("_id", (ObjectId)selectedTreeNode.Tag), MongoDB.Driver.Builders.Update.Push("HealthLogEntries", healthEntry.Id));
-				currentEntry = treeHealthLog.SelectedNode.Nodes.Add(healthEntry.number);
-				currentEntry.Select();
-				treeHealthLog.SelectedNode.Expand();
-			}
-			currentEntry.Tag = healthEntry.Id;
+			caseCollection.Update(Query.EQ("_id", caseId), MongoDB.Driver.Builders.Update.Push("HealthLogEntries", entryId));
 		}
 
 		private void btDelete_Click(object sender, EventArgs e)
@@ -96,31 +117,48 @@ namespace mongoClient
 			if(treeHealthLog.SelectedNode != null && treeHealthLog.SelectedNode != treeHealthLog.TopNode)
 			{
 				var selectedTreeNode = treeHealthLog.SelectedNode;
-				var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
-				var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
-				if(selectedTreeNode.Parent == treeHealthLog.TopNode)
+				if(selectedTreeNode.IsTopBranch())
 				{
-					//TODO: remove case
-
-					var selectedCase = caseCollection.FindOneById((ObjectId)selectedTreeNode.Tag);
-					if(selectedCase.HealthLogEntries != null)
-					{
-						entryCollection.Remove(Query.In("_id", new BsonArray(selectedCase.HealthLogEntries)));
-					}					
-					var patientCollection = ServerConnection.GetCollection<Patient>();
-					patientCollection.Update(Query.EQ("_id", ((Patient)treeHealthLog.TopNode.Tag).Id), MongoDB.Driver.Builders.Update.Pull("HealthLog", selectedCase.Id));
-					caseCollection.Remove(Query.EQ("_id", selectedCase.Id));
+					RemoveCase((ObjectId)selectedTreeNode.Tag);
 				}
 				else
 				{
-					//TODO: remove entry
-					var selectedEntry = entryCollection.FindOneById((ObjectId)selectedTreeNode.Tag);
-					var caseOfEntry = caseCollection.FindOneById((ObjectId)selectedTreeNode.Parent.Tag);
-					caseCollection.Update(Query.EQ("_id", caseOfEntry.Id), MongoDB.Driver.Builders.Update.Pull("HealthLogEntries", selectedEntry.Id));
-					entryCollection.Remove(Query.EQ("_id", selectedEntry.Id));					
+					RemoveEntry((ObjectId)selectedTreeNode.Tag);
 				}
 				treeHealthLog.SelectedNode.Remove();
 			}
+		}
+
+		/// <summary>
+		/// Removes HealthLogCase and all nested HealthLogEntry objects from the database. Also removes HealthLogCase from Patient's array of cases.
+		/// </summary>
+		/// <param name="caseId">MongoDB.Bson.ObjectId of HealthLogCase.</param>
+		private void RemoveCase(ObjectId caseId)
+		{
+			var patientCollection = ServerConnection.GetCollection<Patient>();
+			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
+			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
+			var selectedCase = caseCollection.FindOneById(caseId);
+			if(selectedCase.HealthLogEntries != null)
+			{
+				entryCollection.Remove(Query.In("_id", new BsonArray(selectedCase.HealthLogEntries)));
+			}			
+			patientCollection.Update(Query.EQ("_id", ((Patient)treeHealthLog.TopNode.Tag).Id), MongoDB.Driver.Builders.Update.Pull("HealthLog", selectedCase.Id));
+			caseCollection.Remove(Query.EQ("_id", selectedCase.Id));
+		}
+
+		/// <summary>
+		/// Removes HealthLogEntry and pulls its ObjectId from HealthLogCase.
+		/// </summary>
+		/// <param name="entryId">MongoDB.Bson.ObjectId of HealthLogEntry</param>
+		private void RemoveEntry(ObjectId entryId)
+		{
+			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
+			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
+			var selectedEntry = entryCollection.FindOneById(entryId);
+			//caseCollection.Update(Query.EQ("_id", caseOfEntry.Id), MongoDB.Driver.Builders.Update.Pull("HealthLogEntries", selectedEntry.Id));
+			caseCollection.Update(Query.Null, MongoDB.Driver.Builders.Update.Pull("HealthLogEntries", selectedEntry.Id));
+			entryCollection.Remove(Query.EQ("_id", selectedEntry.Id));	
 		}
 	}
 }
