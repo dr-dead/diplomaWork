@@ -216,8 +216,19 @@ namespace mongoClient
 
 		private void btAddPatient_Click(object sender, EventArgs e)
 		{
-			var addPatient = new AddPatientForm();
-			addPatient.ShowDialog();
+			var addPatientForm = new AddPatientForm();
+			addPatientForm.PatientAddEvent +=new AddPatientForm.PatientAddHandler(addPatientForm_PatientUpdateEvent);
+			addPatientForm.ShowDialog();
+		}
+
+		private void addPatientForm_PatientUpdateEvent(object sender, PatientIdentityEventArgs e)
+		{
+			var patientAttributesArray = new string[] { e.Id, e.Surname, e.Name, e.Patronymic };
+			var patientItem = new ListViewItem(patientAttributesArray);
+			PatientList.Items.Add(patientItem);
+			patientItem.EnsureVisible();
+			patientItem.Selected = true;
+			PatientList.Focus();
 		}
 
 		private void btDeletePatient_Click(object sender, EventArgs e)
@@ -260,6 +271,11 @@ namespace mongoClient
 			{
 				(sender as DateTimePicker).ChangeFormatDependingOnCheckbox();
 			}
+		}
+
+		private void dtpFormat_DropDown(object sender, EventArgs e)
+		{
+			(sender as DateTimePicker).ChangeFormatDependingOnCheckbox();
 		}
 
 		private void btHealthLog_Click(object sender, EventArgs e)

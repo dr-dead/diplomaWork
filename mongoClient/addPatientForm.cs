@@ -12,6 +12,9 @@ namespace mongoClient
 {
 	public partial class AddPatientForm : Form
 	{
+		public delegate void PatientAddHandler(object sender, PatientIdentityEventArgs e);
+		public event PatientAddHandler PatientAddEvent;
+
 		public AddPatientForm()
 		{
 			InitializeComponent();
@@ -28,8 +31,8 @@ namespace mongoClient
 			FillPatientObjectWithData(patient);
 			var collection = ServerConnection.GetCollection<Patient>();
 			collection.Save<Patient>(patient);
-			// It appears reference makes the object to be filled with id
-			// TODO: Handle the form after saving the object
+			var patientArgs = new PatientIdentityEventArgs(patient.Id.ToString(), patient.Name, patient.Surname, patient.Patronymic);
+			PatientAddEvent(this, patientArgs);
 			this.Close();
 		}
 
@@ -39,7 +42,6 @@ namespace mongoClient
 			patient.Name = tbName.Text;
 			patient.Patronymic = tbPatronymic.Text;
 			patient.DateOfBirth = dtpBirthDate.GetNullOrValue();
-			patient.DateOfDeath = dtpDeathDate.GetNullOrValue();
 			patient.Address = tbAddress.Text;
 			patient.Telephone = tbTelephone.Text;
 		}

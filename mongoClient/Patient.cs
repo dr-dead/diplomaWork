@@ -17,7 +17,7 @@ namespace mongoClient
 		[BsonDefaultValue("", SerializeDefaultValue = false)]
 		public string Telephone { get; set; }
 		[BsonIgnoreIfNull]
-		public ObjectId CurrentMedic { get; set; }
+		public ObjectId? CurrentMedic { get; set; }
 		[BsonIgnoreIfNull]
 		public ObjectId[] HealthLog { get; set; }
 	}
