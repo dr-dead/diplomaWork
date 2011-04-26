@@ -12,7 +12,7 @@ namespace mongoClient
 {
 	public partial class AddPatientForm : Form
 	{
-		public delegate void PatientAddHandler(object sender, PatientIdentityEventArgs e);
+		public delegate void PatientAddHandler(object sender, PersonIdentityEventArgs e);
 		public event PatientAddHandler PatientAddEvent;
 
 		public AddPatientForm()
@@ -31,7 +31,7 @@ namespace mongoClient
 			FillPatientObjectWithData(patient);
 			var collection = ServerConnection.GetCollection<Patient>();
 			collection.Save<Patient>(patient);
-			var patientArgs = new PatientIdentityEventArgs(patient.Id.ToString(), patient.Name, patient.Surname, patient.Patronymic);
+			var patientArgs = new PersonIdentityEventArgs(patient.Id.ToString(), patient.Name, patient.Surname, patient.Patronymic);
 			PatientAddEvent(this, patientArgs);
 			this.Close();
 		}

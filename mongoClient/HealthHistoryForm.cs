@@ -19,14 +19,14 @@ namespace mongoClient
 			InitializeComponent();
 			var patient = ServerConnection.GetCollection<Patient>().FindOneById(patientId);
 			this.Text = patient.GetFullName() + " - Health Log";
-			PopulateTreeView(patient);
+			populateTreeView(patient);
 		}
 
 		/// <summary>
 		/// Fills the nodes in TreeView control with health log cases and entries. Every node's tag is filled with ObjectId of according record.
 		/// </summary>
 		/// <param name="patient">Patient instance for who to populate TreeView</param>
-		private void PopulateTreeView(Patient patient)
+		private void populateTreeView(Patient patient)
 		{
 			//TODO: Make population process fail-safe.
 
@@ -176,7 +176,28 @@ namespace mongoClient
 			var selectedEntry = entryCollection.FindOneById(entryId);
 			//caseCollection.Update(Query.EQ("_id", caseOfEntry.Id), MongoDB.Driver.Builders.Update.Pull("HealthLogEntries", selectedEntry.Id));
 			caseCollection.Update(Query.Null, MongoDB.Driver.Builders.Update.Pull("HealthLogEntries", selectedEntry.Id));
-			entryCollection.Remove(Query.EQ("_id", selectedEntry.Id));	
+			entryCollection.Remove(Query.EQ("_id", selectedEntry.Id));
+		}
+
+		private void treeHealthLog_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+		{
+			if(e.Node != treeHealthLog.TopNode)
+			{
+				if(e.Node.IsTopBranch())
+				{
+					//TODO: case handler
+				}
+				else
+				{
+					//TODO: entry handler
+				}
+			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			var medicListForm = new MedicListForm();
+			medicListForm.ShowDialog();
 		}
 	}
 }

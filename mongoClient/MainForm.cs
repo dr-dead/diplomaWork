@@ -44,8 +44,7 @@ namespace mongoClient
 			PatientList.InvokeIfRequired(c => { c.BeginUpdate(); });
 			var collection = ServerConnection.GetCollection<Patient>();
 			foreach(var patientItem in collection.Find(query))
-			{
-				
+			{				
 				string[] patientAttributesArray = new string[]{ patientItem.Id.ToString(), patientItem.Surname, patientItem.Name, patientItem.Patronymic };
 				PatientList.InvokeIfRequired(c => { c.Items.Add(new ListViewItem(patientAttributesArray)); });
 			}
@@ -221,7 +220,7 @@ namespace mongoClient
 			addPatientForm.ShowDialog();
 		}
 
-		private void addPatientForm_PatientUpdateEvent(object sender, PatientIdentityEventArgs e)
+		private void addPatientForm_PatientUpdateEvent(object sender, PersonIdentityEventArgs e)
 		{
 			var patientAttributesArray = new string[] { e.Id, e.Surname, e.Name, e.Patronymic };
 			var patientItem = new ListViewItem(patientAttributesArray);
