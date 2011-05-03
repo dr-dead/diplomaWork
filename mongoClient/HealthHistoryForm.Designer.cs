@@ -31,9 +31,9 @@
 			this.treeHealthLog = new System.Windows.Forms.TreeView();
 			this.btAddCase = new System.Windows.Forms.Button();
 			this.btAddEntry = new System.Windows.Forms.Button();
-			this.tbTest = new System.Windows.Forms.TextBox();
+			this.tbMedic = new System.Windows.Forms.TextBox();
 			this.btDelete = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btMedicSelect = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// treeHealthLog
@@ -65,12 +65,14 @@
 			this.btAddEntry.UseVisualStyleBackColor = true;
 			this.btAddEntry.Click += new System.EventHandler(this.btAddEntry_Click);
 			// 
-			// tbTest
+			// tbMedic
 			// 
-			this.tbTest.Location = new System.Drawing.Point(282, 26);
-			this.tbTest.Name = "tbTest";
-			this.tbTest.Size = new System.Drawing.Size(117, 20);
-			this.tbTest.TabIndex = 3;
+			this.tbMedic.BackColor = System.Drawing.SystemColors.Window;
+			this.tbMedic.Location = new System.Drawing.Point(282, 26);
+			this.tbMedic.Name = "tbMedic";
+			this.tbMedic.ReadOnly = true;
+			this.tbMedic.Size = new System.Drawing.Size(131, 20);
+			this.tbMedic.TabIndex = 3;
 			// 
 			// btDelete
 			// 
@@ -82,24 +84,24 @@
 			this.btDelete.UseVisualStyleBackColor = true;
 			this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
 			// 
-			// button1
+			// btMedicSelect
 			// 
-			this.button1.Location = new System.Drawing.Point(527, 33);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(78, 23);
-			this.button1.TabIndex = 5;
-			this.button1.Text = "Medic";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.btMedicSelect.Location = new System.Drawing.Point(436, 26);
+			this.btMedicSelect.Name = "btMedicSelect";
+			this.btMedicSelect.Size = new System.Drawing.Size(78, 20);
+			this.btMedicSelect.TabIndex = 5;
+			this.btMedicSelect.Text = "Assign medic";
+			this.btMedicSelect.UseVisualStyleBackColor = true;
+			this.btMedicSelect.Click += new System.EventHandler(this.btMedicSelect_Click);
 			// 
 			// HealthHistoryForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(637, 447);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btMedicSelect);
 			this.Controls.Add(this.btDelete);
-			this.Controls.Add(this.tbTest);
+			this.Controls.Add(this.tbMedic);
 			this.Controls.Add(this.btAddEntry);
 			this.Controls.Add(this.btAddCase);
 			this.Controls.Add(this.treeHealthLog);
@@ -115,8 +117,8 @@
 		private System.Windows.Forms.TreeView treeHealthLog;
 		private System.Windows.Forms.Button btAddCase;
 		private System.Windows.Forms.Button btAddEntry;
-		private System.Windows.Forms.TextBox tbTest;
+		private System.Windows.Forms.TextBox tbMedic;
 		private System.Windows.Forms.Button btDelete;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btMedicSelect;
 	}
 }

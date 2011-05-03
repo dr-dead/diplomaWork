@@ -14,13 +14,32 @@ namespace mongoClient
 {
 	public partial class MedicListForm : Form
 	{
-		public MedicListForm()
+		public delegate void MedicInsertionHandler(object sender, ObjectId obj);
+		public event MedicInsertionHandler MedicInsertionEvent;
+		public MedicListForm(bool isInserting = false)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.UserPaint, true);
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 			SetStyle(ControlStyles.DoubleBuffer, true);	
 			fillControlsWithConstants();
+			if(isInserting)
+			{
+				enableInsertingGUI();
+			}
+		}
+
+		private void enableInsertingGUI()
+		{
+			btAddMedic.Visible = false;
+			medicList.ItemActivate -=new EventHandler(medicList_ItemActivate);
+			medicList.ItemActivate +=new EventHandler(medicList_ItemActivateForInsertion);
+		}
+
+		private void medicList_ItemActivateForInsertion(object sender, EventArgs e)
+		{
+			MedicInsertionEvent(this, new ObjectId(medicList.SelectedItems[0].Text));
+			this.Close();
 		}
 
 		private void fillControlsWithConstants()

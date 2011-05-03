@@ -43,6 +43,15 @@
 			this.tbName = new System.Windows.Forms.TextBox();
 			this.tbSurname = new System.Windows.Forms.TextBox();
 			this.tbId = new System.Windows.Forms.TextBox();
+			this.lbProf = new System.Windows.Forms.Label();
+			this.lbCat = new System.Windows.Forms.Label();
+			this.lbDegree = new System.Windows.Forms.Label();
+			this.lbDept = new System.Windows.Forms.Label();
+			this.lbCab = new System.Windows.Forms.Label();
+			this.lbId = new System.Windows.Forms.Label();
+			this.btCancel = new System.Windows.Forms.Button();
+			this.chbIsWorking = new System.Windows.Forms.CheckBox();
+			this.lbIsWorking = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// cbProfessions
@@ -82,7 +91,7 @@
 			this.btSave.Location = new System.Drawing.Point(33, 312);
 			this.btSave.Name = "btSave";
 			this.btSave.Size = new System.Drawing.Size(96, 26);
-			this.btSave.TabIndex = 9;
+			this.btSave.TabIndex = 10;
 			this.btSave.Text = "Save";
 			this.btSave.UseVisualStyleBackColor = true;
 			this.btSave.Click += new System.EventHandler(this.btSave_Click);
@@ -169,11 +178,104 @@
 			this.tbId.Size = new System.Drawing.Size(165, 20);
 			this.tbId.TabIndex = 41;
 			// 
+			// lbProf
+			// 
+			this.lbProf.AutoSize = true;
+			this.lbProf.Location = new System.Drawing.Point(20, 147);
+			this.lbProf.Name = "lbProf";
+			this.lbProf.Size = new System.Drawing.Size(59, 13);
+			this.lbProf.TabIndex = 42;
+			this.lbProf.Text = "Profession:";
+			// 
+			// lbCat
+			// 
+			this.lbCat.AutoSize = true;
+			this.lbCat.Location = new System.Drawing.Point(20, 174);
+			this.lbCat.Name = "lbCat";
+			this.lbCat.Size = new System.Drawing.Size(52, 13);
+			this.lbCat.TabIndex = 43;
+			this.lbCat.Text = "Category:";
+			// 
+			// lbDegree
+			// 
+			this.lbDegree.AutoSize = true;
+			this.lbDegree.Location = new System.Drawing.Point(20, 201);
+			this.lbDegree.Name = "lbDegree";
+			this.lbDegree.Size = new System.Drawing.Size(45, 13);
+			this.lbDegree.TabIndex = 44;
+			this.lbDegree.Text = "Degree:";
+			// 
+			// lbDept
+			// 
+			this.lbDept.AutoSize = true;
+			this.lbDept.Location = new System.Drawing.Point(20, 228);
+			this.lbDept.Name = "lbDept";
+			this.lbDept.Size = new System.Drawing.Size(65, 13);
+			this.lbDept.TabIndex = 45;
+			this.lbDept.Text = "Department:";
+			// 
+			// lbCab
+			// 
+			this.lbCab.AutoSize = true;
+			this.lbCab.Location = new System.Drawing.Point(20, 255);
+			this.lbCab.Name = "lbCab";
+			this.lbCab.Size = new System.Drawing.Size(46, 13);
+			this.lbCab.TabIndex = 46;
+			this.lbCab.Text = "Cabinet:";
+			// 
+			// lbId
+			// 
+			this.lbId.AutoSize = true;
+			this.lbId.Location = new System.Drawing.Point(20, 18);
+			this.lbId.Name = "lbId";
+			this.lbId.Size = new System.Drawing.Size(19, 13);
+			this.lbId.TabIndex = 47;
+			this.lbId.Text = "Id:";
+			// 
+			// btCancel
+			// 
+			this.btCancel.Location = new System.Drawing.Point(254, 312);
+			this.btCancel.Name = "btCancel";
+			this.btCancel.Size = new System.Drawing.Size(88, 26);
+			this.btCancel.TabIndex = 11;
+			this.btCancel.Text = "Cancel";
+			this.btCancel.UseVisualStyleBackColor = true;
+			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+			// 
+			// chbIsWorking
+			// 
+			this.chbIsWorking.AutoSize = true;
+			this.chbIsWorking.Checked = true;
+			this.chbIsWorking.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chbIsWorking.Location = new System.Drawing.Point(97, 278);
+			this.chbIsWorking.Name = "chbIsWorking";
+			this.chbIsWorking.Size = new System.Drawing.Size(15, 14);
+			this.chbIsWorking.TabIndex = 9;
+			this.chbIsWorking.UseVisualStyleBackColor = true;
+			// 
+			// lbIsWorking
+			// 
+			this.lbIsWorking.AutoSize = true;
+			this.lbIsWorking.Location = new System.Drawing.Point(20, 278);
+			this.lbIsWorking.Name = "lbIsWorking";
+			this.lbIsWorking.Size = new System.Drawing.Size(50, 13);
+			this.lbIsWorking.TabIndex = 50;
+			this.lbIsWorking.Text = "Working:";
+			// 
 			// MedicForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(371, 357);
+			this.Controls.Add(this.lbIsWorking);
+			this.Controls.Add(this.chbIsWorking);
+			this.Controls.Add(this.btCancel);
+			this.Controls.Add(this.lbId);
+			this.Controls.Add(this.lbCab);
+			this.Controls.Add(this.lbDept);
+			this.Controls.Add(this.lbDegree);
+			this.Controls.Add(this.lbCat);
+			this.Controls.Add(this.lbProf);
 			this.Controls.Add(this.tbId);
 			this.Controls.Add(this.lbBirth);
 			this.Controls.Add(this.lbPatronymic);
@@ -213,5 +315,14 @@
 		private System.Windows.Forms.TextBox tbName;
 		private System.Windows.Forms.TextBox tbSurname;
 		private System.Windows.Forms.TextBox tbId;
+		private System.Windows.Forms.Label lbProf;
+		private System.Windows.Forms.Label lbCat;
+		private System.Windows.Forms.Label lbDegree;
+		private System.Windows.Forms.Label lbDept;
+		private System.Windows.Forms.Label lbCab;
+		private System.Windows.Forms.Label lbId;
+		private System.Windows.Forms.Button btCancel;
+		private System.Windows.Forms.CheckBox chbIsWorking;
+		private System.Windows.Forms.Label lbIsWorking;
 	}
 }

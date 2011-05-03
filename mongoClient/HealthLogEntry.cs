@@ -11,7 +11,8 @@ namespace mongoClient
 	{
 		[BsonId]
 		public ObjectId Id { get; set; }
-		[BsonDefaultValue("", SerializeDefaultValue = false)]
-		public string number { get; set; }
+		[BsonDateTimeOptions(Kind=DateTimeKind.Local)]
+		[BsonIgnoreIfNull]
+		public DateTime? AppointmentTime { get; set; }
 	}
 }

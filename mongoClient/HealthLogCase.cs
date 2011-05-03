@@ -11,9 +11,15 @@ namespace mongoClient
 	{
 		[BsonId]
 		public ObjectId Id { get; set; }
-		[BsonDefaultValue("", SerializeDefaultValue = false)]
-		public string number { get; set; }
 		[BsonIgnoreIfNull]
 		public ObjectId[] HealthLogEntries { get; set; }
+		[BsonIgnoreIfNull]
+		public ObjectId? ManagingMedic { get; set; }
+		[BsonIgnoreIfNull]
+		[BsonDateTimeOptions(DateOnly=true)]
+		public DateTime? StartDate { get; set; }
+		[BsonIgnoreIfNull]
+		[BsonDateTimeOptions(DateOnly=true)]
+		public DateTime? EndDate { get; set; }
 	}
 }

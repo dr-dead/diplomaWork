@@ -40,14 +40,14 @@ namespace mongoClient
 				foreach(var caseItem in patient.HealthLog)
 				{
 					var currentCase = caseCollection.FindOneById(caseItem);
-					currentNode = rootNode.Nodes.Add(currentCase.number);
+					currentNode = rootNode.Nodes.Add(currentCase.StartDate.Value.ToString("d"));
 					currentNode.Tag = currentCase.Id;
 					if(currentCase.HealthLogEntries != null)
 					{
 						foreach(var entryItem in currentCase.HealthLogEntries)
 						{
 							var currentEntry = entryCollection.FindOneById(entryItem);
-							currentNode.Nodes.Add(currentEntry.number).Tag = currentEntry.Id;
+							currentNode.Nodes.Add(currentEntry.AppointmentTime.ToString()).Tag = currentEntry.Id;
 						}
 					}
 				}
@@ -58,7 +58,7 @@ namespace mongoClient
 		{
 			var healthCase = CreateCaseAndSaveInDB();
 			PushCaseToPatient(healthCase.Id, (ObjectId)treeHealthLog.TopNode.Tag);
-			var currentCase = treeHealthLog.TopNode.Nodes.Add(healthCase.number);
+			var currentCase = treeHealthLog.TopNode.Nodes.Add(healthCase.StartDate.Value.Date.ToString("d"));
 			currentCase.Tag = healthCase.Id;
 			currentCase.Select();
 		}
@@ -70,7 +70,7 @@ namespace mongoClient
 		private HealthLogCase CreateCaseAndSaveInDB()
 		{
 			var healthCase = new HealthLogCase();
-			healthCase.number = DateTime.Now.ToString();
+			healthCase.StartDate = DateTime.Now.Date;
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
 			caseCollection.Save<HealthLogCase>(healthCase);
 			return healthCase;
@@ -94,11 +94,11 @@ namespace mongoClient
 			TreeNode currentEntry;
 			if(!selectedTreeNode.IsTopBranch())
 			{
-				currentEntry = treeHealthLog.SelectedNode.Parent.Nodes.Add(healthEntry.number);
+				currentEntry = treeHealthLog.SelectedNode.Parent.Nodes.Add(healthEntry.AppointmentTime.ToString());
 			}
 			else
 			{
-				currentEntry = treeHealthLog.SelectedNode.Nodes.Add(healthEntry.number);
+				currentEntry = treeHealthLog.SelectedNode.Nodes.Add(healthEntry.AppointmentTime.ToString());
 				treeHealthLog.SelectedNode.Expand();
 			}
 			PushEntryToCase(healthEntry.Id, (ObjectId)currentEntry.Parent.Tag);
@@ -114,7 +114,7 @@ namespace mongoClient
 		{
 			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
 			var healthEntry = new HealthLogEntry();
-			healthEntry.number = DateTime.Now.ToString();
+			healthEntry.AppointmentTime = DateTime.Now;
 			entryCollection.Save<HealthLogEntry>(healthEntry);
 			return healthEntry;
 		}
@@ -186,18 +186,39 @@ namespace mongoClient
 				if(e.Node.IsTopBranch())
 				{
 					//TODO: case handler
+					loadCaseGUI();
 				}
 				else
 				{
 					//TODO: entry handler
+					loadEntryGUI();
 				}
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void loadCaseGUI()
 		{
-			var medicListForm = new MedicListForm();
+
+		}
+
+		private void loadEntryGUI()
+		{
+
+		}
+
+		private void btMedicSelect_Click(object sender, EventArgs e)
+		{
+			var medicListForm = new MedicListForm(true);
+			medicListForm.MedicInsertionEvent +=new MedicListForm.MedicInsertionHandler(medicListForm_MedicInsertionEvent);
 			medicListForm.ShowDialog();
+		}
+
+		void medicListForm_MedicInsertionEvent(object sender, ObjectId obj)
+		{
+			tbMedic.Tag = obj;
+			var medicCollection = ServerConnection.GetCollection<Medic>();
+			var queriedMedic = medicCollection.FindOneById(obj);
+			tbMedic.Text = queriedMedic.GetFullName() + " - " + queriedMedic.Profession;
 		}
 	}
 }

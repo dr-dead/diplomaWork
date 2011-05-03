@@ -282,5 +282,11 @@ namespace mongoClient
 			var healthLogForm = new HealthHistoryForm(new ObjectId(tbID.Text));
 			healthLogForm.ShowDialog();
 		}
+
+		private void btMedicList_Click(object sender, EventArgs e)
+		{
+			var medicListForm = new MedicListForm();
+			medicListForm.ShowDialog();
+		}
 	}
 }

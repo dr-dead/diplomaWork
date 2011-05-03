@@ -22,14 +22,23 @@ namespace mongoClient
 			InitializeComponent();
 			fillControlsWithConstants();
 			isNew = true;
+			enableAddingGUI();
+		}
+
+		private void enableAddingGUI()
+		{
+			lbId.Visible = false;
+			tbId.Visible = false;
+			lbIsWorking.Visible = false;
+			chbIsWorking.Visible = false;
 		}
 
 		public MedicForm(ObjectId medicId)
 		{
 			InitializeComponent();
-			fillControlsWithConstants();
-			isNew = false;
+			fillControlsWithConstants();			
 			fillFormWithMedicInfo(medicId);
+			isNew = false;
 		}
 
 		private void fillControlsWithConstants()
@@ -55,6 +64,7 @@ namespace mongoClient
 			cbDegree.Text = queriedMedic.Degree;
 			cbDepartment.Text = queriedMedic.Department;
 			tbCabinet.Text = queriedMedic.Cabinet.ToString();
+			chbIsWorking.Checked = queriedMedic.IsWorking;
 		}
 
 		private void btSave_Click(object sender, EventArgs e)
@@ -99,7 +109,7 @@ namespace mongoClient
 			{
 				medic.Cabinet = int.Parse(tbCabinet.Text);
 			}
-			medic.IsWorking = true;
+			medic.IsWorking = chbIsWorking.Checked;
 		}
 
 		private void SaveChanges()
@@ -108,6 +118,11 @@ namespace mongoClient
 			var queriedMedic = medicCollection.FindOneById(new ObjectId(tbId.Text));
 			FillMedicObjectWithInfo(queriedMedic);
 			medicCollection.Save<Medic>(queriedMedic);
+		}
+
+		private void btCancel_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

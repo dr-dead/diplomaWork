@@ -56,6 +56,7 @@
 			this.lbTelephone = new System.Windows.Forms.Label();
 			this.lbBirth = new System.Windows.Forms.Label();
 			this.lbDeath = new System.Windows.Forms.Label();
+			this.btMedicList = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// PatientList
@@ -312,11 +313,22 @@
 			this.lbDeath.TabIndex = 25;
 			this.lbDeath.Text = "Death date:";
 			// 
+			// btMedicList
+			// 
+			this.btMedicList.Location = new System.Drawing.Point(33, 28);
+			this.btMedicList.Name = "btMedicList";
+			this.btMedicList.Size = new System.Drawing.Size(78, 30);
+			this.btMedicList.TabIndex = 26;
+			this.btMedicList.Text = "Medics";
+			this.btMedicList.UseVisualStyleBackColor = true;
+			this.btMedicList.Click += new System.EventHandler(this.btMedicList_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(960, 568);
+			this.Controls.Add(this.btMedicList);
 			this.Controls.Add(this.lbDeath);
 			this.Controls.Add(this.lbBirth);
 			this.Controls.Add(this.lbTelephone);
@@ -379,5 +391,6 @@
 		private System.Windows.Forms.Label lbTelephone;
 		private System.Windows.Forms.Label lbBirth;
 		private System.Windows.Forms.Label lbDeath;
+		private System.Windows.Forms.Button btMedicList;
 	}
 }
