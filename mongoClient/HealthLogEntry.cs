@@ -14,5 +14,7 @@ namespace mongoClient
 		[BsonDateTimeOptions(Kind=DateTimeKind.Local)]
 		[BsonIgnoreIfNull]
 		public DateTime? AppointmentTime { get; set; }
+		[BsonIgnoreIfNull]
+		public ObjectId? ManagingMedic { get; set; }
 	}
 }

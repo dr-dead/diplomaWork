@@ -187,23 +187,59 @@ namespace mongoClient
 				{
 					//TODO: case handler
 					loadCaseGUI();
+					fillControlsWithCaseObject((ObjectId)e.Node.Tag);
 				}
 				else
 				{
 					//TODO: entry handler
 					loadEntryGUI();
+					fillControlsWithEntryObject((ObjectId)e.Node.Tag);
 				}
 			}
 		}
 
 		private void loadCaseGUI()
 		{
+			
+		}
 
+		private void fillControlsWithCaseObject(ObjectId caseObjectId)
+		{
+			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
+			var medicCollection = ServerConnection.GetCollection<Medic>();
+			var queriedCase = caseCollection.FindOneById(caseObjectId);
+			if(queriedCase.ManagingMedic != null)
+			{
+				var managingMedic = medicCollection.FindOneById(queriedCase.ManagingMedic);
+				tbMedic.Tag = managingMedic.Id;
+				tbMedic.Text = managingMedic.GetFullName() + " - " + managingMedic.Profession;
+			}
+			else
+			{
+				tbMedic.Text = String.Empty;
+			}
 		}
 
 		private void loadEntryGUI()
 		{
+			
+		}
 
+		private void fillControlsWithEntryObject(ObjectId entryObjectId)
+		{
+			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
+			var medicCollection = ServerConnection.GetCollection<Medic>();
+			var queriedEntry = entryCollection.FindOneById(entryObjectId);
+			if(queriedEntry.ManagingMedic != null)
+			{
+				var managingMedic = medicCollection.FindOneById(queriedEntry.ManagingMedic);
+				tbMedic.Tag = managingMedic.Id;
+				tbMedic.Text = managingMedic.GetFullName() + " - " + managingMedic.Profession;
+			}
+			else
+			{
+				tbMedic.Text = String.Empty;
+			}
 		}
 
 		private void btMedicSelect_Click(object sender, EventArgs e)
@@ -219,6 +255,39 @@ namespace mongoClient
 			var medicCollection = ServerConnection.GetCollection<Medic>();
 			var queriedMedic = medicCollection.FindOneById(obj);
 			tbMedic.Text = queriedMedic.GetFullName() + " - " + queriedMedic.Profession;
+		}
+
+		private void btSave_Click(object sender, EventArgs e)
+		{
+			if(treeHealthLog.SelectedNode != null && treeHealthLog.SelectedNode != treeHealthLog.TopNode)
+			{
+				var selectedTreeNode = treeHealthLog.SelectedNode;
+				if(selectedTreeNode.IsTopBranch())
+				{
+					SaveCase((ObjectId)selectedTreeNode.Tag);
+				}
+				else
+				{
+					SaveEntry((ObjectId)selectedTreeNode.Tag);
+				}
+				//TODO: node updated
+			}
+		}
+
+		private void SaveCase(ObjectId caseId)
+		{
+			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
+			var queriedCase = caseCollection.FindOneById(caseId);
+			queriedCase.ManagingMedic = (ObjectId)tbMedic.Tag;
+			caseCollection.Save<HealthLogCase>(queriedCase);
+		}
+
+		private void SaveEntry(ObjectId entryId)
+		{
+			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
+			var queriedEntry = entryCollection.FindOneById(entryId);
+			queriedEntry.ManagingMedic = (ObjectId)tbMedic.Tag;
+			entryCollection.Save<HealthLogEntry>(queriedEntry);
 		}
 	}
 }
