@@ -24,8 +24,14 @@ namespace mongoClient
 			{
 				try
 				{
-					new ServerConnection(tbServerAddress.Text);					
-					FillComboboxWithDatabaseNames(ServerConnection.Server);
+					var connectionString = new MongoConnectionStringBuilder();
+					connectionString.Server = new MongoServerAddress(tbServerAddress.Text);
+					connectionString.Username = tbUser.Text;
+					connectionString.Password = tbPassword.Text;
+					connectionString.DatabaseName = "test";
+					//new ServerConnection(tbServerAddress.Text);
+					new ServerConnection(connectionString);
+					//FillComboboxWithDatabaseNames(ServerConnection.Server);
 					SetConnectedState();
 				}
 				catch(Exception ex)
@@ -36,7 +42,8 @@ namespace mongoClient
 			}
 			else
 			{
-				ServerConnection.DatabaseName = cbDatabases.Text;
+				//ServerConnection.DatabaseName = cbDatabases.Text;
+				ServerConnection.DatabaseName = "test";
 				CloseLoginFormOpenMain();
 			}
 		}
@@ -64,6 +71,8 @@ namespace mongoClient
 			btCancel.Text = "Disconnect";
 			cbDatabases.Enabled = true;
 			tbServerAddress.Enabled = false;
+			tbUser.Enabled = false;
+			tbPassword.Enabled = false;
 			ServerConnection.Connected = true;
 		}
 
@@ -88,7 +97,9 @@ namespace mongoClient
 			btCancel.Text = "Exit";
 			cbDatabases.Enabled = false;
 			cbDatabases.Items.Clear();
-			tbServerAddress.Enabled = true;			
+			tbServerAddress.Enabled = true;
+			tbUser.Enabled = true;
+			tbPassword.Enabled = true;
 			ServerConnection.Connected = false;
 			tbServerAddress.Focus();
 		}

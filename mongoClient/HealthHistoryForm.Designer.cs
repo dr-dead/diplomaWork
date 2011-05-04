@@ -77,7 +77,7 @@
 			this.tbMedic.Location = new System.Drawing.Point(271, 136);
 			this.tbMedic.Name = "tbMedic";
 			this.tbMedic.ReadOnly = true;
-			this.tbMedic.Size = new System.Drawing.Size(131, 20);
+			this.tbMedic.Size = new System.Drawing.Size(252, 20);
 			this.tbMedic.TabIndex = 3;
 			// 
 			// btDelete
@@ -92,7 +92,7 @@
 			// 
 			// btMedicSelect
 			// 
-			this.btMedicSelect.Location = new System.Drawing.Point(408, 136);
+			this.btMedicSelect.Location = new System.Drawing.Point(529, 135);
 			this.btMedicSelect.Name = "btMedicSelect";
 			this.btMedicSelect.Size = new System.Drawing.Size(78, 20);
 			this.btMedicSelect.TabIndex = 5;
@@ -121,6 +121,7 @@
 			this.dtpAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpAppointment.Location = new System.Drawing.Point(262, 200);
 			this.dtpAppointment.Name = "dtpAppointment";
+			this.dtpAppointment.ShowCheckBox = true;
 			this.dtpAppointment.Size = new System.Drawing.Size(122, 20);
 			this.dtpAppointment.TabIndex = 8;
 			// 

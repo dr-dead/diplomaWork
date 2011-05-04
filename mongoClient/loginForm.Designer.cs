@@ -35,6 +35,10 @@
 			this.labelServer = new System.Windows.Forms.Label();
 			this.labelDatabase = new System.Windows.Forms.Label();
 			this.btCancel = new System.Windows.Forms.Button();
+			this.tbUser = new System.Windows.Forms.TextBox();
+			this.tbPassword = new System.Windows.Forms.TextBox();
+			this.lbUser = new System.Windows.Forms.Label();
+			this.lbPass = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btConnect
@@ -49,7 +53,7 @@
 			// 
 			// tbServerAddress
 			// 
-			this.tbServerAddress.Location = new System.Drawing.Point(80, 47);
+			this.tbServerAddress.Location = new System.Drawing.Point(98, 29);
 			this.tbServerAddress.Name = "tbServerAddress";
 			this.tbServerAddress.Size = new System.Drawing.Size(139, 20);
 			this.tbServerAddress.TabIndex = 0;
@@ -60,9 +64,9 @@
 			this.cbDatabases.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbDatabases.Enabled = false;
 			this.cbDatabases.FormattingEnabled = true;
-			this.cbDatabases.Location = new System.Drawing.Point(134, 156);
+			this.cbDatabases.Location = new System.Drawing.Point(98, 155);
 			this.cbDatabases.Name = "cbDatabases";
-			this.cbDatabases.Size = new System.Drawing.Size(113, 21);
+			this.cbDatabases.Size = new System.Drawing.Size(139, 21);
 			this.cbDatabases.TabIndex = 1;
 			// 
 			// bwProgress
@@ -72,7 +76,7 @@
 			// labelServer
 			// 
 			this.labelServer.AutoSize = true;
-			this.labelServer.Location = new System.Drawing.Point(39, 50);
+			this.labelServer.Location = new System.Drawing.Point(35, 32);
 			this.labelServer.Name = "labelServer";
 			this.labelServer.Size = new System.Drawing.Size(41, 13);
 			this.labelServer.TabIndex = 3;
@@ -81,7 +85,7 @@
 			// labelDatabase
 			// 
 			this.labelDatabase.AutoSize = true;
-			this.labelDatabase.Location = new System.Drawing.Point(72, 159);
+			this.labelDatabase.Location = new System.Drawing.Point(35, 158);
 			this.labelDatabase.Name = "labelDatabase";
 			this.labelDatabase.Size = new System.Drawing.Size(56, 13);
 			this.labelDatabase.TabIndex = 4;
@@ -97,18 +101,55 @@
 			this.btCancel.UseVisualStyleBackColor = true;
 			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
 			// 
-			// loginForm
+			// tbUser
+			// 
+			this.tbUser.Location = new System.Drawing.Point(98, 72);
+			this.tbUser.Name = "tbUser";
+			this.tbUser.Size = new System.Drawing.Size(139, 20);
+			this.tbUser.TabIndex = 6;
+			// 
+			// tbPassword
+			// 
+			this.tbPassword.Location = new System.Drawing.Point(98, 98);
+			this.tbPassword.Name = "tbPassword";
+			this.tbPassword.PasswordChar = '*';
+			this.tbPassword.Size = new System.Drawing.Size(139, 20);
+			this.tbPassword.TabIndex = 7;
+			// 
+			// lbUser
+			// 
+			this.lbUser.AutoSize = true;
+			this.lbUser.Location = new System.Drawing.Point(35, 75);
+			this.lbUser.Name = "lbUser";
+			this.lbUser.Size = new System.Drawing.Size(58, 13);
+			this.lbUser.TabIndex = 8;
+			this.lbUser.Text = "Username:";
+			// 
+			// lbPass
+			// 
+			this.lbPass.AutoSize = true;
+			this.lbPass.Location = new System.Drawing.Point(35, 101);
+			this.lbPass.Name = "lbPass";
+			this.lbPass.Size = new System.Drawing.Size(56, 13);
+			this.lbPass.TabIndex = 9;
+			this.lbPass.Text = "Password:";
+			// 
+			// LoginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 266);
+			this.Controls.Add(this.lbPass);
+			this.Controls.Add(this.lbUser);
+			this.Controls.Add(this.tbPassword);
+			this.Controls.Add(this.tbUser);
 			this.Controls.Add(this.btCancel);
 			this.Controls.Add(this.labelDatabase);
 			this.Controls.Add(this.labelServer);
 			this.Controls.Add(this.cbDatabases);
 			this.Controls.Add(this.tbServerAddress);
 			this.Controls.Add(this.btConnect);
-			this.Name = "loginForm";
+			this.Name = "LoginForm";
 			this.Text = "Connect to database";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -124,6 +165,10 @@
 		private System.Windows.Forms.Label labelServer;
 		private System.Windows.Forms.Label labelDatabase;
 		private System.Windows.Forms.Button btCancel;
+		private System.Windows.Forms.TextBox tbUser;
+		private System.Windows.Forms.TextBox tbPassword;
+		private System.Windows.Forms.Label lbUser;
+		private System.Windows.Forms.Label lbPass;
 	}
 }
 

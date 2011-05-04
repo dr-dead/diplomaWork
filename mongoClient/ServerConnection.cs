@@ -18,9 +18,13 @@ namespace mongoClient
 
 		private static string databaseName = "";
 
-		public ServerConnection(string serverSettings)
+		private static MongoCredentials credentials;
+
+		public ServerConnection(MongoConnectionStringBuilder serverSettings)
 		{
-			server = MongoServer.Create("mongodb://" + serverSettings);
+			//server = MongoServer.Create("mongodb://" + serverSettings);
+			server = MongoServer.Create(serverSettings);
+			credentials = new MongoCredentials(serverSettings.Username, serverSettings.Password);
 		}
 
 		public static MongoServer Server
@@ -62,8 +66,16 @@ namespace mongoClient
 		/// <returns>Generic MongoCollection.</returns>
 		public static MongoCollection<T> GetCollection<T>()
 		{
-			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName);
+			var db = ServerConnection.Server.GetDatabase(ServerConnection.DatabaseName, credentials);
 			var collection = db.GetCollection<T>((typeof(T).Name));
+			try
+			{
+				collection.Validate();
+			}
+			catch(Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.Message);
+			}
 			return collection;
 		}
 	}
