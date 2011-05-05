@@ -40,7 +40,7 @@ namespace mongoClient
 				foreach(var caseItem in patient.HealthLog)
 				{
 					var currentCase = caseCollection.FindOneById(caseItem);
-					currentNode = rootNode.Nodes.Add(currentCase.StartDate.Value.ToString("d"));
+					currentNode = rootNode.Nodes.Add(currentCase.StartDate.ToString("d"));
 					currentNode.Tag = currentCase.Id;
 					if(currentCase.HealthLogEntries != null)
 					{
@@ -56,9 +56,9 @@ namespace mongoClient
 
 		private void btAddCase_Click(object sender, EventArgs e)
 		{
-			var healthCase = CreateCaseAndSaveInDB();
-			PushCaseToPatient(healthCase.Id, (ObjectId)treeHealthLog.TopNode.Tag);
-			var currentCase = treeHealthLog.TopNode.Nodes.Add(healthCase.StartDate.Value.Date.ToString("d"));
+			var healthCase = createCaseAndSaveInDB();
+			pushCaseToPatient(healthCase.Id, (ObjectId)treeHealthLog.TopNode.Tag);
+			var currentCase = treeHealthLog.TopNode.Nodes.Add(healthCase.StartDate.Date.ToString("d"));
 			currentCase.Tag = healthCase.Id;
 			currentCase.Select();
 		}
@@ -67,7 +67,7 @@ namespace mongoClient
 		/// Creates an instance of HealthLogCase class and saves it in database.
 		/// </summary>
 		/// <returns>Empty HealthLogCase instance with filled Id property.</returns>
-		private HealthLogCase CreateCaseAndSaveInDB()
+		private HealthLogCase createCaseAndSaveInDB()
 		{
 			var healthCase = new HealthLogCase();
 			healthCase.StartDate = DateTime.Now.Date;
@@ -81,7 +81,7 @@ namespace mongoClient
 		/// </summary>
 		/// <param name="caseId">MongoDB.Bson.ObjectId instance of the HealthCaseEntry object to append.</param>
 		/// <param name="patientId">MongoDB.Bson.ObjectId of the Patient object to append to.</param>
-		private void PushCaseToPatient(ObjectId caseId, ObjectId patientId)
+		private void pushCaseToPatient(ObjectId caseId, ObjectId patientId)
 		{
 			var patientCollection = ServerConnection.GetCollection<Patient>();
 			patientCollection.Update(Query.EQ("_id", patientId), MongoDB.Driver.Builders.Update.Push("HealthLog", caseId));
@@ -90,7 +90,7 @@ namespace mongoClient
 		private void btAddEntry_Click(object sender, EventArgs e)
 		{			
 			var selectedTreeNode = treeHealthLog.SelectedNode;
-			var healthEntry = CreateEntryAndSaveInDB();
+			var healthEntry = createEntryAndSaveInDB();
 			TreeNode currentEntry;
 			if(!selectedTreeNode.IsTopBranch())
 			{
@@ -101,7 +101,7 @@ namespace mongoClient
 				currentEntry = treeHealthLog.SelectedNode.Nodes.Add(healthEntry.AppointmentTime.ToString());
 				treeHealthLog.SelectedNode.Expand();
 			}
-			PushEntryToCase(healthEntry.Id, (ObjectId)currentEntry.Parent.Tag);
+			pushEntryToCase(healthEntry.Id, (ObjectId)currentEntry.Parent.Tag);
 			currentEntry.Tag = healthEntry.Id;
 			currentEntry.Select();
 		}
@@ -110,7 +110,7 @@ namespace mongoClient
 		/// Creates an instance of HealthLogEntry class and saves it in database.
 		/// </summary>
 		/// <returns>Empty HealthLogEntry instance with filled Id property.</returns>
-		private HealthLogEntry CreateEntryAndSaveInDB()
+		private HealthLogEntry createEntryAndSaveInDB()
 		{
 			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
 			var healthEntry = new HealthLogEntry();
@@ -124,7 +124,7 @@ namespace mongoClient
 		/// </summary>
 		/// <param name="entryId">MongoDB.Bson.ObjectId instance of the HealthLogEntry object to append.</param>
 		/// <param name="caseId">MongoDB.Bson.ObjectId of the HealthLogCase object to append to.</param>
-		private void PushEntryToCase(ObjectId entryId, ObjectId caseId)
+		private void pushEntryToCase(ObjectId entryId, ObjectId caseId)
 		{
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
 			caseCollection.Update(Query.EQ("_id", caseId), MongoDB.Driver.Builders.Update.Push("HealthLogEntries", entryId));
@@ -137,11 +137,11 @@ namespace mongoClient
 				var selectedTreeNode = treeHealthLog.SelectedNode;
 				if(selectedTreeNode.IsTopBranch())
 				{
-					RemoveCase((ObjectId)selectedTreeNode.Tag);
+					removeCase((ObjectId)selectedTreeNode.Tag);
 				}
 				else
 				{
-					RemoveEntry((ObjectId)selectedTreeNode.Tag);
+					removeEntry((ObjectId)selectedTreeNode.Tag);
 				}
 				treeHealthLog.SelectedNode.Remove();
 			}
@@ -151,7 +151,7 @@ namespace mongoClient
 		/// Removes HealthLogCase and all nested HealthLogEntry objects from the database. Also removes HealthLogCase from Patient's array of cases.
 		/// </summary>
 		/// <param name="caseId">MongoDB.Bson.ObjectId of HealthLogCase.</param>
-		private void RemoveCase(ObjectId caseId)
+		private void removeCase(ObjectId caseId)
 		{
 			var patientCollection = ServerConnection.GetCollection<Patient>();
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
@@ -169,7 +169,7 @@ namespace mongoClient
 		/// Removes HealthLogEntry and pulls its ObjectId from HealthLogCase.
 		/// </summary>
 		/// <param name="entryId">MongoDB.Bson.ObjectId of HealthLogEntry</param>
-		private void RemoveEntry(ObjectId entryId)
+		private void removeEntry(ObjectId entryId)
 		{
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
 			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
@@ -200,7 +200,15 @@ namespace mongoClient
 
 		private void loadCaseGUI()
 		{
-			
+			tbComplaints.Visible = true;
+			tbDiagnosis.Visible = true;
+			tbHeight.Visible = true;
+			tbWeight.Visible = true;
+			dtpStartDate.Visible = true;
+			dtpEndDate.Visible = true;
+			tbDirection.Visible = false;
+			dtpAppointment.Visible = false;
+			tbStatus.Visible = false;
 		}
 
 		private void fillControlsWithCaseObject(ObjectId caseObjectId)
@@ -217,12 +225,27 @@ namespace mongoClient
 			else
 			{
 				tbMedic.Text = String.Empty;
+				tbMedic.Tag = null;
 			}
+			tbComplaints.Text = queriedCase.Complaints;
+			tbDiagnosis.Text = queriedCase.Diagnosis;
+			tbHeight.Text = queriedCase.Height.ToString();
+			tbWeight.Text = queriedCase.Weight.ToString();
+			dtpStartDate.Value = queriedCase.StartDate;
+			dtpEndDate.TryToAssignValue(queriedCase.EndDate);
 		}
 
 		private void loadEntryGUI()
 		{
-			
+			dtpAppointment.Visible = true;
+			tbDirection.Visible = true;
+			tbStatus.Visible = true;
+			tbComplaints.Visible = false;
+			tbDiagnosis.Visible = false;
+			tbHeight.Visible = false;
+			tbWeight.Visible = false;
+			dtpStartDate.Visible = false;
+			dtpEndDate.Visible = false;
 		}
 
 		private void fillControlsWithEntryObject(ObjectId entryObjectId)
@@ -239,7 +262,11 @@ namespace mongoClient
 			else
 			{
 				tbMedic.Text = String.Empty;
+				tbMedic.Tag = null;
 			}
+			dtpAppointment.Value = queriedEntry.AppointmentTime;
+			tbDirection.Text = queriedEntry.Direction;
+			tbStatus.Text = queriedEntry.Status;
 		}
 
 		private void btMedicSelect_Click(object sender, EventArgs e)
@@ -264,29 +291,38 @@ namespace mongoClient
 				var selectedTreeNode = treeHealthLog.SelectedNode;
 				if(selectedTreeNode.IsTopBranch())
 				{
-					SaveCase((ObjectId)selectedTreeNode.Tag);
+					saveCase((ObjectId)selectedTreeNode.Tag);
 				}
 				else
 				{
-					SaveEntry((ObjectId)selectedTreeNode.Tag);
+					saveEntry((ObjectId)selectedTreeNode.Tag);
 				}
 				//TODO: node updated
 			}
 		}
 
-		private void SaveCase(ObjectId caseId)
+		private void saveCase(ObjectId caseId)
 		{
 			var caseCollection = ServerConnection.GetCollection<HealthLogCase>();
 			var queriedCase = caseCollection.FindOneById(caseId);
-			queriedCase.ManagingMedic = (ObjectId)tbMedic.Tag;
+			queriedCase.Complaints = tbComplaints.Text;
+			queriedCase.Diagnosis = tbDiagnosis.Text;
+			queriedCase.Height = int.Parse(tbHeight.Text);
+			queriedCase.Weight = int.Parse(tbWeight.Text);
+			queriedCase.StartDate = dtpStartDate.Value;
+			queriedCase.EndDate = dtpEndDate.GetNullOrValue();
+			queriedCase.ManagingMedic = tbMedic.Tag as ObjectId?;
 			caseCollection.Save<HealthLogCase>(queriedCase);
 		}
 
-		private void SaveEntry(ObjectId entryId)
+		private void saveEntry(ObjectId entryId)
 		{
 			var entryCollection = ServerConnection.GetCollection<HealthLogEntry>();
 			var queriedEntry = entryCollection.FindOneById(entryId);
-			queriedEntry.ManagingMedic = (ObjectId)tbMedic.Tag;
+			queriedEntry.AppointmentTime = dtpAppointment.Value;
+			queriedEntry.Direction = tbDirection.Text;
+			queriedEntry.Status = tbStatus.Text;
+			queriedEntry.ManagingMedic = tbMedic.Tag as ObjectId?;
 			entryCollection.Save<HealthLogEntry>(queriedEntry);
 		}
 	}

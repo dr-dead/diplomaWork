@@ -39,7 +39,12 @@
 			this.dtpAppointment = new System.Windows.Forms.DateTimePicker();
 			this.btSave = new System.Windows.Forms.Button();
 			this.btCancel = new System.Windows.Forms.Button();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+			this.tbComplaints = new System.Windows.Forms.TextBox();
+			this.tbStatus = new System.Windows.Forms.TextBox();
+			this.tbWeight = new System.Windows.Forms.TextBox();
+			this.tbHeight = new System.Windows.Forms.TextBox();
+			this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
 			this.SuspendLayout();
 			// 
 			// treeHealthLog
@@ -110,9 +115,10 @@
 			// 
 			// tbDirection
 			// 
-			this.tbDirection.Location = new System.Drawing.Point(260, 85);
+			this.tbDirection.Location = new System.Drawing.Point(260, 65);
+			this.tbDirection.Multiline = true;
 			this.tbDirection.Name = "tbDirection";
-			this.tbDirection.Size = new System.Drawing.Size(124, 20);
+			this.tbDirection.Size = new System.Drawing.Size(360, 64);
 			this.tbDirection.TabIndex = 7;
 			// 
 			// dtpAppointment
@@ -121,7 +127,6 @@
 			this.dtpAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dtpAppointment.Location = new System.Drawing.Point(262, 200);
 			this.dtpAppointment.Name = "dtpAppointment";
-			this.dtpAppointment.ShowCheckBox = true;
 			this.dtpAppointment.Size = new System.Drawing.Size(122, 20);
 			this.dtpAppointment.TabIndex = 8;
 			// 
@@ -144,20 +149,65 @@
 			this.btCancel.Text = "Cancel";
 			this.btCancel.UseVisualStyleBackColor = true;
 			// 
-			// dateTimePicker1
+			// dtpStartDate
 			// 
-			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker1.Location = new System.Drawing.Point(424, 199);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(129, 20);
-			this.dateTimePicker1.TabIndex = 11;
+			this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpStartDate.Location = new System.Drawing.Point(421, 174);
+			this.dtpStartDate.Name = "dtpStartDate";
+			this.dtpStartDate.Size = new System.Drawing.Size(129, 20);
+			this.dtpStartDate.TabIndex = 11;
+			// 
+			// tbComplaints
+			// 
+			this.tbComplaints.Location = new System.Drawing.Point(260, 315);
+			this.tbComplaints.Multiline = true;
+			this.tbComplaints.Name = "tbComplaints";
+			this.tbComplaints.Size = new System.Drawing.Size(360, 56);
+			this.tbComplaints.TabIndex = 12;
+			// 
+			// tbStatus
+			// 
+			this.tbStatus.Location = new System.Drawing.Point(260, 251);
+			this.tbStatus.Multiline = true;
+			this.tbStatus.Name = "tbStatus";
+			this.tbStatus.Size = new System.Drawing.Size(360, 58);
+			this.tbStatus.TabIndex = 13;
+			// 
+			// tbWeight
+			// 
+			this.tbWeight.Location = new System.Drawing.Point(421, 201);
+			this.tbWeight.MaxLength = 3;
+			this.tbWeight.Name = "tbWeight";
+			this.tbWeight.Size = new System.Drawing.Size(38, 20);
+			this.tbWeight.TabIndex = 14;
+			// 
+			// tbHeight
+			// 
+			this.tbHeight.Location = new System.Drawing.Point(482, 201);
+			this.tbHeight.MaxLength = 3;
+			this.tbHeight.Name = "tbHeight";
+			this.tbHeight.Size = new System.Drawing.Size(41, 20);
+			this.tbHeight.TabIndex = 15;
+			// 
+			// dtpEndDate
+			// 
+			this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpEndDate.Location = new System.Drawing.Point(262, 174);
+			this.dtpEndDate.Name = "dtpEndDate";
+			this.dtpEndDate.Size = new System.Drawing.Size(129, 20);
+			this.dtpEndDate.TabIndex = 16;
 			// 
 			// HealthHistoryForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(637, 472);
-			this.Controls.Add(this.dateTimePicker1);
+			this.Controls.Add(this.dtpEndDate);
+			this.Controls.Add(this.tbHeight);
+			this.Controls.Add(this.tbWeight);
+			this.Controls.Add(this.tbStatus);
+			this.Controls.Add(this.tbComplaints);
+			this.Controls.Add(this.dtpStartDate);
 			this.Controls.Add(this.btCancel);
 			this.Controls.Add(this.btSave);
 			this.Controls.Add(this.dtpAppointment);
@@ -189,6 +239,11 @@
 		private System.Windows.Forms.DateTimePicker dtpAppointment;
 		private System.Windows.Forms.Button btSave;
 		private System.Windows.Forms.Button btCancel;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dtpStartDate;
+		private System.Windows.Forms.TextBox tbComplaints;
+		private System.Windows.Forms.TextBox tbStatus;
+		private System.Windows.Forms.TextBox tbWeight;
+		private System.Windows.Forms.TextBox tbHeight;
+		private System.Windows.Forms.DateTimePicker dtpEndDate;
 	}
 }

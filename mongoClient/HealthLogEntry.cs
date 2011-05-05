@@ -13,8 +13,12 @@ namespace mongoClient
 		public ObjectId Id { get; set; }
 		[BsonDateTimeOptions(Kind=DateTimeKind.Local)]
 		[BsonIgnoreIfNull]
-		public DateTime? AppointmentTime { get; set; }
+		public DateTime AppointmentTime { get; set; }
 		[BsonIgnoreIfNull]
 		public ObjectId? ManagingMedic { get; set; }
+		[BsonDefaultValue("", SerializeDefaultValue=false)]
+		public string Direction { get; set; }
+		[BsonDefaultValue("", SerializeDefaultValue=false)]
+		public string Status { get; set; }
 	}
 }
