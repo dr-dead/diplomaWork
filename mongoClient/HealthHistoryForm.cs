@@ -181,6 +181,7 @@ namespace mongoClient
 
 		private void treeHealthLog_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
+			treeHealthLog.SelectedNode = e.Node;
 			if(e.Node != treeHealthLog.TopNode)
 			{
 				if(e.Node.IsTopBranch())
@@ -200,12 +201,24 @@ namespace mongoClient
 
 		private void loadCaseGUI()
 		{
+			lbComplaints.Visible = true;
+			lbDiag.Visible = true;
+			lbHeight.Visible = true;
+			lbWeight.Visible = true;
+			lbStart.Visible = true;
+			lbEnd.Visible = true;
+			lbCm.Visible = true;
+			lbKg.Visible = true;
 			tbComplaints.Visible = true;
 			tbDiagnosis.Visible = true;
 			tbHeight.Visible = true;
 			tbWeight.Visible = true;
 			dtpStartDate.Visible = true;
 			dtpEndDate.Visible = true;
+
+			lbDirection.Visible = false;
+			lbAppointment.Visible = false;
+			lbStatus.Visible = false;
 			tbDirection.Visible = false;
 			dtpAppointment.Visible = false;
 			tbStatus.Visible = false;
@@ -237,9 +250,21 @@ namespace mongoClient
 
 		private void loadEntryGUI()
 		{
+			lbDirection.Visible = true;
+			lbAppointment.Visible = true;
+			lbStatus.Visible = true;
 			dtpAppointment.Visible = true;
 			tbDirection.Visible = true;
 			tbStatus.Visible = true;
+
+			lbComplaints.Visible = false;
+			lbDiag.Visible = false;
+			lbHeight.Visible = false;
+			lbWeight.Visible = false;
+			lbStart.Visible = false;
+			lbEnd.Visible = false;
+			lbCm.Visible = false;
+			lbKg.Visible = false;
 			tbComplaints.Visible = false;
 			tbDiagnosis.Visible = false;
 			tbHeight.Visible = false;

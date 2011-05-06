@@ -45,6 +45,17 @@
 			this.tbWeight = new System.Windows.Forms.TextBox();
 			this.tbHeight = new System.Windows.Forms.TextBox();
 			this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+			this.lbDirection = new System.Windows.Forms.Label();
+			this.lbWeight = new System.Windows.Forms.Label();
+			this.lbKg = new System.Windows.Forms.Label();
+			this.lbHeight = new System.Windows.Forms.Label();
+			this.lbCm = new System.Windows.Forms.Label();
+			this.lbAppointment = new System.Windows.Forms.Label();
+			this.lbStart = new System.Windows.Forms.Label();
+			this.lbEnd = new System.Windows.Forms.Label();
+			this.lbDiag = new System.Windows.Forms.Label();
+			this.lbComplaints = new System.Windows.Forms.Label();
+			this.lbStatus = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// treeHealthLog
@@ -79,7 +90,7 @@
 			// tbMedic
 			// 
 			this.tbMedic.BackColor = System.Drawing.SystemColors.Window;
-			this.tbMedic.Location = new System.Drawing.Point(271, 136);
+			this.tbMedic.Location = new System.Drawing.Point(261, 13);
 			this.tbMedic.Name = "tbMedic";
 			this.tbMedic.ReadOnly = true;
 			this.tbMedic.Size = new System.Drawing.Size(252, 20);
@@ -97,7 +108,7 @@
 			// 
 			// btMedicSelect
 			// 
-			this.btMedicSelect.Location = new System.Drawing.Point(529, 135);
+			this.btMedicSelect.Location = new System.Drawing.Point(519, 12);
 			this.btMedicSelect.Name = "btMedicSelect";
 			this.btMedicSelect.Size = new System.Drawing.Size(78, 20);
 			this.btMedicSelect.TabIndex = 5;
@@ -107,7 +118,7 @@
 			// 
 			// tbDiagnosis
 			// 
-			this.tbDiagnosis.Location = new System.Drawing.Point(260, 377);
+			this.tbDiagnosis.Location = new System.Drawing.Point(259, 195);
 			this.tbDiagnosis.Multiline = true;
 			this.tbDiagnosis.Name = "tbDiagnosis";
 			this.tbDiagnosis.Size = new System.Drawing.Size(361, 58);
@@ -115,7 +126,7 @@
 			// 
 			// tbDirection
 			// 
-			this.tbDirection.Location = new System.Drawing.Point(260, 65);
+			this.tbDirection.Location = new System.Drawing.Point(261, 106);
 			this.tbDirection.Multiline = true;
 			this.tbDirection.Name = "tbDirection";
 			this.tbDirection.Size = new System.Drawing.Size(360, 64);
@@ -125,7 +136,7 @@
 			// 
 			this.dtpAppointment.CustomFormat = "MM\'.\'dd\'.\'yyyy hh\':\'mm tt";
 			this.dtpAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpAppointment.Location = new System.Drawing.Point(262, 200);
+			this.dtpAppointment.Location = new System.Drawing.Point(334, 47);
 			this.dtpAppointment.Name = "dtpAppointment";
 			this.dtpAppointment.Size = new System.Drawing.Size(122, 20);
 			this.dtpAppointment.TabIndex = 8;
@@ -151,15 +162,17 @@
 			// 
 			// dtpStartDate
 			// 
+			this.dtpStartDate.Checked = false;
 			this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpStartDate.Location = new System.Drawing.Point(421, 174);
+			this.dtpStartDate.Location = new System.Drawing.Point(495, 47);
 			this.dtpStartDate.Name = "dtpStartDate";
-			this.dtpStartDate.Size = new System.Drawing.Size(129, 20);
+			this.dtpStartDate.ShowCheckBox = true;
+			this.dtpStartDate.Size = new System.Drawing.Size(102, 20);
 			this.dtpStartDate.TabIndex = 11;
 			// 
 			// tbComplaints
 			// 
-			this.tbComplaints.Location = new System.Drawing.Point(260, 315);
+			this.tbComplaints.Location = new System.Drawing.Point(261, 106);
 			this.tbComplaints.Multiline = true;
 			this.tbComplaints.Name = "tbComplaints";
 			this.tbComplaints.Size = new System.Drawing.Size(360, 56);
@@ -167,7 +180,7 @@
 			// 
 			// tbStatus
 			// 
-			this.tbStatus.Location = new System.Drawing.Point(260, 251);
+			this.tbStatus.Location = new System.Drawing.Point(260, 195);
 			this.tbStatus.Multiline = true;
 			this.tbStatus.Name = "tbStatus";
 			this.tbStatus.Size = new System.Drawing.Size(360, 58);
@@ -175,7 +188,7 @@
 			// 
 			// tbWeight
 			// 
-			this.tbWeight.Location = new System.Drawing.Point(421, 201);
+			this.tbWeight.Location = new System.Drawing.Point(529, 80);
 			this.tbWeight.MaxLength = 3;
 			this.tbWeight.Name = "tbWeight";
 			this.tbWeight.Size = new System.Drawing.Size(38, 20);
@@ -183,7 +196,7 @@
 			// 
 			// tbHeight
 			// 
-			this.tbHeight.Location = new System.Drawing.Point(482, 201);
+			this.tbHeight.Location = new System.Drawing.Point(397, 80);
 			this.tbHeight.MaxLength = 3;
 			this.tbHeight.Name = "tbHeight";
 			this.tbHeight.Size = new System.Drawing.Size(41, 20);
@@ -192,16 +205,126 @@
 			// dtpEndDate
 			// 
 			this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpEndDate.Location = new System.Drawing.Point(262, 174);
+			this.dtpEndDate.Location = new System.Drawing.Point(318, 47);
 			this.dtpEndDate.Name = "dtpEndDate";
-			this.dtpEndDate.Size = new System.Drawing.Size(129, 20);
+			this.dtpEndDate.Size = new System.Drawing.Size(92, 20);
 			this.dtpEndDate.TabIndex = 16;
+			// 
+			// lbDirection
+			// 
+			this.lbDirection.AutoSize = true;
+			this.lbDirection.Location = new System.Drawing.Point(261, 90);
+			this.lbDirection.Name = "lbDirection";
+			this.lbDirection.Size = new System.Drawing.Size(49, 13);
+			this.lbDirection.TabIndex = 17;
+			this.lbDirection.Text = "Direction";
+			// 
+			// lbWeight
+			// 
+			this.lbWeight.AutoSize = true;
+			this.lbWeight.Location = new System.Drawing.Point(479, 83);
+			this.lbWeight.Name = "lbWeight";
+			this.lbWeight.Size = new System.Drawing.Size(44, 13);
+			this.lbWeight.TabIndex = 18;
+			this.lbWeight.Text = "Weight:";
+			// 
+			// lbKg
+			// 
+			this.lbKg.AutoSize = true;
+			this.lbKg.Location = new System.Drawing.Point(573, 83);
+			this.lbKg.Name = "lbKg";
+			this.lbKg.Size = new System.Drawing.Size(19, 13);
+			this.lbKg.TabIndex = 19;
+			this.lbKg.Text = "kg";
+			// 
+			// lbHeight
+			// 
+			this.lbHeight.AutoSize = true;
+			this.lbHeight.Location = new System.Drawing.Point(356, 83);
+			this.lbHeight.Name = "lbHeight";
+			this.lbHeight.Size = new System.Drawing.Size(41, 13);
+			this.lbHeight.TabIndex = 20;
+			this.lbHeight.Text = "Height:";
+			// 
+			// lbCm
+			// 
+			this.lbCm.AutoSize = true;
+			this.lbCm.Location = new System.Drawing.Point(441, 83);
+			this.lbCm.Name = "lbCm";
+			this.lbCm.Size = new System.Drawing.Size(21, 13);
+			this.lbCm.TabIndex = 21;
+			this.lbCm.Text = "cm";
+			// 
+			// lbAppointment
+			// 
+			this.lbAppointment.AutoSize = true;
+			this.lbAppointment.Location = new System.Drawing.Point(259, 51);
+			this.lbAppointment.Name = "lbAppointment";
+			this.lbAppointment.Size = new System.Drawing.Size(69, 13);
+			this.lbAppointment.TabIndex = 22;
+			this.lbAppointment.Text = "Appointment:";
+			// 
+			// lbStart
+			// 
+			this.lbStart.AutoSize = true;
+			this.lbStart.Location = new System.Drawing.Point(260, 51);
+			this.lbStart.Name = "lbStart";
+			this.lbStart.Size = new System.Drawing.Size(56, 13);
+			this.lbStart.TabIndex = 23;
+			this.lbStart.Text = "Start date:";
+			// 
+			// lbEnd
+			// 
+			this.lbEnd.AutoSize = true;
+			this.lbEnd.Location = new System.Drawing.Point(437, 51);
+			this.lbEnd.Name = "lbEnd";
+			this.lbEnd.Size = new System.Drawing.Size(53, 13);
+			this.lbEnd.TabIndex = 24;
+			this.lbEnd.Text = "End date:";
+			// 
+			// lbDiag
+			// 
+			this.lbDiag.AutoSize = true;
+			this.lbDiag.Location = new System.Drawing.Point(262, 179);
+			this.lbDiag.Name = "lbDiag";
+			this.lbDiag.Size = new System.Drawing.Size(53, 13);
+			this.lbDiag.TabIndex = 25;
+			this.lbDiag.Text = "Diagnosis";
+			// 
+			// lbComplaints
+			// 
+			this.lbComplaints.AutoSize = true;
+			this.lbComplaints.Location = new System.Drawing.Point(261, 90);
+			this.lbComplaints.Name = "lbComplaints";
+			this.lbComplaints.Size = new System.Drawing.Size(58, 13);
+			this.lbComplaints.TabIndex = 26;
+			this.lbComplaints.Text = "Complaints";
+			// 
+			// lbStatus
+			// 
+			this.lbStatus.AutoSize = true;
+			this.lbStatus.Location = new System.Drawing.Point(262, 179);
+			this.lbStatus.Name = "lbStatus";
+			this.lbStatus.Size = new System.Drawing.Size(37, 13);
+			this.lbStatus.TabIndex = 27;
+			this.lbStatus.Text = "Status";
 			// 
 			// HealthHistoryForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(637, 472);
+			this.Controls.Add(this.lbStatus);
+			this.Controls.Add(this.lbComplaints);
+			this.Controls.Add(this.lbDiag);
+			this.Controls.Add(this.lbEnd);
+			this.Controls.Add(this.lbStart);
+			this.Controls.Add(this.lbAppointment);
+			this.Controls.Add(this.lbCm);
+			this.Controls.Add(this.lbHeight);
+			this.Controls.Add(this.lbKg);
+			this.Controls.Add(this.lbWeight);
+			this.Controls.Add(this.lbDirection);
 			this.Controls.Add(this.dtpEndDate);
 			this.Controls.Add(this.tbHeight);
 			this.Controls.Add(this.tbWeight);
@@ -245,5 +368,16 @@
 		private System.Windows.Forms.TextBox tbWeight;
 		private System.Windows.Forms.TextBox tbHeight;
 		private System.Windows.Forms.DateTimePicker dtpEndDate;
+		private System.Windows.Forms.Label lbDirection;
+		private System.Windows.Forms.Label lbWeight;
+		private System.Windows.Forms.Label lbKg;
+		private System.Windows.Forms.Label lbHeight;
+		private System.Windows.Forms.Label lbCm;
+		private System.Windows.Forms.Label lbAppointment;
+		private System.Windows.Forms.Label lbStart;
+		private System.Windows.Forms.Label lbEnd;
+		private System.Windows.Forms.Label lbDiag;
+		private System.Windows.Forms.Label lbComplaints;
+		private System.Windows.Forms.Label lbStatus;
 	}
 }
