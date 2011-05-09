@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicForm));
 			this.cbProfessions = new System.Windows.Forms.ComboBox();
 			this.cbCategory = new System.Windows.Forms.ComboBox();
 			this.cbDegree = new System.Windows.Forms.ComboBox();
@@ -57,216 +58,141 @@
 			// cbProfessions
 			// 
 			this.cbProfessions.FormattingEnabled = true;
-			this.cbProfessions.Location = new System.Drawing.Point(97, 144);
+			resources.ApplyResources(this.cbProfessions, "cbProfessions");
 			this.cbProfessions.Name = "cbProfessions";
-			this.cbProfessions.Size = new System.Drawing.Size(165, 21);
-			this.cbProfessions.TabIndex = 4;
 			// 
 			// cbCategory
 			// 
 			this.cbCategory.FormattingEnabled = true;
-			this.cbCategory.Location = new System.Drawing.Point(97, 171);
+			resources.ApplyResources(this.cbCategory, "cbCategory");
 			this.cbCategory.Name = "cbCategory";
-			this.cbCategory.Size = new System.Drawing.Size(165, 21);
-			this.cbCategory.TabIndex = 5;
 			// 
 			// cbDegree
 			// 
 			this.cbDegree.FormattingEnabled = true;
-			this.cbDegree.Location = new System.Drawing.Point(97, 198);
+			resources.ApplyResources(this.cbDegree, "cbDegree");
 			this.cbDegree.Name = "cbDegree";
-			this.cbDegree.Size = new System.Drawing.Size(165, 21);
-			this.cbDegree.TabIndex = 6;
 			// 
 			// cbDepartment
 			// 
 			this.cbDepartment.FormattingEnabled = true;
-			this.cbDepartment.Location = new System.Drawing.Point(97, 225);
+			resources.ApplyResources(this.cbDepartment, "cbDepartment");
 			this.cbDepartment.Name = "cbDepartment";
-			this.cbDepartment.Size = new System.Drawing.Size(165, 21);
-			this.cbDepartment.TabIndex = 7;
 			// 
 			// btSave
 			// 
-			this.btSave.Location = new System.Drawing.Point(33, 312);
+			resources.ApplyResources(this.btSave, "btSave");
 			this.btSave.Name = "btSave";
-			this.btSave.Size = new System.Drawing.Size(96, 26);
-			this.btSave.TabIndex = 10;
-			this.btSave.Text = "Save";
 			this.btSave.UseVisualStyleBackColor = true;
 			this.btSave.Click += new System.EventHandler(this.btSave_Click);
 			// 
 			// tbCabinet
 			// 
-			this.tbCabinet.Location = new System.Drawing.Point(97, 252);
+			resources.ApplyResources(this.tbCabinet, "tbCabinet");
 			this.tbCabinet.Name = "tbCabinet";
-			this.tbCabinet.Size = new System.Drawing.Size(90, 20);
-			this.tbCabinet.TabIndex = 8;
 			// 
 			// lbBirth
 			// 
-			this.lbBirth.AutoSize = true;
-			this.lbBirth.Location = new System.Drawing.Point(20, 122);
+			resources.ApplyResources(this.lbBirth, "lbBirth");
 			this.lbBirth.Name = "lbBirth";
-			this.lbBirth.Size = new System.Drawing.Size(55, 13);
-			this.lbBirth.TabIndex = 40;
-			this.lbBirth.Text = "Birth date:";
 			// 
 			// lbPatronymic
 			// 
-			this.lbPatronymic.AutoSize = true;
-			this.lbPatronymic.Location = new System.Drawing.Point(20, 93);
+			resources.ApplyResources(this.lbPatronymic, "lbPatronymic");
 			this.lbPatronymic.Name = "lbPatronymic";
-			this.lbPatronymic.Size = new System.Drawing.Size(62, 13);
-			this.lbPatronymic.TabIndex = 39;
-			this.lbPatronymic.Text = "Patronymic:";
 			// 
 			// lbName
 			// 
-			this.lbName.AutoSize = true;
-			this.lbName.Location = new System.Drawing.Point(20, 67);
+			resources.ApplyResources(this.lbName, "lbName");
 			this.lbName.Name = "lbName";
-			this.lbName.Size = new System.Drawing.Size(38, 13);
-			this.lbName.TabIndex = 38;
-			this.lbName.Text = "Name:";
 			// 
 			// lbSurname
 			// 
-			this.lbSurname.AutoSize = true;
-			this.lbSurname.Location = new System.Drawing.Point(20, 44);
+			resources.ApplyResources(this.lbSurname, "lbSurname");
 			this.lbSurname.Name = "lbSurname";
-			this.lbSurname.Size = new System.Drawing.Size(52, 13);
-			this.lbSurname.TabIndex = 37;
-			this.lbSurname.Text = "Surname:";
 			// 
 			// dtpBirthDate
 			// 
 			this.dtpBirthDate.Checked = false;
 			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpBirthDate.Location = new System.Drawing.Point(97, 118);
+			resources.ApplyResources(this.dtpBirthDate, "dtpBirthDate");
 			this.dtpBirthDate.Name = "dtpBirthDate";
 			this.dtpBirthDate.ShowCheckBox = true;
-			this.dtpBirthDate.Size = new System.Drawing.Size(126, 20);
-			this.dtpBirthDate.TabIndex = 3;
 			// 
 			// tbPatronymic
 			// 
-			this.tbPatronymic.Location = new System.Drawing.Point(97, 90);
+			resources.ApplyResources(this.tbPatronymic, "tbPatronymic");
 			this.tbPatronymic.Name = "tbPatronymic";
-			this.tbPatronymic.Size = new System.Drawing.Size(165, 20);
-			this.tbPatronymic.TabIndex = 2;
 			// 
 			// tbName
 			// 
-			this.tbName.Location = new System.Drawing.Point(97, 64);
+			resources.ApplyResources(this.tbName, "tbName");
 			this.tbName.Name = "tbName";
-			this.tbName.Size = new System.Drawing.Size(165, 20);
-			this.tbName.TabIndex = 1;
 			// 
 			// tbSurname
 			// 
-			this.tbSurname.Location = new System.Drawing.Point(97, 41);
+			resources.ApplyResources(this.tbSurname, "tbSurname");
 			this.tbSurname.Name = "tbSurname";
-			this.tbSurname.Size = new System.Drawing.Size(165, 20);
-			this.tbSurname.TabIndex = 0;
 			// 
 			// tbId
 			// 
-			this.tbId.Enabled = false;
-			this.tbId.Location = new System.Drawing.Point(97, 15);
+			resources.ApplyResources(this.tbId, "tbId");
 			this.tbId.Name = "tbId";
-			this.tbId.Size = new System.Drawing.Size(165, 20);
-			this.tbId.TabIndex = 41;
 			// 
 			// lbProf
 			// 
-			this.lbProf.AutoSize = true;
-			this.lbProf.Location = new System.Drawing.Point(20, 147);
+			resources.ApplyResources(this.lbProf, "lbProf");
 			this.lbProf.Name = "lbProf";
-			this.lbProf.Size = new System.Drawing.Size(59, 13);
-			this.lbProf.TabIndex = 42;
-			this.lbProf.Text = "Profession:";
 			// 
 			// lbCat
 			// 
-			this.lbCat.AutoSize = true;
-			this.lbCat.Location = new System.Drawing.Point(20, 174);
+			resources.ApplyResources(this.lbCat, "lbCat");
 			this.lbCat.Name = "lbCat";
-			this.lbCat.Size = new System.Drawing.Size(52, 13);
-			this.lbCat.TabIndex = 43;
-			this.lbCat.Text = "Category:";
 			// 
 			// lbDegree
 			// 
-			this.lbDegree.AutoSize = true;
-			this.lbDegree.Location = new System.Drawing.Point(20, 201);
+			resources.ApplyResources(this.lbDegree, "lbDegree");
 			this.lbDegree.Name = "lbDegree";
-			this.lbDegree.Size = new System.Drawing.Size(45, 13);
-			this.lbDegree.TabIndex = 44;
-			this.lbDegree.Text = "Degree:";
 			// 
 			// lbDept
 			// 
-			this.lbDept.AutoSize = true;
-			this.lbDept.Location = new System.Drawing.Point(20, 228);
+			resources.ApplyResources(this.lbDept, "lbDept");
 			this.lbDept.Name = "lbDept";
-			this.lbDept.Size = new System.Drawing.Size(65, 13);
-			this.lbDept.TabIndex = 45;
-			this.lbDept.Text = "Department:";
 			// 
 			// lbCab
 			// 
-			this.lbCab.AutoSize = true;
-			this.lbCab.Location = new System.Drawing.Point(20, 255);
+			resources.ApplyResources(this.lbCab, "lbCab");
 			this.lbCab.Name = "lbCab";
-			this.lbCab.Size = new System.Drawing.Size(46, 13);
-			this.lbCab.TabIndex = 46;
-			this.lbCab.Text = "Cabinet:";
 			// 
 			// lbId
 			// 
-			this.lbId.AutoSize = true;
-			this.lbId.Location = new System.Drawing.Point(20, 18);
+			resources.ApplyResources(this.lbId, "lbId");
 			this.lbId.Name = "lbId";
-			this.lbId.Size = new System.Drawing.Size(19, 13);
-			this.lbId.TabIndex = 47;
-			this.lbId.Text = "Id:";
 			// 
 			// btCancel
 			// 
-			this.btCancel.Location = new System.Drawing.Point(254, 312);
+			resources.ApplyResources(this.btCancel, "btCancel");
 			this.btCancel.Name = "btCancel";
-			this.btCancel.Size = new System.Drawing.Size(88, 26);
-			this.btCancel.TabIndex = 11;
-			this.btCancel.Text = "Cancel";
 			this.btCancel.UseVisualStyleBackColor = true;
 			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
 			// 
 			// chbIsWorking
 			// 
-			this.chbIsWorking.AutoSize = true;
+			resources.ApplyResources(this.chbIsWorking, "chbIsWorking");
 			this.chbIsWorking.Checked = true;
 			this.chbIsWorking.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.chbIsWorking.Location = new System.Drawing.Point(97, 278);
 			this.chbIsWorking.Name = "chbIsWorking";
-			this.chbIsWorking.Size = new System.Drawing.Size(15, 14);
-			this.chbIsWorking.TabIndex = 9;
 			this.chbIsWorking.UseVisualStyleBackColor = true;
 			// 
 			// lbIsWorking
 			// 
-			this.lbIsWorking.AutoSize = true;
-			this.lbIsWorking.Location = new System.Drawing.Point(20, 278);
+			resources.ApplyResources(this.lbIsWorking, "lbIsWorking");
 			this.lbIsWorking.Name = "lbIsWorking";
-			this.lbIsWorking.Size = new System.Drawing.Size(50, 13);
-			this.lbIsWorking.TabIndex = 50;
-			this.lbIsWorking.Text = "Working:";
 			// 
 			// MedicForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(371, 357);
 			this.Controls.Add(this.lbIsWorking);
 			this.Controls.Add(this.chbIsWorking);
 			this.Controls.Add(this.btCancel);
@@ -292,7 +218,6 @@
 			this.Controls.Add(this.cbCategory);
 			this.Controls.Add(this.cbProfessions);
 			this.Name = "MedicForm";
-			this.Text = "MedicForm";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -20,6 +20,7 @@ namespace mongoClient
 		[BsonIgnoreIfNull]
 		public DateTime? DateOfBirth { get; set; }
 
+
 		public string GetInitials()
 		{
 			return Surname + " " + Name[0] + ". " + Patronymic[0] + ".";
@@ -28,6 +29,12 @@ namespace mongoClient
 		public string GetFullName()
 		{
 			return Surname + " " + Name + " " + Patronymic;
+		}
+
+		public int GetAge()
+		{
+			var dateDifference = DateTime.Now - DateOfBirth;
+			return 0;
 		}
 	}
 }

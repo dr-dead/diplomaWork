@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPatientForm));
 			this.btSave = new System.Windows.Forms.Button();
 			this.btCancel = new System.Windows.Forms.Button();
 			this.tbSurname = new System.Windows.Forms.TextBox();
@@ -46,128 +47,85 @@
 			// 
 			// btSave
 			// 
-			this.btSave.Location = new System.Drawing.Point(12, 282);
+			resources.ApplyResources(this.btSave, "btSave");
 			this.btSave.Name = "btSave";
-			this.btSave.Size = new System.Drawing.Size(82, 25);
-			this.btSave.TabIndex = 0;
-			this.btSave.Text = "Save";
 			this.btSave.UseVisualStyleBackColor = true;
 			this.btSave.Click += new System.EventHandler(this.btSave_Click);
 			// 
 			// btCancel
 			// 
-			this.btCancel.Location = new System.Drawing.Point(198, 282);
+			resources.ApplyResources(this.btCancel, "btCancel");
 			this.btCancel.Name = "btCancel";
-			this.btCancel.Size = new System.Drawing.Size(82, 25);
-			this.btCancel.TabIndex = 1;
-			this.btCancel.Text = "Cancel";
 			this.btCancel.UseVisualStyleBackColor = true;
 			this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
 			// 
 			// tbSurname
 			// 
-			this.tbSurname.Location = new System.Drawing.Point(86, 50);
+			resources.ApplyResources(this.tbSurname, "tbSurname");
 			this.tbSurname.Name = "tbSurname";
-			this.tbSurname.Size = new System.Drawing.Size(165, 20);
-			this.tbSurname.TabIndex = 2;
 			// 
 			// tbName
 			// 
-			this.tbName.Location = new System.Drawing.Point(86, 73);
+			resources.ApplyResources(this.tbName, "tbName");
 			this.tbName.Name = "tbName";
-			this.tbName.Size = new System.Drawing.Size(165, 20);
-			this.tbName.TabIndex = 3;
 			// 
 			// tbPatronymic
 			// 
-			this.tbPatronymic.Location = new System.Drawing.Point(86, 99);
+			resources.ApplyResources(this.tbPatronymic, "tbPatronymic");
 			this.tbPatronymic.Name = "tbPatronymic";
-			this.tbPatronymic.Size = new System.Drawing.Size(165, 20);
-			this.tbPatronymic.TabIndex = 4;
 			// 
 			// dtpBirthDate
 			// 
+			resources.ApplyResources(this.dtpBirthDate, "dtpBirthDate");
 			this.dtpBirthDate.Checked = false;
 			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpBirthDate.Location = new System.Drawing.Point(86, 127);
 			this.dtpBirthDate.Name = "dtpBirthDate";
 			this.dtpBirthDate.ShowCheckBox = true;
-			this.dtpBirthDate.Size = new System.Drawing.Size(126, 20);
-			this.dtpBirthDate.TabIndex = 5;
 			// 
 			// tbAddress
 			// 
-			this.tbAddress.Location = new System.Drawing.Point(86, 153);
+			resources.ApplyResources(this.tbAddress, "tbAddress");
 			this.tbAddress.Name = "tbAddress";
-			this.tbAddress.Size = new System.Drawing.Size(118, 20);
-			this.tbAddress.TabIndex = 7;
 			// 
 			// tbTelephone
 			// 
-			this.tbTelephone.Location = new System.Drawing.Point(86, 179);
+			resources.ApplyResources(this.tbTelephone, "tbTelephone");
 			this.tbTelephone.Name = "tbTelephone";
-			this.tbTelephone.Size = new System.Drawing.Size(117, 20);
-			this.tbTelephone.TabIndex = 8;
 			// 
 			// lbBirth
 			// 
-			this.lbBirth.AutoSize = true;
-			this.lbBirth.Location = new System.Drawing.Point(9, 131);
+			resources.ApplyResources(this.lbBirth, "lbBirth");
 			this.lbBirth.Name = "lbBirth";
-			this.lbBirth.Size = new System.Drawing.Size(55, 13);
-			this.lbBirth.TabIndex = 32;
-			this.lbBirth.Text = "Birth date:";
 			// 
 			// lbTelephone
 			// 
-			this.lbTelephone.AutoSize = true;
-			this.lbTelephone.Location = new System.Drawing.Point(9, 182);
+			resources.ApplyResources(this.lbTelephone, "lbTelephone");
 			this.lbTelephone.Name = "lbTelephone";
-			this.lbTelephone.Size = new System.Drawing.Size(43, 13);
-			this.lbTelephone.TabIndex = 31;
-			this.lbTelephone.Text = "Tel. no.";
 			// 
 			// lbAddress
 			// 
-			this.lbAddress.AutoSize = true;
-			this.lbAddress.Location = new System.Drawing.Point(9, 156);
+			resources.ApplyResources(this.lbAddress, "lbAddress");
 			this.lbAddress.Name = "lbAddress";
-			this.lbAddress.Size = new System.Drawing.Size(48, 13);
-			this.lbAddress.TabIndex = 30;
-			this.lbAddress.Text = "Address:";
 			// 
 			// lbPatronymic
 			// 
-			this.lbPatronymic.AutoSize = true;
-			this.lbPatronymic.Location = new System.Drawing.Point(9, 102);
+			resources.ApplyResources(this.lbPatronymic, "lbPatronymic");
 			this.lbPatronymic.Name = "lbPatronymic";
-			this.lbPatronymic.Size = new System.Drawing.Size(62, 13);
-			this.lbPatronymic.TabIndex = 29;
-			this.lbPatronymic.Text = "Patronymic:";
 			// 
 			// lbName
 			// 
-			this.lbName.AutoSize = true;
-			this.lbName.Location = new System.Drawing.Point(9, 76);
+			resources.ApplyResources(this.lbName, "lbName");
 			this.lbName.Name = "lbName";
-			this.lbName.Size = new System.Drawing.Size(38, 13);
-			this.lbName.TabIndex = 28;
-			this.lbName.Text = "Name:";
 			// 
 			// lbSurname
 			// 
-			this.lbSurname.AutoSize = true;
-			this.lbSurname.Location = new System.Drawing.Point(9, 53);
+			resources.ApplyResources(this.lbSurname, "lbSurname");
 			this.lbSurname.Name = "lbSurname";
-			this.lbSurname.Size = new System.Drawing.Size(52, 13);
-			this.lbSurname.TabIndex = 27;
-			this.lbSurname.Text = "Surname:";
 			// 
 			// AddPatientForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(304, 319);
 			this.Controls.Add(this.lbBirth);
 			this.Controls.Add(this.lbTelephone);
 			this.Controls.Add(this.lbAddress);
@@ -183,7 +141,6 @@
 			this.Controls.Add(this.btCancel);
 			this.Controls.Add(this.btSave);
 			this.Name = "AddPatientForm";
-			this.Text = "New patient";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

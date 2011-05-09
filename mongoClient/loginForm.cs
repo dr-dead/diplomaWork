@@ -67,8 +67,8 @@ namespace mongoClient
 		/// </summary>
 		private void SetConnectedState()
 		{
-			btConnect.Text = "Launch";
-			btCancel.Text = "Disconnect";
+			btConnect.Text = LocalizableStrings.Launch;
+			btCancel.Text = LocalizableStrings.Disconnect;
 			cbDatabases.Enabled = true;
 			tbServerAddress.Enabled = false;
 			tbUser.Enabled = false;
@@ -93,8 +93,8 @@ namespace mongoClient
 		/// </summary>
 		private void SetDisconnectedState()
 		{
-			btConnect.Text = "Connect";
-			btCancel.Text = "Exit";
+			btConnect.Text = LocalizableStrings.Connect;
+			btCancel.Text = LocalizableStrings.Exit;
 			cbDatabases.Enabled = false;
 			cbDatabases.Items.Clear();
 			tbServerAddress.Enabled = true;

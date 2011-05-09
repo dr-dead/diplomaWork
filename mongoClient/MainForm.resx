@@ -117,10 +117,672 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="bgWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <data name="&gt;&gt;tbSurname.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpBirthDate.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbDeath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dtpDeathDate.CustomFormat" xml:space="preserve">
+    <value>N\A</value>
+  </data>
+  <data name="&gt;&gt;lbBirth.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbPatronymic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lbAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="&gt;&gt;btAddPatient.Name" xml:space="preserve">
+    <value>btAddPatient</value>
+  </data>
+  <data name="btQuickSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btAddPatient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>605, 532</value>
+  </data>
+  <data name="&gt;&gt;btHealthLog.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbID.Name" xml:space="preserve">
+    <value>tbID</value>
+  </data>
+  <data name="lbSurname.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dtpDeathDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 20</value>
+  </data>
+  <data name="&gt;&gt;tbName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lbTelephone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 316</value>
+  </data>
+  <data name="lbBirth.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="btMedicList.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;headerPatronymic.Name" xml:space="preserve">
+    <value>headerPatronymic</value>
+  </data>
+  <data name="PatientList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>558, 388</value>
+  </data>
+  <data name="&gt;&gt;lbDeath.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="dtpBirthDate.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;lbPatronymic.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lbName.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="btHealthLog.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lbId.Text" xml:space="preserve">
+    <value>Id:</value>
+  </data>
+  <data name="&gt;&gt;PatientList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lbDeath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 265</value>
+  </data>
+  <data name="lbDeath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="tbSurname.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tbSearchText.Name" xml:space="preserve">
+    <value>tbSearchText</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Medical Information System</value>
+  </data>
+  <data name="&gt;&gt;btSave.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;lbTelephone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lbBirth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 239</value>
+  </data>
+  <data name="btAddPatient.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;lbPatronymic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbAddress.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="headerSurname.Text" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="&gt;&gt;tbSurname.Name" xml:space="preserve">
+    <value>tbSurname</value>
+  </data>
+  <data name="tbID.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lbBirth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lbDeath.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;dtpDeathDate.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;tbAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btAddPatient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btHealthLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btDeletePatient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>785, 532</value>
+  </data>
+  <data name="lbAddress.Text" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="btDeletePatient.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="lbBirth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lbId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="&gt;&gt;headerId.Name" xml:space="preserve">
+    <value>headerId</value>
+  </data>
+  <data name="&gt;&gt;btQuickSearch.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="PatientList.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lbDeath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpDeathDate.Name" xml:space="preserve">
+    <value>dtpDeathDate</value>
+  </data>
+  <data name="lbName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbTelephone.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="lbAddress.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;lbId.Name" xml:space="preserve">
+    <value>lbId</value>
+  </data>
+  <data name="&gt;&gt;tbPatronymic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btSave.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lbId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 131</value>
+  </data>
+  <data name="&gt;&gt;tbPatronymic.Name" xml:space="preserve">
+    <value>tbPatronymic</value>
+  </data>
+  <data name="tbPatronymic.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;lbSurname.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PatientList.Name" xml:space="preserve">
+    <value>PatientList</value>
+  </data>
+  <data name="&gt;&gt;tbName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbSearchText.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="tbSearchText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>429, 20</value>
+  </data>
+  <data name="&gt;&gt;lbId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;headerSurname.Name" xml:space="preserve">
+    <value>headerSurname</value>
+  </data>
+  <data name="tbSurname.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 20</value>
+  </data>
+  <data name="&gt;&gt;bgWorker.Name" xml:space="preserve">
+    <value>bgWorker</value>
+  </data>
+  <data name="lbAddress.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tbPatronymic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 20</value>
+  </data>
+  <data name="btQuickSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>476, 533</value>
+  </data>
+  <data name="headerId.Width" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btQuickSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 21</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="headerName.Width" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="&gt;&gt;btDeletePatient.Name" xml:space="preserve">
+    <value>btDeletePatient</value>
+  </data>
+  <data name="&gt;&gt;headerSurname.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbTelephone.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btHealthLog.Name" xml:space="preserve">
+    <value>btHealthLog</value>
+  </data>
+  <data name="btDeletePatient.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lbId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btHealthLog.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="headerPatronymic.Text" xml:space="preserve">
+    <value>Patronymic</value>
+  </data>
+  <data name="btSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="&gt;&gt;tbSearchText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="tbSearchText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 533</value>
+  </data>
+  <data name="&gt;&gt;tbSurname.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;tbID.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbSurname.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btDeletePatient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btDeletePatient.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lbName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 183</value>
+  </data>
+  <data name="&gt;&gt;tbAddress.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lbPatronymic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 212</value>
+  </data>
+  <data name="headerSurname.Width" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="btAddPatient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
+  </data>
+  <data name="&gt;&gt;dtpBirthDate.Name" xml:space="preserve">
+    <value>dtpBirthDate</value>
+  </data>
+  <data name="lbBirth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btMedicList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbTelephone.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="lbSurname.Text" xml:space="preserve">
+    <value>Surname:</value>
+  </data>
+  <data name="tbTelephone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 20</value>
+  </data>
+  <data name="&gt;&gt;lbName.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btMedicList.Name" xml:space="preserve">
+    <value>btMedicList</value>
+  </data>
+  <data name="btSave.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lbBirth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btAddPatient.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tbName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 20</value>
+  </data>
+  <data name="&gt;&gt;tbAddress.Name" xml:space="preserve">
+    <value>tbAddress</value>
+  </data>
+  <data name="&gt;&gt;headerName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpBirthDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lbPatronymic.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btMedicList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lbTelephone.Text" xml:space="preserve">
+    <value>Tel. no.</value>
+  </data>
+  <data name="lbName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="&gt;&gt;lbAddress.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbId.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="btDeletePatient.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;tbAddress.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="headerPatronymic.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="lbPatronymic.Text" xml:space="preserve">
+    <value>Patronymic:</value>
+  </data>
+  <data name="lbDeath.Text" xml:space="preserve">
+    <value>Death date:</value>
+  </data>
+  <data name="dtpBirthDate.CustomFormat" xml:space="preserve">
+    <value>N\A</value>
+  </data>
+  <data name="&gt;&gt;tbTelephone.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="dtpBirthDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 235</value>
+  </data>
+  <data name="&gt;&gt;tbSearchText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbTelephone.Name" xml:space="preserve">
+    <value>tbTelephone</value>
+  </data>
+  <data name="tbID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 131</value>
+  </data>
+  <data name="tbID.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lbBirth.Name" xml:space="preserve">
+    <value>lbBirth</value>
+  </data>
+  <data name="btMedicList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 28</value>
+  </data>
+  <data name="lbTelephone.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;headerName.Name" xml:space="preserve">
+    <value>headerName</value>
+  </data>
+  <data name="btQuickSearch.Text" xml:space="preserve">
+    <value>Quick Search</value>
+  </data>
+  <data name="tbAddress.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="btHealthLog.Text" xml:space="preserve">
+    <value>Health Log</value>
+  </data>
+  <data name="&gt;&gt;btDeletePatient.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;btSave.Name" xml:space="preserve">
+    <value>btSave</value>
+  </data>
+  <data name="&gt;&gt;dtpDeathDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbDeath.Name" xml:space="preserve">
+    <value>lbDeath</value>
+  </data>
+  <data name="&gt;&gt;tbID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbTelephone.Name" xml:space="preserve">
+    <value>lbTelephone</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dtpDeathDate.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="tbTelephone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 313</value>
+  </data>
+  <data name="tbAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 20</value>
+  </data>
+  <data name="&gt;&gt;btQuickSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lbTelephone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="tbName.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lbSurname.Name" xml:space="preserve">
+    <value>lbSurname</value>
+  </data>
+  <data name="dtpDeathDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 261</value>
+  </data>
+  <data name="&gt;&gt;lbAddress.Name" xml:space="preserve">
+    <value>lbAddress</value>
+  </data>
+  <data name="&gt;&gt;lbName.Name" xml:space="preserve">
+    <value>lbName</value>
+  </data>
+  <data name="btDeletePatient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="&gt;&gt;lbTelephone.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lbAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 290</value>
+  </data>
+  <data name="PatientList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 131</value>
+  </data>
+  <data name="&gt;&gt;dtpDeathDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbSurname.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;lbSurname.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btQuickSearch.Name" xml:space="preserve">
+    <value>btQuickSearch</value>
+  </data>
+  <data name="lbDeath.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="lbPatronymic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="tbName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 183</value>
+  </data>
+  <data name="headerName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lbSurname.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;tbName.Name" xml:space="preserve">
+    <value>tbName</value>
+  </data>
+  <data name="&gt;&gt;btMedicList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbPatronymic.Name" xml:space="preserve">
+    <value>lbPatronymic</value>
+  </data>
+  <data name="lbId.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;dtpBirthDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btHealthLog.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lbId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btMedicList.Text" xml:space="preserve">
+    <value>Medics</value>
+  </data>
+  <data name="&gt;&gt;btAddPatient.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>960, 568</value>
+  </data>
+  <data name="&gt;&gt;PatientList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="headerId.Text" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="&gt;&gt;tbID.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="btSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;lbTelephone.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="dtpBirthDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 20</value>
+  </data>
+  <data name="&gt;&gt;lbName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbName.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="btSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>695, 532</value>
+  </data>
+  <data name="tbPatronymic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 209</value>
+  </data>
+  <data name="&gt;&gt;tbPatronymic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btMedicList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 30</value>
+  </data>
+  <data name="lbBirth.Text" xml:space="preserve">
+    <value>Birth date:</value>
+  </data>
+  <data name="tbID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 20</value>
+  </data>
+  <data name="lbSurname.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="btHealthLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>605, 339</value>
+  </data>
+  <data name="&gt;&gt;bgWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btQuickSearch.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="tbSurname.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 157</value>
+  </data>
+  <data name="btHealthLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 22</value>
+  </data>
+  <data name="lbSurname.Location" type="System.Drawing.Point, System.Drawing">
+    <value>602, 160</value>
+  </data>
+  <data name="lbName.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="btAddPatient.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;lbAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;headerId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbPatronymic.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;tbTelephone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tbSearchText.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lbPatronymic.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="tbAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>666, 287</value>
+  </data>
+  <data name="&gt;&gt;headerPatronymic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PatientList.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>43</value>
+  </metadata>
+  <metadata name="bgWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

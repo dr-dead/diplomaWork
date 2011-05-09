@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.PatientList = new System.Windows.Forms.ListView();
 			this.headerId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.headerSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,6 +62,7 @@
 			// 
 			// PatientList
 			// 
+			resources.ApplyResources(this.PatientList, "PatientList");
 			this.PatientList.Activation = System.Windows.Forms.ItemActivation.OneClick;
 			this.PatientList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.headerId,
@@ -70,11 +72,8 @@
 			this.PatientList.FullRowSelect = true;
 			this.PatientList.GridLines = true;
 			this.PatientList.HideSelection = false;
-			this.PatientList.Location = new System.Drawing.Point(28, 131);
 			this.PatientList.MultiSelect = false;
 			this.PatientList.Name = "PatientList";
-			this.PatientList.Size = new System.Drawing.Size(558, 388);
-			this.PatientList.TabIndex = 3;
 			this.PatientList.UseCompatibleStateImageBehavior = false;
 			this.PatientList.View = System.Windows.Forms.View.Details;
 			this.PatientList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.OnColumnClick);
@@ -84,23 +83,19 @@
 			// 
 			// headerId
 			// 
-			this.headerId.Text = "Id";
-			this.headerId.Width = 0;
+			resources.ApplyResources(this.headerId, "headerId");
 			// 
 			// headerSurname
 			// 
-			this.headerSurname.Text = "Surname";
-			this.headerSurname.Width = 124;
+			resources.ApplyResources(this.headerSurname, "headerSurname");
 			// 
 			// headerName
 			// 
-			this.headerName.Text = "Name";
-			this.headerName.Width = 107;
+			resources.ApplyResources(this.headerName, "headerName");
 			// 
 			// headerPatronymic
 			// 
-			this.headerPatronymic.Text = "Patronymic";
-			this.headerPatronymic.Width = 110;
+			resources.ApplyResources(this.headerPatronymic, "headerPatronymic");
 			// 
 			// bgWorker
 			// 
@@ -110,72 +105,51 @@
 			// 
 			// tbID
 			// 
-			this.tbID.Enabled = false;
-			this.tbID.Location = new System.Drawing.Point(666, 131);
+			resources.ApplyResources(this.tbID, "tbID");
 			this.tbID.Name = "tbID";
-			this.tbID.Size = new System.Drawing.Size(207, 20);
-			this.tbID.TabIndex = 4;
 			// 
 			// tbSurname
 			// 
-			this.tbSurname.Location = new System.Drawing.Point(666, 157);
+			resources.ApplyResources(this.tbSurname, "tbSurname");
 			this.tbSurname.Name = "tbSurname";
-			this.tbSurname.Size = new System.Drawing.Size(207, 20);
-			this.tbSurname.TabIndex = 5;
 			// 
 			// tbName
 			// 
-			this.tbName.Location = new System.Drawing.Point(666, 183);
+			resources.ApplyResources(this.tbName, "tbName");
 			this.tbName.Name = "tbName";
-			this.tbName.Size = new System.Drawing.Size(207, 20);
-			this.tbName.TabIndex = 6;
 			// 
 			// tbPatronymic
 			// 
-			this.tbPatronymic.Location = new System.Drawing.Point(666, 209);
+			resources.ApplyResources(this.tbPatronymic, "tbPatronymic");
 			this.tbPatronymic.Name = "tbPatronymic";
-			this.tbPatronymic.Size = new System.Drawing.Size(207, 20);
-			this.tbPatronymic.TabIndex = 7;
 			// 
 			// btSave
 			// 
-			this.btSave.Enabled = false;
-			this.btSave.Location = new System.Drawing.Point(695, 532);
+			resources.ApplyResources(this.btSave, "btSave");
 			this.btSave.Name = "btSave";
-			this.btSave.Size = new System.Drawing.Size(75, 20);
-			this.btSave.TabIndex = 8;
-			this.btSave.Text = "Save";
 			this.btSave.UseVisualStyleBackColor = true;
 			this.btSave.Click += new System.EventHandler(this.btSave_Click);
 			// 
 			// btQuickSearch
 			// 
-			this.btQuickSearch.Location = new System.Drawing.Point(476, 533);
+			resources.ApplyResources(this.btQuickSearch, "btQuickSearch");
 			this.btQuickSearch.Name = "btQuickSearch";
-			this.btQuickSearch.Size = new System.Drawing.Size(109, 21);
-			this.btQuickSearch.TabIndex = 9;
-			this.btQuickSearch.Text = "Quick Search";
 			this.btQuickSearch.UseVisualStyleBackColor = true;
 			this.btQuickSearch.Click += new System.EventHandler(this.btQuickSearch_Click);
 			// 
 			// tbSearchText
 			// 
-			this.tbSearchText.Location = new System.Drawing.Point(28, 533);
+			resources.ApplyResources(this.tbSearchText, "tbSearchText");
 			this.tbSearchText.Name = "tbSearchText";
-			this.tbSearchText.Size = new System.Drawing.Size(429, 20);
-			this.tbSearchText.TabIndex = 10;
 			this.tbSearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchText_KeyDown);
 			// 
 			// dtpBirthDate
 			// 
+			resources.ApplyResources(this.dtpBirthDate, "dtpBirthDate");
 			this.dtpBirthDate.Checked = false;
-			this.dtpBirthDate.CustomFormat = "N\\A";
 			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpBirthDate.Location = new System.Drawing.Point(666, 235);
 			this.dtpBirthDate.Name = "dtpBirthDate";
 			this.dtpBirthDate.ShowCheckBox = true;
-			this.dtpBirthDate.Size = new System.Drawing.Size(115, 20);
-			this.dtpBirthDate.TabIndex = 11;
 			this.dtpBirthDate.Tag = "";
 			this.dtpBirthDate.Value = new System.DateTime(2011, 3, 25, 0, 0, 0, 0);
 			this.dtpBirthDate.ValueChanged += new System.EventHandler(this.dtpFormat_DropDown);
@@ -183,151 +157,97 @@
 			// 
 			// dtpDeathDate
 			// 
+			resources.ApplyResources(this.dtpDeathDate, "dtpDeathDate");
 			this.dtpDeathDate.Checked = false;
-			this.dtpDeathDate.CustomFormat = "N\\A";
 			this.dtpDeathDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpDeathDate.Location = new System.Drawing.Point(666, 261);
 			this.dtpDeathDate.Name = "dtpDeathDate";
 			this.dtpDeathDate.ShowCheckBox = true;
-			this.dtpDeathDate.Size = new System.Drawing.Size(115, 20);
-			this.dtpDeathDate.TabIndex = 12;
 			this.dtpDeathDate.Value = new System.DateTime(2011, 4, 3, 0, 0, 0, 0);
 			this.dtpDeathDate.ValueChanged += new System.EventHandler(this.dtpFormat_DropDown);
 			this.dtpDeathDate.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dtpCheckboxHack_MouseUp);
 			// 
 			// btHealthLog
 			// 
-			this.btHealthLog.Enabled = false;
-			this.btHealthLog.Location = new System.Drawing.Point(605, 339);
+			resources.ApplyResources(this.btHealthLog, "btHealthLog");
 			this.btHealthLog.Name = "btHealthLog";
-			this.btHealthLog.Size = new System.Drawing.Size(101, 22);
-			this.btHealthLog.TabIndex = 13;
-			this.btHealthLog.Text = "Health Log";
 			this.btHealthLog.UseVisualStyleBackColor = true;
 			this.btHealthLog.Click += new System.EventHandler(this.btHealthLog_Click);
 			// 
 			// btAddPatient
 			// 
-			this.btAddPatient.Location = new System.Drawing.Point(605, 532);
+			resources.ApplyResources(this.btAddPatient, "btAddPatient");
 			this.btAddPatient.Name = "btAddPatient";
-			this.btAddPatient.Size = new System.Drawing.Size(68, 21);
-			this.btAddPatient.TabIndex = 14;
-			this.btAddPatient.Text = "Add";
 			this.btAddPatient.UseVisualStyleBackColor = true;
 			this.btAddPatient.Click += new System.EventHandler(this.btAddPatient_Click);
 			// 
 			// btDeletePatient
 			// 
-			this.btDeletePatient.Enabled = false;
-			this.btDeletePatient.Location = new System.Drawing.Point(785, 532);
+			resources.ApplyResources(this.btDeletePatient, "btDeletePatient");
 			this.btDeletePatient.Name = "btDeletePatient";
-			this.btDeletePatient.Size = new System.Drawing.Size(97, 20);
-			this.btDeletePatient.TabIndex = 15;
-			this.btDeletePatient.Text = "Delete";
 			this.btDeletePatient.UseVisualStyleBackColor = true;
 			this.btDeletePatient.Click += new System.EventHandler(this.btDeletePatient_Click);
 			// 
 			// tbAddress
 			// 
-			this.tbAddress.Location = new System.Drawing.Point(666, 287);
+			resources.ApplyResources(this.tbAddress, "tbAddress");
 			this.tbAddress.Name = "tbAddress";
-			this.tbAddress.Size = new System.Drawing.Size(141, 20);
-			this.tbAddress.TabIndex = 16;
 			// 
 			// tbTelephone
 			// 
-			this.tbTelephone.Location = new System.Drawing.Point(666, 313);
+			resources.ApplyResources(this.tbTelephone, "tbTelephone");
 			this.tbTelephone.Name = "tbTelephone";
-			this.tbTelephone.Size = new System.Drawing.Size(141, 20);
-			this.tbTelephone.TabIndex = 17;
 			// 
 			// lbId
 			// 
-			this.lbId.AutoSize = true;
-			this.lbId.Location = new System.Drawing.Point(602, 131);
+			resources.ApplyResources(this.lbId, "lbId");
 			this.lbId.Name = "lbId";
-			this.lbId.Size = new System.Drawing.Size(19, 13);
-			this.lbId.TabIndex = 18;
-			this.lbId.Text = "Id:";
 			// 
 			// lbSurname
 			// 
-			this.lbSurname.AutoSize = true;
-			this.lbSurname.Location = new System.Drawing.Point(602, 160);
+			resources.ApplyResources(this.lbSurname, "lbSurname");
 			this.lbSurname.Name = "lbSurname";
-			this.lbSurname.Size = new System.Drawing.Size(52, 13);
-			this.lbSurname.TabIndex = 19;
-			this.lbSurname.Text = "Surname:";
 			// 
 			// lbName
 			// 
-			this.lbName.AutoSize = true;
-			this.lbName.Location = new System.Drawing.Point(602, 183);
+			resources.ApplyResources(this.lbName, "lbName");
 			this.lbName.Name = "lbName";
-			this.lbName.Size = new System.Drawing.Size(38, 13);
-			this.lbName.TabIndex = 20;
-			this.lbName.Text = "Name:";
 			// 
 			// lbPatronymic
 			// 
-			this.lbPatronymic.AutoSize = true;
-			this.lbPatronymic.Location = new System.Drawing.Point(602, 212);
+			resources.ApplyResources(this.lbPatronymic, "lbPatronymic");
 			this.lbPatronymic.Name = "lbPatronymic";
-			this.lbPatronymic.Size = new System.Drawing.Size(62, 13);
-			this.lbPatronymic.TabIndex = 21;
-			this.lbPatronymic.Text = "Patronymic:";
 			// 
 			// lbAddress
 			// 
-			this.lbAddress.AutoSize = true;
-			this.lbAddress.Location = new System.Drawing.Point(602, 290);
+			resources.ApplyResources(this.lbAddress, "lbAddress");
 			this.lbAddress.Name = "lbAddress";
-			this.lbAddress.Size = new System.Drawing.Size(48, 13);
-			this.lbAddress.TabIndex = 22;
-			this.lbAddress.Text = "Address:";
 			// 
 			// lbTelephone
 			// 
-			this.lbTelephone.AutoSize = true;
-			this.lbTelephone.Location = new System.Drawing.Point(602, 316);
+			resources.ApplyResources(this.lbTelephone, "lbTelephone");
 			this.lbTelephone.Name = "lbTelephone";
-			this.lbTelephone.Size = new System.Drawing.Size(43, 13);
-			this.lbTelephone.TabIndex = 23;
-			this.lbTelephone.Text = "Tel. no.";
 			// 
 			// lbBirth
 			// 
-			this.lbBirth.AutoSize = true;
-			this.lbBirth.Location = new System.Drawing.Point(602, 239);
+			resources.ApplyResources(this.lbBirth, "lbBirth");
 			this.lbBirth.Name = "lbBirth";
-			this.lbBirth.Size = new System.Drawing.Size(55, 13);
-			this.lbBirth.TabIndex = 24;
-			this.lbBirth.Text = "Birth date:";
 			// 
 			// lbDeath
 			// 
-			this.lbDeath.AutoSize = true;
-			this.lbDeath.Location = new System.Drawing.Point(602, 265);
+			resources.ApplyResources(this.lbDeath, "lbDeath");
 			this.lbDeath.Name = "lbDeath";
-			this.lbDeath.Size = new System.Drawing.Size(63, 13);
-			this.lbDeath.TabIndex = 25;
-			this.lbDeath.Text = "Death date:";
 			// 
 			// btMedicList
 			// 
-			this.btMedicList.Location = new System.Drawing.Point(33, 28);
+			resources.ApplyResources(this.btMedicList, "btMedicList");
 			this.btMedicList.Name = "btMedicList";
-			this.btMedicList.Size = new System.Drawing.Size(78, 30);
-			this.btMedicList.TabIndex = 26;
-			this.btMedicList.Text = "Medics";
 			this.btMedicList.UseVisualStyleBackColor = true;
 			this.btMedicList.Click += new System.EventHandler(this.btMedicList_Click);
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(960, 568);
 			this.Controls.Add(this.btMedicList);
 			this.Controls.Add(this.lbDeath);
 			this.Controls.Add(this.lbBirth);
@@ -353,7 +273,6 @@
 			this.Controls.Add(this.tbID);
 			this.Controls.Add(this.PatientList);
 			this.Name = "MainForm";
-			this.Text = "Medical Information System";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResumeLayout(false);

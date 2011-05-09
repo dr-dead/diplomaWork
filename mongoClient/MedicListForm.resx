@@ -117,10 +117,197 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="bgWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <data name="&gt;&gt;nameHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>List of medics</value>
+  </data>
+  <data name="&gt;&gt;btAddMedic.Name" xml:space="preserve">
+    <value>btAddMedic</value>
+  </data>
+  <data name="&gt;&gt;degreeHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="nameHeader.Width" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="deptHeader.Width" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="idHeader.Width" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="medicList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 21</value>
+  </data>
+  <data name="btAddMedic.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;idHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="medicList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>688, 363</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>715, 522</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MedicListForm</value>
+  </data>
+  <data name="&gt;&gt;partonymicHeader.Name" xml:space="preserve">
+    <value>partonymicHeader</value>
+  </data>
+  <data name="categoryHeader.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="&gt;&gt;categoryHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deptHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;medicList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;surnameHeader.Name" xml:space="preserve">
+    <value>surnameHeader</value>
+  </data>
+  <data name="&gt;&gt;medicList.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;categoryHeader.Name" xml:space="preserve">
+    <value>categoryHeader</value>
+  </data>
+  <data name="medicList.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="degreeHeader.Text" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="profHeader.Width" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="btAddMedic.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="partonymicHeader.Text" xml:space="preserve">
+    <value>Patronymic</value>
+  </data>
+  <data name="btAddMedic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 25</value>
+  </data>
+  <data name="deptHeader.Text" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="&gt;&gt;btAddMedic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="surnameHeader.Width" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="degreeHeader.Width" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="&gt;&gt;profHeader.Name" xml:space="preserve">
+    <value>profHeader</value>
+  </data>
+  <data name="profHeader.Text" xml:space="preserve">
+    <value>Profession</value>
+  </data>
+  <data name="surnameHeader.Text" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="&gt;&gt;idHeader.Name" xml:space="preserve">
+    <value>idHeader</value>
+  </data>
+  <data name="&gt;&gt;degreeHeader.Name" xml:space="preserve">
+    <value>degreeHeader</value>
+  </data>
+  <data name="&gt;&gt;partonymicHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;surnameHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bgWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="idHeader.Text" xml:space="preserve">
+    <value>id</value>
+  </data>
+  <data name="&gt;&gt;btAddMedic.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;medicList.Name" xml:space="preserve">
+    <value>medicList</value>
+  </data>
+  <data name="&gt;&gt;profHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="categoryHeader.Width" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;btAddMedic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btAddMedic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 408</value>
+  </data>
+  <data name="partonymicHeader.Width" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nameHeader.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="medicList.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAAA1MaXN0Vmlld0dyb3VwBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdu
+        bWVudAEAAAAHdmFsdWVfXwAIAgAAAAAAAAAKBgUAAAAObGlzdFZpZXdHcm91cDIL
+</value>
+  </data>
+  <data name="&gt;&gt;deptHeader.Name" xml:space="preserve">
+    <value>deptHeader</value>
+  </data>
+  <data name="&gt;&gt;medicList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="medicList.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAAA1MaXN0Vmlld0dyb3VwBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdu
+        bWVudAEAAAAHdmFsdWVfXwAIAgAAAAAAAAAKBgUAAAAObGlzdFZpZXdHcm91cDEL
+</value>
+  </data>
+  <data name="&gt;&gt;bgWorker.Name" xml:space="preserve">
+    <value>bgWorker</value>
+  </data>
+  <data name="&gt;&gt;nameHeader.Name" xml:space="preserve">
+    <value>nameHeader</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>68</value>
+  </metadata>
+  <metadata name="bgWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

@@ -54,6 +54,7 @@ namespace mongoClient
 		private void fillFormWithMedicInfo(ObjectId medicId)
 		{
 			var queriedMedic = ServerConnection.GetCollection<Medic>().FindOneById(medicId);
+			this.Text = queriedMedic.GetFullName();
 			tbId.Text = queriedMedic.Id.ToString();
 			tbSurname.Text = queriedMedic.Surname;
 			tbName.Text = queriedMedic.Name;
